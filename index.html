@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tras las huellas de León XIV</title>
+    <meta name="description" content="El regreso del Papa León XIV al país que también llama hogar.">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <!-- Barra superior: contador + enlaces externos (forma parte del hero) -->
+    <header class="top-bar" id="topBar">
+        <div class="top-bar__left">
+            <p class="top-bar__label">Llegada de <strong>León XIV</strong></p>
+
+            <div class="countdown" id="countdown" aria-label="Cuenta regresiva para la llegada de León XIV">
+                <div class="countdown__item">
+                    <span class="countdown__value" id="cd-days">00</span>
+                    <span class="countdown__label">Días</span>
+                </div>
+                <div class="countdown__item">
+                    <span class="countdown__value" id="cd-hours">00</span>
+                    <span class="countdown__label">Horas</span>
+                </div>
+                <div class="countdown__item">
+                    <span class="countdown__value" id="cd-mins">00</span>
+                    <span class="countdown__label">Min</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="top-bar__right" aria-label="Enlaces externos">
+            <a href="https://elcomercio.pe/noticias/papa-leon-xiv/" class="top-bar__link" target="_blank" rel="noopener noreferrer">Últimas noticias</a>
+            <a href="#" class="top-bar__link" target="_blank" rel="noopener noreferrer">Agenda</a>
+        </nav>
+    </header>
+
+    <!-- Hero con video -->
+    <section class="hero" id="hero">
+        <video class="hero__video" id="heroVideo" autoplay muted loop playsinline>
+            <source src="./video/video-desktop.mp4" type="video/mp4">
+        </video>
+        <div class="hero__overlay"></div>
+
+        <button class="audio-toggle" id="audioToggle" type="button" aria-pressed="false">
+            <span class="audio-toggle__label">Activar audio</span>
+            <span class="audio-toggle__icon" aria-hidden="true">
+                <img src="./img/btn-audio.png" alt="" width="100%">
+            </span>
+        </button>
+
+        <!-- El título y subtítulo ya están incorporados visualmente en el video; se mantienen aquí solo para accesibilidad/SEO -->
+        <h1 class="sr-only">Tras las huellas de León XIV</h1>
+        <p class="sr-only">El regreso del Papa al país que también llama hogar.</p>
+
+        
+    </section>
+
+    <!-- Introducción -->
+    <section class="intro">
+        <div class="hero__scroll" aria-hidden="true">
+            <svg viewBox="0 0 24 14" width="24" height="14" fill="currentColor"><path d="M12 14 0 0h24z"></path></svg>
+        </div>
+
+        <p>No es una visita oficial más. Es el regreso de un hombre que llegó al Perú como misionero, obtuvo la nacionalidad peruana y ahora vuelve como Papa.</p>
+
+        <p>Cuando Robert Prevost aterrizó en el norte del Perú en 1985, traía el hábito sencillo de la orden agustina y una misión pastoral sin fecha de retorno. Con los años, aquel sacerdote que recorría las calles de Chiclayo se convirtió en formador, luego en obispo y, finalmente, en un ciudadano más con DNI peruano tras décadas compartiendo la vida diaria de sus comunidades. Su elección como pontífice en 2025 transformó esa biografía local en un acontecimiento global.</p>
+
+        <p>Cuatro décadas después de su llegada, vuelve al país con el nombre de León XIV. Su agenda, programada del 11 al 16 de noviembre, trazará un puente entre la memoria y su nuevo rol: recorrerá Lima, Chiclayo, Cusco y Pucallpa. Para el Papa, algunas paradas representarán un regreso a los barrios y templos donde forjó su vocación; para otras regiones, marcarán el primer contacto con un pontífice que conoce de primera mano la realidad del territorio.</p>
+    </section>
+
+    <!-- Cintillo fijo: aparece cuando el hero sale del viewport -->
+    <header class="sticky-bar" id="stickyBar">
+        <p class="sticky-bar__brand">
+            <span class="sticky-bar__pretitle">Tras las huellas de</span>
+            <span class="sticky-bar__title">LEÓN XIV</span>
+        </p>
+
+        <nav class="sticky-bar__right" aria-label="Enlaces externos">
+            <a href="https://elcomercio.pe/noticias/papa-leon-xiv/" class="sticky-bar__link" target="_blank" rel="noopener noreferrer">Últimas noticias</a>
+            <a href="#" class="sticky-bar__link" target="_blank" rel="noopener noreferrer">Agenda</a>
+        </nav>
+    </header>
+
+    <!-- Recorrido del Papa -->
+    <div class="main-recorrido">
+        <h3>
+            Recorre sus huellas
+        </h3>
+        <p>
+            Antes del Vaticano hubo otro recorrido. Comenzó cuatro décadas atrás, lejos de Roma, entre parroquias, seminarios y diócesis peruanas. Elige una imagen para ver el mapa de su recorrido.
+        </p>
+
+        <div class="version-selector" id="versionSelector" role="group" aria-label="Elige una versión del recorrido">
+            <button type="button" class="version-card" id="versionCard1" data-version="1" aria-pressed="false">
+                <span class="version-card__frame">
+                    <img src="./img/foto-papa-1.jpg" alt="Robert Prevost antes de ser Papa">
+                </span>
+                <span class="version-card__title">El Perú de Prevost</span>
+                <span class="version-card__years">1985 - 2020</span>
+                <span class="version-card__dot" aria-hidden="true"></span>
+            </button>
+
+            <button type="button" class="version-card" id="versionCard2" data-version="2" aria-pressed="false">
+                <span class="version-card__frame">
+                    <img src="./img/foto-papa-2.jpg" alt="León XIV, el Papa Robert Prevost">
+                </span>
+                <span class="version-card__title">El regreso de León XIV</span>
+                <span class="version-card__years">2026</span>
+                <span class="version-card__dot" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>    
+
+    <!-- Mapa pineado controlado por scroll -->
+    <section class="mapa-track" id="mapaTrack" hidden>
+        <div class="mapa-pin" id="mapaPin">
+            <div class="mapa-pin__info" id="mapaInfo"></div>
+
+            <div class="mapa-pin__visual">
+                <div class="mapa-pin__mapstack" id="mapaStack"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sigue su recorrido -->
+    <div class="main-timeline-recorrido">
+        <h3>
+            Sigue su recorrido
+        </h3>
+        <p>
+            La agenda de León XIV, día por día. Programa oficial publicado por la Santa Sede el 21 de septiembre de 2026. Los horarios corresponden a la hora local del Perú.
+        </p>
+
+        <div class="timeline-list" id="timelineList"></div>
+    </div>
+
+    <!--Lo que puede movilizar su visita -->
+    <div class="main-economia">
+        <h3>Lo que puede movilizar su visita</h3>
+        <p>
+            Peregrinos, turismo y actividad económica 
+        </p>
+        <p>
+            La visita no solo movilizará a los fieles. Hoteles, transporte, restaurantes, agencias de viaje, comercio y servicios se preparan para recibir a quienes se desplacen entre las distintas ciudades del recorrido. 
+        </p>
+        <p>
+            Las estimaciones todavía son proyecciones y varían según la institución. 
+        </p>
+        <p>
+            El Ministerio de Comercio Exterior y Turismo estima que podrían movilizarse más de 700 mil asistentes, entre viajeros y residentes locales, según información recogida por El Comercio. 
+        </p>
+        <p>
+            La Cámara Nacional de Turismo eleva la proyección hasta <span>1,5 millones de personas</span> y calcula que una inversión de entre <span>US 15 millones US 20 millones</span> podría producir un retorno de entre <span>US 80 millones y 100 millones</span>, tomando como referencia experiencias anteriores. 
+        </p>
+        <img src="./img/cifras-economia.jpg" alt="" width="100%">
+        <p>
+            Estas cifras son proyecciones previas a la visita y no representan resultados observados. Las estimaciones proceden de distintas instituciones y no necesariamente utilizan la misma metodología.
+        </p>
+    </div>
+
+    <!--Los símbolos del Papa -->
+    <div class="main-simbolos">
+        <h3>Los símbolos de León XIV</h3>
+        <p>
+            Detrás del nombre papal hay objetos con siglos de historia y otros con apenas unos años: una cruz pectoral, un anillo, un escudo, una mitra y hasta los documentos peruanos que también lo identifican.
+        </p>
+        <img src="./img/hint-scroll.png" alt="" width="100%" class="hint-scroll">
+    </div>
+
+    <!-- Símbolos pineados controlados por scroll -->
+    <section class="simbolos-track" id="simbolosTrack">
+        <div class="simbolos-pin" id="simbolosPin">
+            <div class="simbolos-pin__text" id="simbolosText"></div>
+
+            <div class="simbolos-pin__visual">
+                <div class="simbolos-pin__stack" id="simbolosStack"></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
