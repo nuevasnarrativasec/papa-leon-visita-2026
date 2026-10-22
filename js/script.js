@@ -521,6 +521,12 @@
     /* ===== Símbolos: secuencia pineada por scroll ===== */
     var SIMBOLOS_DATA = [
         {
+            title: '',
+            image: './img/simbolos/papa.jpg',
+            imageAlt: 'León XIV',
+            text: ''
+        },
+        {
             title: 'La Cruz',
             image: './img/simbolos/simbolo-1.jpg',
             imageAlt: 'Cruz pectoral de León XIV',
@@ -571,8 +577,9 @@
 
     if (simbolosTrack && simbolosPin && simbolosStack && simbolosText) {
         var simbolosHTML = '';
-        SIMBOLOS_DATA.forEach(function (simbolo) {
-            simbolosHTML += '<img src="' + simbolo.image + '" alt="' + escapeHTML(simbolo.imageAlt) + '">';
+        SIMBOLOS_DATA.forEach(function (simbolo, i) {
+            var imgClass = i === 0 ? ' class="is-instant"' : '';
+            simbolosHTML += '<img src="' + simbolo.image + '" alt="' + escapeHTML(simbolo.imageAlt) + '"' + imgClass + '>';
         });
         simbolosStack.innerHTML = simbolosHTML;
 
@@ -590,6 +597,10 @@
             if (previousCard) { previousCard.classList.remove('is-visible'); }
 
             window.setTimeout(function () {
+                if (!simbolo.text) {
+                    simbolosText.innerHTML = '';
+                    return;
+                }
                 simbolosText.innerHTML = '<div class="simbolo-card">' +
                     '<h4 class="simbolo-card__title">' + escapeHTML(simbolo.title) + '</h4>' +
                     '<div class="simbolo-card__box"><p>' + escapeHTML(simbolo.text) + '</p></div>' +
@@ -603,6 +614,8 @@
             simbolosStackImgs.forEach(function (img, i) {
                 img.classList.toggle('is-active', i === index);
             });
+
+            simbolosPin.classList.toggle('simbolos-pin--intro', index === 0);
         }
 
         function updateSimbolosProgress() {
@@ -636,5 +649,282 @@
 
         window.addEventListener('scroll', onSimbolosScroll, { passive: true });
         window.addEventListener('resize', onSimbolosScroll);
+    }
+
+    /* ===== Timeline horizontal: del misionero al Papa ===== */
+    var TIMELINE_H_DATA = [
+        {
+            year: '1985',
+            image: './img/timeline-horizontal/bg-item-1.jpg',
+            imageAlt: 'Robert Prevost como joven misionero agustino',
+            cover: './img/timeline-horizontal/bg-portada-item-1.jpg',
+            coverAlt: 'Portada de El Comercio sobre la visita de Juan Pablo II al Perú',
+            headline: 'Llegó al Perú como misionero agustino y se instaló en Chulucanas, Piura, donde fue vicepárroco y canciller de la prelatura.',
+            peru: 'Alan García inició su primer gobierno, en medio de una crisis económica y creciente violencia terrorista.',
+            mundo: 'Mijaíl Gorbachov asumió el liderazgo de la Unión Soviética e inició una etapa de reformas que contribuirían al fin de la Guerra Fría.'
+        },
+        {
+            year: '1987',
+            headline: 'Defendió su tesis doctoral y asumió la dirección de Vocaciones y Misiones de su provincia agustiniana en Estados Unidos.',
+            peru: 'Alan García anunció la estatización de la banca en medio de una profunda crisis económica y política.',
+            mundo: 'El Lunes Negro provocó un desplome de las bolsas internacionales.'
+        },
+        {
+            year: '1989',
+            headline: 'Se consolidó como formador y profesor de religiosos en Trujillo.',
+            peru: 'El país enfrentó un mayor deterioro económico y la expansión de la violencia terrorista.',
+            mundo: 'Cayó el Muro de Berlín, símbolo del inicio del fin de la Guerra Fría.'
+        },
+        {
+            year: '1991',
+            headline: 'Continuó enseñando y formando religiosos en Trujillo.',
+            peru: 'El gobierno de Fujimori aplicó el Fujishock y continuó la violencia política.',
+            mundo: 'Se disolvió la Unión Soviética y terminó la Guerra Fría.'
+        },
+        {
+            year: '1993',
+            headline: 'Continuó como formador y profesor en Trujillo.',
+            peru: 'Se aprobó la Constitución Política de 1993.',
+            mundo: 'Israel y la Organización para la Liberación de Palestina firmaron los Acuerdos de Oslo.'
+        },
+        {
+            year: '1995',
+            headline: 'Cumplió siete años de trabajo en Trujillo, dedicándose a la formación religiosa y la atención parroquial.',
+            peru: 'Alberto Fujimori fue reelegido presidente.',
+            mundo: 'Los Acuerdos de Dayton sentaron las bases para poner fin a la guerra de Bosnia.'
+        },
+        {
+            year: '1997',
+            headline: 'Continuó su labor sacerdotal en Trujillo.',
+            peru: 'La operación Chavín de Huántar puso fin a la crisis de los rehenes en la residencia japonesa.',
+            mundo: 'Se presentó públicamente a Dolly, la primera oveja clonada a partir de una célula adulta.'
+        },
+        {
+            year: '1999',
+            headline: 'Dejó Trujillo después de 11 años al ser elegido prior provincial de los agustinos en Chicago.',
+            peru: 'Fujimori buscó una nueva reelección entre crecientes denuncias de autoritarismo.',
+            mundo: 'Entró en vigor el euro como moneda común de once países europeos, inicialmente para operaciones financieras.'
+        },
+        {
+            year: '1999',
+            headline: 'Dejó Trujillo después de 11 años al ser elegido prior provincial de los agustinos en Chicago.',
+            peru: 'Fujimori buscó una nueva reelección entre crecientes denuncias de autoritarismo.',
+            mundo: 'Entró en vigor el euro como moneda común de once países europeos, inicialmente para operaciones financieras.'
+        },
+        {
+            year: '2000',
+            markerBefore: 'Siglo XXI',
+            headline: 'Inició una nueva etapa de liderazgo internacional en la Orden de San Agustín.',
+            peru: 'Cayó el régimen de Alberto Fujimori tras una crisis política marcada por la Marcha de los Cuatro Suyos.',
+            mundo: 'Científicos del Proyecto Genoma Humano anunciaron el primer borrador de la secuencia del genoma humano.'
+        },
+        {
+            year: '2002 - 2006',
+            headline: 'Dirigió la Orden de San Agustín a escala internacional.',
+            peru: 'Alejandro Toledo gobernó el Perú.',
+            mundo: 'En 2005 murió Juan Pablo II y Benedicto XVI fue elegido papa.'
+        },
+        {
+            year: '2008 - 2012',
+            headline: 'Continuó liderando la Orden de San Agustín a escala internacional.',
+            peru: 'El Perú vivió un período de crecimiento económico durante el segundo gobierno de Alan García y el inicio del de Ollanta Humala.',
+            mundo: 'La crisis financiera de 2008 desencadenó una recesión mundial. En 2011 comenzaron las revueltas de la Primavera Árabe.'
+        },
+        {
+            year: '2014',
+            headline: 'Francisco lo nombró administrador apostólico de Chiclayo. Fue ordenado obispo el 12 de diciembre.',
+            peru: 'El gobierno de Ollanta Humala enfrentó conflictos sociales y cuestionamientos por corrupción y gobernabilidad.',
+            mundo: 'La epidemia de ébola en África occidental fue declarada emergencia sanitaria internacional.'
+        },
+        {
+            year: '2016',
+            headline: 'Desarrolló su labor episcopal en Chiclayo, atendiendo parroquias, comunidades rurales y poblaciones vulnerables.',
+            peru: 'Pedro Pablo Kuczynski ganó las elecciones presidenciales frente a Keiko Fujimori.',
+            mundo: 'El Reino Unido votó a favor del Brexit y Donald Trump ganó las elecciones presidenciales de Estados Unidos.'
+        },
+        {
+            year: '2018',
+            headline: 'Fue elegido segundo vicepresidente de la Conferencia Episcopal Peruana y asumió responsabilidades en sus comisiones.',
+            peru: 'Pedro Pablo Kuczynski renunció a la presidencia y Martín Vizcarra asumió el poder.',
+            mundo: 'Estados Unidos y China iniciaron una guerra comercial con la imposición de aranceles a sus productos.'
+        },
+        {
+            year: '2020',
+            headline: 'Fue nombrado administrador apostólico del Callao y participó en acciones de asistencia durante la pandemia.',
+            peru: 'Comenzó la cuarentena por COVID-19 y el país enfrentó una grave emergencia sanitaria.',
+            mundo: 'La OMS caracterizó la propagación del COVID-19 como una pandemia mundial.'
+        },
+        {
+            year: '2022',
+            headline: 'Continuó su labor pastoral en Chiclayo, visitando parroquias y comunidades como Tumán.',
+            peru: 'Pedro Castillo intentó disolver el Congreso, fue detenido y Dina Boluarte asumió la presidencia.',
+            mundo: 'Rusia inició una invasión a gran escala de Ucrania, desencadenando una guerra de repercusión mundial.'
+        },
+        {
+            year: '2024',
+            headline: 'Desde Roma mantuvo su vínculo con el Perú y visitó Chulucanas, donde había comenzado su misión en 1985.',
+            peru: 'Persistió la crisis de confianza en las instituciones del país.',
+            mundo: 'París acogió los Juegos Olímpicos, que reunieron a deportistas de todo el mundo.'
+        },
+        {
+            year: '2026',
+            headline: 'La Santa Sede anunció una visita apostólica de León XIV al Perú del 11 al 17 de noviembre, con paradas previstas en Lima, Chiclayo, Cusco y Pucallpa.',
+            peru: 'Keiko Fujimori ganó las elecciones presidenciales y juró como presidenta de la República el 28 de julio.',
+            mundo: 'Trump intensificó las redadas del ICE y las deportaciones de inmigrantes en Estados Unidos, desatando protestas.'
+        }
+    ];
+
+    var timelineHTrack = document.getElementById('timelineHTrack');
+    var timelineHScroll = document.getElementById('timelineHScroll');
+    var timelineHLightbox = document.getElementById('timelineHLightbox');
+    var timelineHLightboxImg = document.getElementById('timelineHLightboxImg');
+    var timelineHLightboxClose = document.getElementById('timelineHLightboxClose');
+
+    var TIMELINE_H_PHOTO_PLACEHOLDER = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">' +
+        '<rect x="2.5" y="4.5" width="19" height="15" rx="2"/>' +
+        '<circle cx="8.5" cy="10" r="1.8"/>' +
+        '<path d="M3 16.5 8.5 12l3 2.5L17 10l4 5"/>' +
+        '</svg>';
+
+    var TIMELINE_H_ZOOM_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+        '<circle cx="10.5" cy="10.5" r="6.5"/>' +
+        '<path d="M20 20l-4.35-4.35"/>' +
+        '</svg>';
+
+    if (timelineHTrack && timelineHScroll) {
+        var timelineHHTML = '';
+
+        TIMELINE_H_DATA.forEach(function (item) {
+            if (item.markerBefore) {
+                timelineHHTML += '<div class="timeline-h__marker"><span>' + escapeHTML(item.markerBefore) + '</span></div>';
+            }
+
+            var photo = item.image
+                ? '<img src="' + item.image + '" alt="' + escapeHTML(item.imageAlt || '') + '">'
+                : TIMELINE_H_PHOTO_PLACEHOLDER;
+
+            var cover = item.cover
+                ? '<button type="button" class="timeline-h__cover" data-cover="' + item.cover + '" data-cover-alt="' + escapeHTML(item.coverAlt || '') + '">' +
+                    '<img src="' + item.cover + '" alt="' + escapeHTML(item.coverAlt || '') + '">' +
+                    '<span class="timeline-h__cover-icon">' + TIMELINE_H_ZOOM_ICON + '</span>' +
+                    '</button>'
+                : '<button type="button" class="timeline-h__cover" disabled aria-label="Portada no disponible aún">' +
+                    '<span class="timeline-h__cover-icon">' + TIMELINE_H_ZOOM_ICON + '</span>' +
+                    '</button>';
+
+            timelineHHTML += '<div class="timeline-h__item">' +
+                '<div class="timeline-h__badge">' +
+                    '<span class="timeline-h__year">' + escapeHTML(item.year) + '</span>' +
+                    '<span class="timeline-h__connector"></span>' +
+                    '<span class="timeline-h__dot"></span>' +                    
+                '</div>' +
+                '<div class="timeline-h__card">' +
+                    '<div class="timeline-h__photo">' + photo + '</div>' +
+                    '<p class="timeline-h__headline">' + escapeHTML(item.headline) + '</p>' +
+                    '<span class="timeline-h__select-label">Selecciona un ítem</span>' +
+                    '<div class="timeline-h__tabs">' +
+                        '<button type="button" class="timeline-h__tab-btn is-active" data-tab="peru" aria-pressed="true">' +
+                            '<img src="./img/timeline-horizontal/btn-mapa-activo.png" data-active="./img/timeline-horizontal/btn-mapa-activo.png" data-inactive="./img/timeline-horizontal/btn-mapa-inactivo.png" alt="Perú">' +
+                        '</button>' +
+                        '<button type="button" class="timeline-h__tab-btn" data-tab="mundo" aria-pressed="false">' +
+                            '<img src="./img/timeline-horizontal/btn-mundo-inactivo.png" data-active="./img/timeline-horizontal/btn-mundo-activo.png" data-inactive="./img/timeline-horizontal/btn-mundo-inactivo.png" alt="Mundo">' +
+                        '</button>' +
+                    '</div>' +
+                    '<div class="timeline-h__panel is-active" data-panel="peru">' +
+                        '<strong>Perú:</strong>' +
+                        '<p>' + escapeHTML(item.peru) + '</p>' +
+                    '</div>' +
+                    '<div class="timeline-h__panel" data-panel="mundo">' +
+                        '<strong>Mundo:</strong>' +
+                        '<p>' + escapeHTML(item.mundo) + '</p>' +
+                    '</div>' +
+                    '<hr class="timeline-h__divider">' +
+                    '<p class="timeline-h__source-label">Cómo informó El Comercio</p>' +
+                    cover +
+                '</div>' +
+            '</div>';
+        });
+
+        timelineHTrack.innerHTML = timelineHHTML;
+
+        /* Tabs Perú / Mundo y apertura del lightbox de portadas */
+        timelineHTrack.addEventListener('click', function (e) {
+            if (timelineHDidDrag) { return; }
+
+            var tabBtn = e.target.closest('.timeline-h__tab-btn');
+            if (tabBtn) {
+                var item = tabBtn.closest('.timeline-h__item');
+                var tab = tabBtn.getAttribute('data-tab');
+
+                item.querySelectorAll('.timeline-h__tab-btn').forEach(function (btn) {
+                    var active = btn === tabBtn;
+                    btn.classList.toggle('is-active', active);
+                    btn.setAttribute('aria-pressed', String(active));
+                    var img = btn.querySelector('img');
+                    img.src = active ? img.getAttribute('data-active') : img.getAttribute('data-inactive');
+                });
+
+                item.querySelectorAll('.timeline-h__panel').forEach(function (panel) {
+                    panel.classList.toggle('is-active', panel.getAttribute('data-panel') === tab);
+                });
+
+                return;
+            }
+
+            var coverBtn = e.target.closest('.timeline-h__cover');
+            if (coverBtn && !coverBtn.disabled) {
+                timelineHLightboxImg.src = coverBtn.getAttribute('data-cover');
+                timelineHLightboxImg.alt = coverBtn.getAttribute('data-cover-alt') || '';
+                timelineHLightbox.hidden = false;
+            }
+        });
+
+        /* Cierre del lightbox */
+        function closeTimelineHLightbox() {
+            timelineHLightbox.hidden = true;
+            timelineHLightboxImg.src = '';
+        }
+
+        if (timelineHLightboxClose) {
+            timelineHLightboxClose.addEventListener('click', closeTimelineHLightbox);
+        }
+        if (timelineHLightbox) {
+            timelineHLightbox.addEventListener('click', function (e) {
+                if (e.target === timelineHLightbox) { closeTimelineHLightbox(); }
+            });
+        }
+        window.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !timelineHLightbox.hidden) { closeTimelineHLightbox(); }
+        });
+
+        /* Arrastre con el cursor del mouse (grab / grabbing) */
+        var timelineHDragging = false;
+        var timelineHDidDrag = false;
+        var timelineHDragStartX = 0;
+        var timelineHDragStartScroll = 0;
+
+        timelineHScroll.addEventListener('pointerdown', function (e) {
+            if (e.pointerType !== 'mouse') { return; }
+            timelineHDragging = true;
+            timelineHDidDrag = false;
+            timelineHDragStartX = e.clientX;
+            timelineHDragStartScroll = timelineHScroll.scrollLeft;
+            timelineHScroll.classList.add('is-grabbing');
+        });
+
+        window.addEventListener('pointermove', function (e) {
+            if (!timelineHDragging) { return; }
+            var delta = e.clientX - timelineHDragStartX;
+            if (Math.abs(delta) > 4) { timelineHDidDrag = true; }
+            timelineHScroll.scrollLeft = timelineHDragStartScroll - delta;
+        });
+
+        function endTimelineHDrag() {
+            timelineHDragging = false;
+            timelineHScroll.classList.remove('is-grabbing');
+        }
+
+        window.addEventListener('pointerup', endTimelineHDrag);
+        window.addEventListener('pointercancel', endTimelineHDrag);
     }
 })();
