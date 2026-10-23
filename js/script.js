@@ -269,8 +269,11 @@
     var mapaStack = document.getElementById('mapaStack');
     var mapaInfo = document.getElementById('mapaInfo');
 
+    var mobileLayoutQuery = window.matchMedia('(max-width: 720px)');
+
     var activeVersion = null;
     var currentStopIndex = -1;
+    var isMobileLayout = false;
     var ticking = false;
 
     function buildMapStack(version) {
@@ -286,13 +289,31 @@
         }
     }
 
-    function renderStop(version, index) {
+    function setActiveMapImage(index) {
+        var mapImages = mapaStack.querySelectorAll('img');
+        mapImages.forEach(function (img, i) {
+            img.classList.toggle('is-active', i === index);
+        });
+    }
+
+    /* ----- Escritorio: una tarjeta con crossfade, pin lateral fijo ----- */
+
+    function renderStopDesktop(version, index) {
         var data = RECORRIDO_DATA[version];
-        var stop = data.stops[index];
-        if (!stop) { return; }
+        setActiveMapImage(Math.max(index, 0));
 
         var previousCard = mapaInfo.querySelector('.mapa-card');
         if (previousCard) { previousCard.classList.remove('is-visible'); }
+
+        if (index < 0) {
+            window.setTimeout(function () {
+                if (currentStopIndex < 0) { mapaInfo.innerHTML = ''; }
+            }, previousCard ? 400 : 0);
+            return;
+        }
+
+        var stop = data.stops[index];
+        if (!stop) { return; }
 
         window.setTimeout(function () {
             mapaInfo.innerHTML = buildCardHTML(stop);
@@ -301,19 +322,86 @@
                 if (newCard) { newCard.classList.add('is-visible'); }
             });
         }, previousCard ? 180 : 0);
-
-        var mapImages = mapaStack.querySelectorAll('img');
-        mapImages.forEach(function (img, i) {
-            img.classList.toggle('is-active', i === index);
-        });
     }
+
+    function setupDesktopTrack(version) {
+        var data = RECORRIDO_DATA[version];
+        mapaTrack.style.height = ((data.stops.length + 1) * 100) + 'vh';
+        currentStopIndex = -1;
+        renderStopDesktop(version, -1);
+    }
+
+    function updateDesktopProgress() {
+        var data = RECORRIDO_DATA[activeVersion];
+        var rect = mapaTrack.getBoundingClientRect();
+        var totalScrollable = mapaTrack.offsetHeight - window.innerHeight;
+
+        if (totalScrollable <= 0) { return; }
+
+        var progress = (-rect.top) / totalScrollable;
+        progress = Math.min(Math.max(progress, 0), 1);
+
+        var segments = data.stops.length + 1;
+        var index = Math.floor(progress * segments) - 1;
+        index = Math.min(index, data.stops.length - 1);
+        index = Math.max(index, -1);
+
+        if (index !== currentStopIndex) {
+            currentStopIndex = index;
+            renderStopDesktop(activeVersion, index);
+        }
+    }
+
+    /* ----- Móvil: tarjetas en flujo normal, superpuestas sobre el mapa fijo -----
+       El mapa queda "sticky" de fondo (ver CSS). Cada parada tiene, antes de su
+       tarjeta, un espaciador de un viewport completo: primero se ve solo el mapa
+       pineado en ese punto, luego la tarjeta correspondiente sube de abajo hacia
+       arriba y vuelve a salir por encima, y el espaciador de la siguiente parada
+       actualiza el mapa antes de que aparezca su tarjeta. Así se repite con cada
+       parada. */
+
+    function setupMobileTrack(version) {
+        var data = RECORRIDO_DATA[version];
+        mapaTrack.style.height = '';
+
+        var html = '';
+        data.stops.forEach(function (stop, i) {
+            html += '<div class="mapa-stack-spacer" data-stop-index="' + i + '" aria-hidden="true"></div>';
+            html += buildCardHTML(stop);
+        });
+        mapaInfo.innerHTML = html;
+
+        currentStopIndex = -1;
+        setActiveMapImage(0);
+    }
+
+    function updateMobileProgress() {
+        var spacers = mapaInfo.querySelectorAll('.mapa-stack-spacer');
+        if (!spacers.length) { return; }
+
+        var threshold = window.innerHeight * 0.5;
+        var index = -1;
+
+        spacers.forEach(function (spacer) {
+            if (spacer.getBoundingClientRect().top <= threshold) {
+                index = parseInt(spacer.getAttribute('data-stop-index'), 10);
+            }
+        });
+
+        if (index !== currentStopIndex) {
+            currentStopIndex = index;
+            setActiveMapImage(Math.max(index, 0));
+        }
+    }
+
+    /* ----- Selección de versión ----- */
 
     function selectVersion(version) {
         var data = RECORRIDO_DATA[version];
         if (!data) { return; }
 
         activeVersion = version;
-        currentStopIndex = -1;
+        isMobileLayout = mobileLayoutQuery.matches;
 
         versionCards.forEach(function (card) {
             var isSelected = card.getAttribute('data-version') === version;
@@ -324,12 +412,13 @@
         mapaPin.classList.toggle('is-right', data.side === 'right');
 
         buildMapStack(version);
-
         mapaTrack.hidden = false;
-        mapaTrack.style.height = ((data.stops.length + 1) * 100) + 'vh';
 
-        renderStop(version, 0);
-        currentStopIndex = 0;
+        if (isMobileLayout) {
+            setupMobileTrack(version);
+        } else {
+            setupDesktopTrack(version);
+        }
 
         window.requestAnimationFrame(function () {
             mapaTrack.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -341,22 +430,10 @@
 
         if (!activeVersion || mapaTrack.hidden) { return; }
 
-        var data = RECORRIDO_DATA[activeVersion];
-        var rect = mapaTrack.getBoundingClientRect();
-        var totalScrollable = mapaTrack.offsetHeight - window.innerHeight;
-
-        if (totalScrollable <= 0) { return; }
-
-        var progress = (-rect.top) / totalScrollable;
-        progress = Math.min(Math.max(progress, 0), 1);
-
-        var index = Math.floor(progress * data.stops.length);
-        index = Math.min(index, data.stops.length - 1);
-        index = Math.max(index, 0);
-
-        if (index !== currentStopIndex) {
-            currentStopIndex = index;
-            renderStop(activeVersion, index);
+        if (isMobileLayout) {
+            updateMobileProgress();
+        } else {
+            updateDesktopProgress();
         }
     }
 
@@ -367,6 +444,14 @@
         }
     }
 
+    function onResize() {
+        if (activeVersion && mobileLayoutQuery.matches !== isMobileLayout) {
+            selectVersion(activeVersion);
+            return;
+        }
+        onScroll();
+    }
+
     if (versionCards.length && mapaTrack && mapaPin && mapaStack) {
         versionCards.forEach(function (card) {
             card.addEventListener('click', function () {
@@ -375,7 +460,7 @@
         });
 
         window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', onScroll);
+        window.addEventListener('resize', onResize);
     }
 
     /* ===== Timeline: agenda día por día ===== */

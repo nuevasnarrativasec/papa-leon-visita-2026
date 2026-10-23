@@ -200,7 +200,7 @@ img, video {
     gap: 10px;
     padding: 10px 18px;
     border: none;
-    backdrop-filter: blur(6px);
+    /*backdrop-filter: blur(6px);*/
     color: #000;
     font-family: var(--font-sans);
     font-size: 13px;
@@ -1304,7 +1304,7 @@ img, video {
     }
 
     .timeline-h__item {
-        width: 240px;
+        width: 290px;
         padding: 0 14px;
     }
 
@@ -1336,6 +1336,7 @@ img, video {
         justify-content: center;
         padding: 24px 20px;
         gap: 24px;
+        padding-top: 100px;
     }
 
     .simbolos-pin__text,
@@ -1365,38 +1366,49 @@ img, video {
     .simbolo-card__box {
         padding: 18px 20px;
     }
+    .timeline-h__track::before{
+        margin-left: 38px;
+    }
 }
 
 
 @media (max-width: 720px) {
     .timeline-list {
-        --timeline-stamp: 76px;
+        --timeline-stamp: 280px;
         margin-top: 40px;
+        padding: 0 20px;
     }
 
-    .timeline-day,
-    .timeline-connector {
-        grid-template-columns: var(--timeline-stamp) 1fr;
-        column-gap: 16px;
+    .timeline-day {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .timeline-day__stamp {
-        grid-column: 1;
-        grid-row: 1;
+        width: var(--timeline-stamp);
+        max-width: 100%;
+        aspect-ratio: auto;
+        align-self: center;
+        transform: translateX(-7%);
+    }
+
+    .timeline-day__stamp img {
+        margin-top: 0;
     }
 
     .timeline-day__daycol {
-        grid-column: 2;
-        grid-row: 1;
         flex-direction: row;
         align-items: baseline;
         justify-content: flex-start;
+        align-self: flex-start;
         gap: 10px;
+        margin-top: 12px;
         text-align: left;
     }
 
     .timeline-day__num {
-        font-size: 40px;
+        font-size: 44px;
     }
 
     .timeline-day__circle,
@@ -1405,20 +1417,41 @@ img, video {
     }
 
     .timeline-day__content {
-        grid-column: 1 / -1;
-        grid-row: 2;
+        width: 100%;
         margin-top: 16px;
         padding: 0;
         border-left: none;
     }
 
-    .timeline-connector__footprints {
-        grid-column: 1;
+    .timeline-connector {
+        display: flex;
         justify-content: center;
+        height: auto;
+        margin: 8px 0;
+    }
+
+    .timeline-connector__footprints {
+        display: flex;
+        justify-content: center;
+        padding: 0;
     }
 
     .timeline-connector__line-cell {
         display: none;
+    }
+
+    .timeline-footprints {
+        height: 48px;
+        scale: 1;
+    }
+
+    #timeline-connector-1,
+    #timeline-connector-2,
+    #timeline-connector-3,
+    #timeline-connector-4,
+    #timeline-connector-5 {
+        margin: 8px 0;
+        opacity: 0;
     }
 }
 
@@ -1432,38 +1465,65 @@ img, video {
         width: 44%;
     }
 
+    /* El mapa queda pegado (sticky) de fondo; las tarjetas fluyen con el
+       scroll normal y, gracias al margin-top negativo, se deslizan por
+       encima de él, cubriéndolo y saliendo por arriba del viewport. */
     .mapa-pin {
+        position: static;
+        height: auto;
+        display: flex;
         flex-direction: column;
-        justify-content: center;
-        padding: 20px 20px;
-        gap: 16px;
-        overflow-y: auto;
+        padding: 0;
+        gap: 0;
+        overflow: visible;
     }
 
     .mapa-pin.is-right .mapa-pin__info,
     .mapa-pin.is-right .mapa-pin__visual,
     .mapa-pin__info,
     .mapa-pin__visual {
-        order: initial;
-        max-width: 100%;
+        max-width: none;
     }
 
-    .mapa-pin__visual {
-        flex: 0 0 auto;
+    .mapa-pin__visual,
+    .mapa-pin.is-right .mapa-pin__visual {
+        order: 1;
+        flex: none;
+        position: sticky;
+        top: 0;
+        height: 100svh;
         width: 100%;
-        max-width: 190px;
+        padding: 90px 28px 32px;
+        z-index: 0;
     }
 
-    .mapa-pin__info {
-        flex: 0 0 auto;
+    .mapa-pin__info,
+    .mapa-pin.is-right .mapa-pin__info {
+        order: 2;
+        flex: none;
+        position: relative;
+        margin-top: -100svh;
         max-height: none;
         overflow: visible;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .mapa-stack-spacer {
+        height: 100svh;
     }
 
     .mapa-card {
-        max-width: 320px;
-        margin-left: auto;
-        margin-right: auto;
+        position: relative;
+        max-width: none;
+        max-height: none;
+        overflow: visible;
+        margin: 56px 0 0;
+        border-radius: 24px 24px 0 0;
+        opacity: 1;
+        transform: none;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.12);
+        pointer-events: auto;
     }
 }
 
@@ -1508,9 +1568,9 @@ img, video {
     }
 
     .audio-toggle {
-        top: 16px;
-        right: 16px;
-        padding: 8px 14px;
+        top: 0;
+        right: 5px;
+        padding: 6px;
     }
 
     .audio-toggle__label {
@@ -1536,5 +1596,27 @@ img, video {
     .sticky-bar__link {
         padding: 0 12px;
         font-size: 12px;
+    }
+    .top-bar__left{
+        justify-content: center;
+    }
+    .btn-1-top-bar{
+        border-left: 0;
+    }
+    .timeline-day__name{
+            font-size: 28px;
+    }
+    .timeline-day__content .timeline-day__place{
+            font-size: 16px;
+    }
+    .main-recorrido h3, 
+    .main-timeline-recorrido h3, 
+    .main-economia h3, 
+    .main-simbolos h3, 
+    .main-timeline-horizontal h3{
+        padding: 0 20px;
+    }
+    .main-economia img{
+        max-width: 90%;
     }
 }
