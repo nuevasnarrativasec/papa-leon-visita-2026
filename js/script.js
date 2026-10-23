@@ -768,12 +768,14 @@
         },
         {
             year: '1993',
+            cover: './img/timeline-horizontal/portada-1993.jpg',
             headline: 'Continuó como formador y profesor en Trujillo.',
             peru: 'Se aprobó la Constitución Política de 1993.',
             mundo: 'Israel y la Organización para la Liberación de Palestina firmaron los Acuerdos de Oslo.'
         },
         {
             year: '1995',
+            cover: './img/timeline-horizontal/portada-1995.jpg',
             headline: 'Cumplió siete años de trabajo en Trujillo, dedicándose a la formación religiosa y la atención parroquial.',
             peru: 'Alberto Fujimori fue reelegido presidente.',
             mundo: 'Los Acuerdos de Dayton sentaron las bases para poner fin a la guerra de Bosnia.'
@@ -799,6 +801,7 @@
         {
             year: '2000',
             markerBefore: 'Siglo XXI',
+            cover: './img/timeline-horizontal/portada-2000.jpg',
             headline: 'Inició una nueva etapa de liderazgo internacional en la Orden de San Agustín.',
             peru: 'Cayó el régimen de Alberto Fujimori tras una crisis política marcada por la Marcha de los Cuatro Suyos.',
             mundo: 'Científicos del Proyecto Genoma Humano anunciaron el primer borrador de la secuencia del genoma humano.'
@@ -823,12 +826,14 @@
         },
         {
             year: '2016',
+            cover: './img/timeline-horizontal/portada-2016.jpg',
             headline: 'Desarrolló su labor episcopal en Chiclayo, atendiendo parroquias, comunidades rurales y poblaciones vulnerables.',
             peru: 'Pedro Pablo Kuczynski ganó las elecciones presidenciales frente a Keiko Fujimori.',
             mundo: 'El Reino Unido votó a favor del Brexit y Donald Trump ganó las elecciones presidenciales de Estados Unidos.'
         },
         {
             year: '2018',
+            cover: './img/timeline-horizontal/portada-2018.jpg',
             headline: 'Fue elegido segundo vicepresidente de la Conferencia Episcopal Peruana y asumió responsabilidades en sus comisiones.',
             peru: 'Pedro Pablo Kuczynski renunció a la presidencia y Martín Vizcarra asumió el poder.',
             mundo: 'Estados Unidos y China iniciaron una guerra comercial con la imposición de aranceles a sus productos.'
