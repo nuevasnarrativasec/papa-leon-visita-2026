@@ -148,65 +148,65 @@
             stops: [
                 {
                     date: '11–12 de noviembre · Lima y Callao',
-                    tagline: 'El encuentro con el país',
+                    tagline: 'Un vínculo que también pasa por el Callao',
                     photo: './img/mapa/foto-info-1-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
-                        'El avión papal llegará el miércoles 11 de noviembre a las 5:30 p. m. a la Base Aérea del Callao. Desde allí comenzará la agenda oficial de León XIV en el Perú: Palacio de Gobierno, un encuentro con autoridades, representantes de la sociedad civil y el cuerpo diplomático y, al día siguiente, reuniones con la Iglesia peruana. El jueves terminará con uno de los actos multitudinarios de la visita: una vigilia con jóvenes y universitarios en el Estadio Monumental.'
+                        'El Callao forma parte de la trayectoria de Prevost: en 2020 asumió su administración apostólica, sin dejar de ser obispo de Chiclayo. Lima, en cambio, adquiere especial protagonismo en esta nueva etapa por su condición de capital y sede de los principales encuentros institucionales de la visita.'
                     ],
                     badges: [
-                        { type: 'regreso', label: 'Su regreso', text: 'Prevost fue administrador apostólico del Callao en 2020.' }
+                        { type: 'antes', label: 'Relación con su pasado', text: 'Callao, responsabilidad pastoral en 2020.' }
                     ]
                 },
                 {
                     date: '13–14 de noviembre · Chiclayo',
-                    tagline: 'El reencuentro',
+                    tagline: 'El regreso a su casa episcopal',
                     photo: './img/mapa/foto-info-1-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
-                        'Aquí las dos rutas se superponen. El antiguo obispo vuelve a la diócesis que dirigió. Durante dos días participará en celebraciones religiosas, encuentros con sacerdotes, estudiantes y comunidades católicas y viajará hasta Santa Cruz de Succhabamba y Zaña.'
+                        'De todas las paradas, Chiclayo es la que más directamente se conecta con la vida de Robert Prevost. Allí asumió la conducción de la diócesis en 2014, fue nombrado obispo en 2015 y permaneció hasta 2023. También obtuvo la nacionalidad peruana durante esos años. Más que un destino de viaje, es una ciudad central en su biografía.'
                     ],
                     badges: [
-                        { type: 'huella', label: 'Su huella', text: 'Fue administrador apostólico y luego obispo de Chiclayo entre 2014 y 2023.' },
+                        { type: 'antes', label: 'Relación con su pasado', text: 'Obispo de Chiclayo entre 2015 y 2023.' },
                         { type: 'regreso', label: 'Su regreso', text: 'Es la escala donde su biografía personal y la agenda papal se encuentran con mayor claridad.' }
                     ]
                 },
                 {
                     date: '15 de noviembre · Cusco',
-                    tagline: 'Una nueva huella',
+                    tagline: 'Una ciudad fuera de sus principales etapas pastorales',
                     photo: './img/mapa/foto-info-1-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
-                        'Cusco no ocupa el mismo lugar que Chulucanas, Trujillo o Chiclayo en la trayectoria pastoral conocida de Robert Prevost. Por eso esta parada cuenta otra historia. León XIV llegará a la ciudad a las 10:00 a. m. y media hora después participará en un encuentro con fieles y representantes de la piedad popular en el Parque Arqueológico Nacional de Saqsaywaman. A las 11:45 rezará el Ángelus frente a la Catedral del Cusco.'
+                        'A diferencia de Chulucanas, Trujillo o Chiclayo, Cusco no figura entre los centros principales de la trayectoria pastoral de Prevost en el Perú. Su incorporación al recorrido de León XIV permite mostrar que el vínculo del pontífice con el país también se extiende a lugares que no marcaron directamente sus años como misionero y obispo.'
                     ],
                     badges: [
-                        { type: 'antes', label: 'Antes', text: 'No es una de las principales ciudades de su trayectoria pastoral en el Perú.' },
+                        { type: 'antes', label: 'Relación con su pasado', text: 'No es una de sus principales sedes pastorales conocidas.'},
                         { type: 'ahora', label: 'Ahora', text: 'Cusco se incorpora al recorrido de León XIV como un encuentro con la fe y la religiosidad popular.' }
                     ]
                 },
                 {
                     date: '15 de noviembre · Pucallpa',
-                    tagline: 'La Amazonía entra en el recorrido',
+                    tagline: 'El encuentro con otro territorio del Perú',
                     photo: './img/mapa/foto-info-1-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
-                        'Ese mismo domingo el Papa cruzará el país. Después de Cusco viajará a Pucallpa, donde llegará a las 2:30 p. m. Su primera actividad será un encuentro con misioneros y representantes de los pueblos amazónicos en el Malecón Puerto Callao. A las 4:45 p. m. celebrará una misa en la Villa Deportiva Regional Ucayali.'
+                        'El recorrido peruano de Prevost estuvo concentrado principalmente en ciudades de la costa norte, además de su responsabilidad en el Callao. Pucallpa introduce en su regreso una dimensión territorial diferente: la Amazonía. No es una de las sedes principales de su trayectoria anterior, pero amplía el alcance geográfico de esta nueva visita.'
                     ],
                     badges: [
-                        { type: 'antes', label: 'Antes', text: 'Pucallpa tampoco forma parte central de las etapas peruanas de Prevost.' }
+                        { type: 'antes', label: 'Relación con su pasado', text: 'No es una de sus principales sedes pastorales conocidas.' }
                     ]
                 },
                 {
                     date: '16 de noviembre · Lima',
-                    tagline: 'La última parada',
+                    tagline: 'El final de una visita, la continuidad de un vínculo',
                     photo: './img/mapa/foto-info-1-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
-                        'León XIV cerrará su visita en la capital. Por la mañana visitará una casa de acogida de las Hermanitas de los Ancianos Desamparados.',
-                        'A las 10:30 a. m. celebrará una misa en la Base Aérea Las Palmas, uno de los encuentros centrales de su último día en el Perú.',
-                        'A la 1:15 p. m. comenzará la ceremonia de despedida en la Base Aérea del Callao. Media hora después partirá hacia Roma.'
+                        'León XIV concluirá su primera visita al Perú como pontífice en la capital. Su paso por el país habrá unido ciudades fundamentales en su trayectoria pastoral con nuevos destinos, reflejando una relación con el Perú que trasciende su elección como Papa.'
                     ],
-                    badges: []
+                    badges: [
+                        {type: 'ahora', label: 'Lo que representa', text: 'Lima simboliza la continuidad de un vínculo con el país que marcó buena parte de su vida religiosa.'}
+                    ]
                 }
             ]
         }
