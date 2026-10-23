@@ -990,7 +990,7 @@ img, video {
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
+    touch-action: pan-x pan-y;
     cursor: grab;
     scrollbar-color: #ffffff #ffffff;
     scrollbar-width: thin;
@@ -1618,5 +1618,8 @@ img, video {
     }
     .main-economia img{
         max-width: 90%;
+    }
+    .version-card__title{
+        max-width: 133px;
     }
 }
