@@ -106,7 +106,7 @@
                 {
                     date: '1988 · Trujillo',
                     tagline: 'Donde formó y se formó',
-                    photo: './img/mapa/sin-foto.jpg',
+                    photo: './img/mapa/foto-info-2-mapa-izq.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'Tres años después volvió al Perú. Esta vez a Trujillo. Allí dirigió la casa de formación de los agustinos y durante más de una década fue formador, maestro de profesores, docente, vicario judicial y párroco. Enseñó derecho canónico, teología moral y patrística en el Seminario Mayor San Carlos y San Marcelo. Trujillo fue una de sus etapas más largas en el país: permaneció vinculado a la misión agustiniana entre 1988 y 1999.'
@@ -118,7 +118,7 @@
                 {
                     date: '2014 · Chiclayo',
                     tagline: 'La diócesis que se convirtió en su casa',
-                    photo: './img/mapa/sin-foto.jpg',
+                    photo: './img/mapa/foto-info-3-mapa-izq.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'Después de varios años fuera del Perú, Prevost regresó en 2014. El papa Francisco lo nombró administrador apostólico de Chiclayo y obispo titular de Sufar. Un mes después fue ordenado obispo en la Catedral de Santa María. En 2015 fue nombrado oficialmente obispo de Chiclayo y ese mismo año obtuvo la nacionalidad peruana por naturalización. Permaneció al frente de la diócesis hasta que Francisco lo llamó a Roma en 2023.'
@@ -130,7 +130,7 @@
                 {
                     date: '2020 · Callao',
                     tagline: 'Una responsabilidad en medio de la pandemia',
-                    photo: './img/mapa/sin-foto.jpg',
+                    photo: './img/mapa/foto-info-4-mapa-izq.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'En abril de 2020, mientras seguía siendo obispo de Chiclayo, Prevost fue nombrado también administrador apostólico de la diócesis del Callao. Fue una responsabilidad adicional en uno de los periodos más difíciles de la pandemia.'
@@ -767,6 +767,7 @@
             year: '1985',
             image: './img/timeline-horizontal/bg-item-1.jpg',
             imageAlt: 'Robert Prevost como joven misionero agustino',
+            imageCredit: 'Foto: Archivo EC ',
             cover: './img/timeline-horizontal/bg-portada-item-1.jpg',
             coverAlt: 'Portada de El Comercio sobre la visita de Juan Pablo II al Perú',
             headline: 'Llegó al Perú como misionero agustino y se instaló en Chulucanas, Piura, donde fue vicepárroco y canciller de la prelatura.',
@@ -775,6 +776,8 @@
         },
         {
             year: '1987',
+            image: './img/timeline-horizontal/bg-item-2.jpg',
+            imageCredit: 'Foto: EFE ',
             headline: 'Defendió su tesis doctoral y asumió la dirección de Vocaciones y Misiones de su provincia agustiniana en Estados Unidos.',
             peru: 'Alan García anunció la estatización de la banca en medio de una profunda crisis económica y política.',
             mundo: 'El Lunes Negro provocó un desplome de las bolsas internacionales.'
@@ -800,6 +803,8 @@
         },
         {
             year: '1995',
+            image: './img/timeline-horizontal/bg-item-6.jpg',
+            imageCredit: 'Foto: Archivo Diócesis de Chiclayo ',
             cover: './img/timeline-horizontal/portada-1995.jpg',
             headline: 'Cumplió siete años de trabajo en Trujillo, dedicándose a la formación religiosa y la atención parroquial.',
             peru: 'Alberto Fujimori fue reelegido presidente.',
@@ -818,12 +823,6 @@
             mundo: 'Entró en vigor el euro como moneda común de once países europeos, inicialmente para operaciones financieras.'
         },
         {
-            year: '1999',
-            headline: 'Dejó Trujillo después de 11 años al ser elegido prior provincial de los agustinos en Chicago.',
-            peru: 'Fujimori buscó una nueva reelección entre crecientes denuncias de autoritarismo.',
-            mundo: 'Entró en vigor el euro como moneda común de once países europeos, inicialmente para operaciones financieras.'
-        },
-        {
             year: '2000',
             markerBefore: 'Siglo XXI',
             cover: './img/timeline-horizontal/portada-2000.jpg',
@@ -833,6 +832,8 @@
         },
         {
             year: '2002 - 2006',
+            image: './img/timeline-horizontal/bg-item-10.jpg',
+            imageCredit: 'Foto: Noviciado Agustiniano Internacional Nuestra señora de la Gracia',
             headline: 'Dirigió la Orden de San Agustín a escala internacional.',
             peru: 'Alejandro Toledo gobernó el Perú.',
             mundo: 'En 2005 murió Juan Pablo II y Benedicto XVI fue elegido papa.'
@@ -851,6 +852,8 @@
         },
         {
             year: '2016',
+            image: './img/timeline-horizontal/bg-item-12.jpg',
+            imageCredit: 'Foto: Archivo Diócesis de Chiclayo ',
             cover: './img/timeline-horizontal/portada-2016.jpg',
             headline: 'Desarrolló su labor episcopal en Chiclayo, atendiendo parroquias, comunidades rurales y poblaciones vulnerables.',
             peru: 'Pedro Pablo Kuczynski ganó las elecciones presidenciales frente a Keiko Fujimori.',
@@ -865,12 +868,16 @@
         },
         {
             year: '2020',
+            image: './img/timeline-horizontal/bg-item-14.jpg',
+            imageCredit: 'Foto: Hermanos de la Cruz de Motupe',
             headline: 'Fue nombrado administrador apostólico del Callao y participó en acciones de asistencia durante la pandemia.',
             peru: 'Comenzó la cuarentena por COVID-19 y el país enfrentó una grave emergencia sanitaria.',
             mundo: 'La OMS caracterizó la propagación del COVID-19 como una pandemia mundial.'
         },
         {
             year: '2022',
+            image: './img/timeline-horizontal/bg-item-15.jpg',
+            imageCredit: 'Foto: Archivo Diócesis de Chiclayo ',
             headline: 'Continuó su labor pastoral en Chiclayo, visitando parroquias y comunidades como Tumán.',
             peru: 'Pedro Castillo intentó disolver el Congreso, fue detenido y Dina Boluarte asumió la presidencia.',
             mundo: 'Rusia inició una invasión a gran escala de Ucrania, desencadenando una guerra de repercusión mundial.'
@@ -883,6 +890,8 @@
         },
         {
             year: '2026',
+            image: './img/timeline-horizontal/bg-item-17.jpg',
+            imageCredit: 'Foto: AP',
             headline: 'La Santa Sede anunció una visita apostólica de León XIV al Perú del 11 al 17 de noviembre, con paradas previstas en Lima, Chiclayo, Cusco y Pucallpa.',
             peru: 'Keiko Fujimori ganó las elecciones presidenciales y juró como presidenta de la República el 28 de julio.',
             mundo: 'Trump intensificó las redadas del ICE y las deportaciones de inmigrantes en Estados Unidos, desatando protestas.'
@@ -918,14 +927,18 @@
                 ? '<img src="' + item.image + '" alt="' + escapeHTML(item.imageAlt || '') + '">'
                 : TIMELINE_H_PHOTO_PLACEHOLDER;
 
-            var cover = item.cover
-                ? '<button type="button" class="timeline-h__cover" data-cover="' + item.cover + '" data-cover-alt="' + escapeHTML(item.coverAlt || '') + '">' +
-                    '<img src="' + item.cover + '" alt="' + escapeHTML(item.coverAlt || '') + '">' +
-                    '<span class="timeline-h__cover-icon">' + TIMELINE_H_ZOOM_ICON + '</span>' +
+            var photoCredit = (item.image && item.imageCredit)
+                ? '<p class="timeline-h__photo-credit">' + escapeHTML(item.imageCredit) + '</p>'
+                : '';
+
+            var coverSection = item.cover
+                ? '<hr class="timeline-h__divider">' +
+                    '<p class="timeline-h__source-label">Cómo informó El Comercio</p>' +
+                    '<button type="button" class="timeline-h__cover" data-cover="' + item.cover + '" data-cover-alt="' + escapeHTML(item.coverAlt || '') + '">' +
+                        '<img src="' + item.cover + '" alt="' + escapeHTML(item.coverAlt || '') + '">' +
+                        '<span class="timeline-h__cover-icon">' + TIMELINE_H_ZOOM_ICON + '</span>' +
                     '</button>'
-                : '<button type="button" class="timeline-h__cover" disabled aria-label="Portada no disponible aún">' +
-                    '<span class="timeline-h__cover-icon">' + TIMELINE_H_ZOOM_ICON + '</span>' +
-                    '</button>';
+                : '';
 
             timelineHHTML += '<div class="timeline-h__item">' +
                 '<div class="timeline-h__badge">' +
@@ -935,6 +948,7 @@
                 '</div>' +
                 '<div class="timeline-h__card">' +
                     '<div class="timeline-h__photo">' + photo + '</div>' +
+                    photoCredit +
                     '<p class="timeline-h__headline">' + escapeHTML(item.headline) + '</p>' +
                     '<span class="timeline-h__select-label">Selecciona un ítem</span>' +
                     '<div class="timeline-h__tabs">' +
@@ -953,9 +967,7 @@
                         '<strong>Mundo:</strong>' +
                         '<p>' + escapeHTML(item.mundo) + '</p>' +
                     '</div>' +
-                    '<hr class="timeline-h__divider">' +
-                    '<p class="timeline-h__source-label">Cómo informó El Comercio</p>' +
-                    cover +
+                    coverSection +
                 '</div>' +
             '</div>';
         });

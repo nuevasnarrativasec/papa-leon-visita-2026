@@ -208,6 +208,8 @@ img, video {
     cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease;
     background: transparent;
+
+    display: none;
 }
 
 .audio-toggle:hover,
@@ -1091,7 +1093,7 @@ img, video {
 
 .timeline-h__photo {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 5 / 3;
     background: #d4d4d4;
     display: flex;
     align-items: center;
@@ -1112,8 +1114,17 @@ img, video {
     color: #a8a8a8;
 }
 
+.timeline-h__photo-credit {
+    margin: 6px 0 0;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    line-height: 1.4;
+    color: #8a8a8a;
+    text-align: left;
+}
+
 .timeline-h__headline {
-    margin: 20px 0 0;
+    margin: 10px 0 0;
     color: var(--color-gold);
     font: 1.15rem/1.4 var(--font-serif);
 }
