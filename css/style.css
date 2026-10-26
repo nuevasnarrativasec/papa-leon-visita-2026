@@ -1416,15 +1416,16 @@ img, video {
         align-items: center;
     }
 
-    .timeline-day__stamp {
-        width: var(--timeline-stamp);
-        max-width: 100%;
-        aspect-ratio: auto;
-        align-self: start;
+    /* El wrapper desaparece de la caja (sin perder a sus hijos) para que la
+       insignia del lugar y los horarios puedan reordenarse de forma
+       independiente junto al resto de bloques del día. */
+    .timeline-day__content {
+        display: contents;
     }
 
-    .timeline-day__stamp img {
-        margin-top: 0;
+    .timeline-day__place {
+        order: 1;
+        align-self: flex-start;
     }
 
     .timeline-day__daycol {
@@ -1432,8 +1433,10 @@ img, video {
         align-items: baseline;
         justify-content: flex-start;
         align-self: flex-start;
+        order: 2;
         gap: 10px;
-        margin-top: 12px;
+        margin-top: 0;
+        margin-bottom: 14px;
         text-align: left;
     }
 
@@ -1446,11 +1449,22 @@ img, video {
         display: none;
     }
 
-    .timeline-day__content {
-        width: 100%;
-        margin-top: 16px;
-        padding: 0;
-        border-left: none;
+    .timeline-day__stamp {
+        width: var(--timeline-stamp);
+        max-width: 100%;
+        aspect-ratio: auto;
+        align-self: start;
+        order: 3;
+        margin-bottom: 20px;
+    }
+
+    .timeline-day__stamp img {
+        margin-top: 0;
+    }
+
+    .timeline-day__item {
+        order: 4;
+        align-self: stretch;
     }
 
     .timeline-connector {
@@ -1486,13 +1500,47 @@ img, video {
 }
 
 @media (max-width: 720px) {
+    .version-selector-wrap {
+        position: relative;
+    }
+
     .version-selector {
         gap: 24px;
         margin-top: 32px;
     }
 
+    .version-selector.is-pinned {
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 5;
+        margin: 0;
+        max-width: none;
+        justify-content: center;
+        gap: 30px;
+        padding: 14px 20px;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(6px);
+    }
+
     .version-card {
-        width: 44%;
+        width: 31%;
+    }
+
+    .version-selector.is-pinned .version-card {
+        width: 31%;
+    }
+
+    #versionSelector:has(.is-selected) .version-card:not(.is-selected) {
+        opacity: 0.45;
+    }
+
+    .mapa-pin__mapstack img{
+        width: 70%;
+        height: 70%;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, 0);
     }
 
     /* El mapa queda pegado (sticky) de fondo; las tarjetas fluyen con el

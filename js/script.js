@@ -106,7 +106,7 @@
                 {
                     date: '1988 · Trujillo',
                     tagline: 'Donde formó y se formó',
-                    photo: './img/mapa/foto-info-1-mapa-izq.jpg',
+                    photo: './img/mapa/sin-foto.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'Tres años después volvió al Perú. Esta vez a Trujillo. Allí dirigió la casa de formación de los agustinos y durante más de una década fue formador, maestro de profesores, docente, vicario judicial y párroco. Enseñó derecho canónico, teología moral y patrística en el Seminario Mayor San Carlos y San Marcelo. Trujillo fue una de sus etapas más largas en el país: permaneció vinculado a la misión agustiniana entre 1988 y 1999.'
@@ -118,7 +118,7 @@
                 {
                     date: '2014 · Chiclayo',
                     tagline: 'La diócesis que se convirtió en su casa',
-                    photo: './img/mapa/foto-info-1-mapa-izq.jpg',
+                    photo: './img/mapa/sin-foto.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'Después de varios años fuera del Perú, Prevost regresó en 2014. El papa Francisco lo nombró administrador apostólico de Chiclayo y obispo titular de Sufar. Un mes después fue ordenado obispo en la Catedral de Santa María. En 2015 fue nombrado oficialmente obispo de Chiclayo y ese mismo año obtuvo la nacionalidad peruana por naturalización. Permaneció al frente de la diócesis hasta que Francisco lo llamó a Roma en 2023.'
@@ -130,7 +130,7 @@
                 {
                     date: '2020 · Callao',
                     tagline: 'Una responsabilidad en medio de la pandemia',
-                    photo: './img/mapa/foto-info-1-mapa-izq.jpg',
+                    photo: './img/mapa/sin-foto.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'En abril de 2020, mientras seguía siendo obispo de Chiclayo, Prevost fue nombrado también administrador apostólico de la diócesis del Callao. Fue una responsabilidad adicional en uno de los periodos más difíciles de la pandemia.'
@@ -161,7 +161,7 @@
                 {
                     date: '13–14 de noviembre · Chiclayo',
                     tagline: 'El regreso a su casa episcopal',
-                    photo: './img/mapa/foto-info-1-mapa-der.jpg',
+                    photo: './img/mapa/sin-foto.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'De todas las paradas, Chiclayo es la que más directamente se conecta con la vida de Robert Prevost. Allí asumió la conducción de la diócesis en 2014, fue nombrado obispo en 2015 y permaneció hasta 2023. También obtuvo la nacionalidad peruana durante esos años. Más que un destino de viaje, es una ciudad central en su biografía.'
@@ -174,7 +174,7 @@
                 {
                     date: '15 de noviembre · Cusco',
                     tagline: 'Una ciudad fuera de sus principales etapas pastorales',
-                    photo: './img/mapa/foto-info-1-mapa-der.jpg',
+                    photo: './img/mapa/sin-foto.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'A diferencia de Chulucanas, Trujillo o Chiclayo, Cusco no figura entre los centros principales de la trayectoria pastoral de Prevost en el Perú. Su incorporación al recorrido de León XIV permite mostrar que el vínculo del pontífice con el país también se extiende a lugares que no marcaron directamente sus años como misionero y obispo.'
@@ -187,7 +187,7 @@
                 {
                     date: '15 de noviembre · Pucallpa',
                     tagline: 'El encuentro con otro territorio del Perú',
-                    photo: './img/mapa/foto-info-1-mapa-der.jpg',
+                    photo: './img/mapa/sin-foto.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'El recorrido peruano de Prevost estuvo concentrado principalmente en ciudades de la costa norte, además de su responsabilidad en el Callao. Pucallpa introduce en su regreso una dimensión territorial diferente: la Amazonía. No es una de las sedes principales de su trayectoria anterior, pero amplía el alcance geográfico de esta nueva visita.'
@@ -199,7 +199,7 @@
                 {
                     date: '16 de noviembre · Lima',
                     tagline: 'El final de una visita, la continuidad de un vínculo',
-                    photo: './img/mapa/foto-info-1-mapa-der.jpg',
+                    photo: './img/mapa/sin-foto.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'León XIV concluirá su primera visita al Perú como pontífice en la capital. Su paso por el país habrá unido ciudades fundamentales en su trayectoria pastoral con nuevos destinos, reflejando una relación con el Perú que trasciende su elección como Papa.'
@@ -268,8 +268,40 @@
     var mapaPin = document.getElementById('mapaPin');
     var mapaStack = document.getElementById('mapaStack');
     var mapaInfo = document.getElementById('mapaInfo');
+    var versionSelector = document.getElementById('versionSelector');
+    var versionSelectorWrap = document.getElementById('versionSelectorWrap');
 
     var mobileLayoutQuery = window.matchMedia('(max-width: 720px)');
+
+    /* ----- Móvil: versionSelector fijo mientras el mapa está en pantalla ----- */
+
+    function setSelectorPinned(pin) {
+        if (!versionSelector || !versionSelectorWrap) { return; }
+        if (pin === versionSelector.classList.contains('is-pinned')) { return; }
+
+        if (pin) {
+            versionSelectorWrap.style.minHeight = versionSelectorWrap.offsetHeight + 'px';
+            versionSelector.style.top = (stickyBar ? stickyBar.offsetHeight : 0) + 'px';
+            versionSelector.classList.add('is-pinned');
+        } else {
+            versionSelector.classList.remove('is-pinned');
+            versionSelector.style.top = '';
+            versionSelectorWrap.style.minHeight = '';
+        }
+    }
+
+    if (versionSelector && versionSelectorWrap && mapaTrack && 'IntersectionObserver' in window) {
+        var mapTrackObserver = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    setSelectorPinned(entry.isIntersecting && mobileLayoutQuery.matches);
+                });
+            },
+            { threshold: 0 }
+        );
+
+        mapTrackObserver.observe(mapaTrack);
+    }
 
     var activeVersion = null;
     var currentStopIndex = -1;
@@ -445,6 +477,10 @@
     }
 
     function onResize() {
+        if (!mobileLayoutQuery.matches) {
+            setSelectorPinned(false);
+        }
+
         if (activeVersion && mobileLayoutQuery.matches !== isMobileLayout) {
             selectVersion(activeVersion);
             return;
