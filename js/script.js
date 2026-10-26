@@ -639,53 +639,47 @@
         }
     }
 
-    /* ===== Símbolos: secuencia pineada por scroll ===== */
+    /* ===== Símbolos: secuencia de paneles pineados por scroll ===== */
     var SIMBOLOS_DATA = [
         {
-            title: '',
-            image: './img/simbolos/papa.jpg',
-            imageAlt: 'León XIV',
-            text: ''
-        },
-        {
             title: 'La Cruz',
-            image: './img/simbolos/simbolo-1.jpg',
+            image: './img/simbolos/simbolo-1.png',
             imageAlt: 'Cruz pectoral de León XIV',
             text: 'La cruz pectoral que León XIV llevó el día de su elección guarda reliquias ligadas a su identidad agustiniana: San Agustín, Santa Mónica, Santo Tomás de Villanueva, el beato Anselmo Polanco y el venerable Giuseppe Bartolomeo Menochio. Fue un regalo de la Curia General Agustiniana cuando Robert Prevost fue creado cardenal en 2023.'
         },
         {
             title: 'El Anillo del Pescador',
-            image: './img/simbolos/simbolo-2.jpg',
+            image: './img/simbolos/simbolo-2.png',
             imageAlt: 'Anillo del Pescador de León XIV',
             text: 'León XIV recibió el Anillo del Pescador el 18 de mayo de 2025, al iniciar formalmente su ministerio petrino. En el exterior aparece San Pedro con las llaves y la red; en el interior está grabado el nombre León XIV. El anillo simboliza la misión del Papa como sucesor de Pedro y custodio de la fe.'
         },
         {
             title: 'El Escudo',
-            image: './img/simbolos/simbolo-3.jpg',
+            image: './img/simbolos/simbolo-3.png',
             imageAlt: 'Escudo pontificio de León XIV',
             text: 'Su escudo une dos elementos centrales de su identidad. Sobre fondo azul aparece un lirio, símbolo mariano. En el otro campo, un corazón ardiente atravesado por una flecha descansa sobre un libro: es el emblema agustiniano. Su lema, "In Illo uno unum", significa: "En el único Cristo somos uno".'
         },
         {
             title: 'La Mitra',
-            image: './img/simbolos/simbolo-4.jpg',
+            image: './img/simbolos/simbolo-4.png',
             imageAlt: 'Mitra episcopal de León XIV',
             text: 'La mitra es una de las insignias propias del obispo y León XIV la utiliza en las celebraciones litúrgicas como obispo de Roma. También aparece sobre su escudo pontificio: una mitra de plata con tres bandas doradas, acompañada por las llaves cruzadas de San Pedro, símbolos tradicionales del papado.'
         },
         {
             title: 'El pasaporte peruano',
-            image: './img/simbolos/simbolo-5.jpg',
+            image: './img/simbolos/simbolo-5.png',
             imageAlt: 'Pasaporte peruano de Robert Prevost',
             text: 'Robert Prevost no solo posee nacionalidad peruana: también ha tramitado tres pasaportes peruanos. Migraciones confirmó que obtuvo el título de nacionalidad peruana el 24 de agosto de 2015 y que su último pasaporte peruano se encuentra vigente.'
         },
         {
             title: 'El DNI peruano',
-            image: './img/simbolos/simbolo-6.jpg',
+            image: './img/simbolos/simbolo-6.png',
             imageAlt: 'DNI peruano de Robert Prevost',
             text: 'Prevost obtuvo su primer DNI después de nacionalizarse peruano en 2015 y gestionó un DNI electrónico en 2016. En mayo de 2025, ya como Papa, recibió en el Vaticano a una delegación del Reniec para actualizarlo al DNI electrónico 3.0, con condición de no caduca.'
         },
         {
             title: 'El libro',
-            image: './img/simbolos/simbolo-7.jpg',
+            image: './img/simbolos/simbolo-7.png',
             imageAlt: 'Detalle del libro en el escudo de León XIV',
             text: 'En su escudo, un libro sostiene el corazón atravesado por una flecha. Representa la Palabra de Dios y recuerda también los escritos de San Agustín, el pensador y santo que marcó la espiritualidad de la orden a la que pertenece León XIV.'
         }
@@ -693,51 +687,32 @@
 
     var simbolosTrack = document.getElementById('simbolosTrack');
     var simbolosPin = document.getElementById('simbolosPin');
-    var simbolosStack = document.getElementById('simbolosStack');
-    var simbolosText = document.getElementById('simbolosText');
+    var simbolosOverlay = document.getElementById('simbolosOverlay');
+    var simbolosPanels = document.getElementById('simbolosPanels');
 
-    if (simbolosTrack && simbolosPin && simbolosStack && simbolosText) {
+    if (simbolosTrack && simbolosPin && simbolosPanels) {
         var simbolosHTML = '';
-        SIMBOLOS_DATA.forEach(function (simbolo, i) {
-            var imgClass = i === 0 ? ' class="is-instant"' : '';
-            simbolosHTML += '<img src="' + simbolo.image + '" alt="' + escapeHTML(simbolo.imageAlt) + '"' + imgClass + '>';
+        SIMBOLOS_DATA.forEach(function (simbolo) {
+            simbolosHTML += '<div class="simbolo-panel">' +
+                '<div class="simbolo-panel__inner">' +
+                    '<div class="simbolo-panel__visual"><img src="' + simbolo.image + '" alt="' + escapeHTML(simbolo.imageAlt) + '"></div>' +
+                    '<div class="simbolo-panel__text">' +
+                        '<h4 class="simbolo-card__title">' + escapeHTML(simbolo.title) + '</h4>' +
+                        '<div class="simbolo-card__box"><p>' + escapeHTML(simbolo.text) + '</p></div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
         });
-        simbolosStack.innerHTML = simbolosHTML;
+        simbolosPanels.innerHTML = simbolosHTML;
 
-        simbolosTrack.style.height = ((SIMBOLOS_DATA.length + 1) * 100) + 'vh';
+        var simbolosPanelEls = simbolosPanels.querySelectorAll('.simbolo-panel');
+        var totalSimbolosSteps = SIMBOLOS_DATA.length + 1;
+        var SIMBOLOS_OVERLAY_MAX = 0.85;
+        var SIMBOLOS_FADE = 0.2; // fracción del paso de cada símbolo dedicada a entrar/salir
 
-        var simbolosStackImgs = simbolosStack.querySelectorAll('img');
-        var currentSimboloIndex = -1;
+        simbolosTrack.style.height = (totalSimbolosSteps * 100) + 'vh';
+
         var simbolosTicking = false;
-
-        function renderSimbolo(index) {
-            var simbolo = SIMBOLOS_DATA[index];
-            if (!simbolo) { return; }
-
-            var previousCard = simbolosText.querySelector('.simbolo-card');
-            if (previousCard) { previousCard.classList.remove('is-visible'); }
-
-            window.setTimeout(function () {
-                if (!simbolo.text) {
-                    simbolosText.innerHTML = '';
-                    return;
-                }
-                simbolosText.innerHTML = '<div class="simbolo-card">' +
-                    '<h4 class="simbolo-card__title">' + escapeHTML(simbolo.title) + '</h4>' +
-                    '<div class="simbolo-card__box"><p>' + escapeHTML(simbolo.text) + '</p></div>' +
-                    '</div>';
-                window.requestAnimationFrame(function () {
-                    var newCard = simbolosText.querySelector('.simbolo-card');
-                    if (newCard) { newCard.classList.add('is-visible'); }
-                });
-            }, previousCard ? 180 : 0);
-
-            simbolosStackImgs.forEach(function (img, i) {
-                img.classList.toggle('is-active', i === index);
-            });
-
-            simbolosPin.classList.toggle('simbolos-pin--intro', index === 0);
-        }
 
         function updateSimbolosProgress() {
             simbolosTicking = false;
@@ -748,17 +723,30 @@
             if (totalScrollable <= 0) { return; }
 
             var progress = (-rect.top) / totalScrollable;
+            progress = Math.min(Math.max(progress, 0), 1);
 
-            if (progress < 0 || progress > 1) { return; }
+            var overallIndex = progress * totalSimbolosSteps;
 
-            var index = Math.floor(progress * SIMBOLOS_DATA.length);
-            index = Math.min(index, SIMBOLOS_DATA.length - 1);
-            index = Math.max(index, 0);
-
-            if (index !== currentSimboloIndex) {
-                currentSimboloIndex = index;
-                renderSimbolo(index);
+            if (simbolosOverlay) {
+                var overlayProgress = Math.min(Math.max((overallIndex - 1) / SIMBOLOS_FADE, 0), 1);
+                simbolosOverlay.style.opacity = overlayProgress * SIMBOLOS_OVERLAY_MAX;
             }
+
+            simbolosPanelEls.forEach(function (panel, i) {
+                var local = Math.min(Math.max(overallIndex - (i + 1), 0), 1);
+                var opacity;
+
+                if (local <= SIMBOLOS_FADE) {
+                    opacity = local / SIMBOLOS_FADE;
+                } else if (local >= 1 - SIMBOLOS_FADE) {
+                    opacity = (1 - local) / SIMBOLOS_FADE;
+                } else {
+                    opacity = 1;
+                }
+
+                panel.style.opacity = opacity;
+                panel.style.transform = 'translateY(' + ((1 - opacity) * 24) + 'px)';
+            });
         }
 
         function onSimbolosScroll() {
@@ -768,6 +756,7 @@
             }
         }
 
+        updateSimbolosProgress();
         window.addEventListener('scroll', onSimbolosScroll, { passive: true });
         window.addEventListener('resize', onSimbolosScroll);
     }

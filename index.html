@@ -33,7 +33,7 @@
         </div>
 
         <nav class="top-bar__right" aria-label="Enlaces externos">
-            <a href="https://elcomercio.pe/noticias/papa-leon-xiv/" class="top-bar__link btn-1-top-bar" target="_blank" rel="noopener noreferrer">Últimas noticias</a>
+            <a href="#ultimas-noticias" class="top-bar__link btn-1-top-bar">Últimas noticias</a>
             <a href="#" class="top-bar__link" target="_blank" rel="noopener noreferrer">Agenda</a>
         </nav>
     </header>
@@ -114,15 +114,18 @@
                     <span class="version-card__dot" aria-hidden="true"></span>
                 </button>
             </div>
-        </div>
+        </div>        
     </div>    
 
     <!-- Mapa pineado controlado por scroll -->
     <section class="mapa-track" id="mapaTrack" hidden>
+       
         <div class="mapa-pin" id="mapaPin">
+            
             <div class="mapa-pin__info" id="mapaInfo"></div>
 
             <div class="mapa-pin__visual">
+                <img src="./img/hint-scroll.png" alt="" width="100%" class="hint-scroll hint-scroll-mapa">
                 <div class="mapa-pin__mapstack" id="mapaStack"></div>
             </div>
         </div>
@@ -176,11 +179,13 @@
     <!-- Símbolos pineados controlados por scroll -->
     <section class="simbolos-track" id="simbolosTrack">
         <div class="simbolos-pin" id="simbolosPin">
-            <div class="simbolos-pin__text" id="simbolosText"></div>
-
-            <div class="simbolos-pin__visual">
-                <div class="simbolos-pin__stack" id="simbolosStack"></div>
+            <div class="simbolos-pin__bg">
+                <img src="./img/simbolos/papa.jpg" alt="León XIV">
             </div>
+
+            <div class="simbolos-pin__overlay" id="simbolosOverlay"></div>
+
+            <div class="simbolos-pin__panels" id="simbolosPanels"></div>
         </div>
     </section>
 
@@ -204,7 +209,7 @@
         </div>
     </div>
 
-    <div class="main-ultimas-noticias">
+    <div class="main-ultimas-noticias" id="ultimas-noticias">
         <h3>Últimas noticias</h3>
 
         <!-- AQUÍ DEBEN COLOCAR LAS NOTAS DEL PAPA -->
