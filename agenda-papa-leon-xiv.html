@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agenda de León XIV en el Perú</title>
+<style>
+    :root {
+        --color-gold: #a3812f;
+        --color-black: #171614;
+        --color-gray: #6b6b68;
+        --color-border: #e3ddd0;
+        --color-white: #ffffff;
+        --font-serif: Georgia, 'Times New Roman', serif;
+        --font-sans: Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        padding: 32px 20px 56px;
+        background: var(--color-white);
+        color: var(--color-black);
+        font-family: var(--font-sans);
+    }
+
+    .agenda {
+        max-width: 520px;
+        margin: 0 auto;
+    }
+
+    .agenda__header {
+        text-align: center;
+        margin-bottom: 36px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .agenda__pretitle {
+        margin: 0 0 6px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+    }
+
+    .agenda__title {
+        margin: 0 0 10px;
+        font-family: var(--font-serif);
+        font-weight: 700;
+        font-size: 26px;
+        color: var(--color-black);
+    }
+
+    .agenda__dates {
+        margin: 0 0 4px;
+        font-size: 14px;
+        color: var(--color-gray);
+    }
+
+    .agenda__note {
+        margin: 0;
+        font-size: 12px;
+        color: var(--color-gray);
+    }
+
+    .timeline-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .timeline-day {
+        padding-bottom: 28px;
+        margin-bottom: 28px;
+        border-bottom: 1px dashed var(--color-border);
+    }
+
+    .timeline-day:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .timeline-day__daycol {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    .timeline-day__name {
+        font-family: var(--font-serif);
+        font-weight: 700;
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--color-gold);
+    }
+
+    .timeline-day__num {
+        font-family: var(--font-serif);
+        font-weight: 700;
+        font-size: 34px;
+        line-height: 1;
+        color: var(--color-gold);
+    }
+
+    .timeline-day__place {
+        display: inline-block;
+        margin: 0 0 14px;
+        padding: 4px 16px;
+        background: var(--color-black);
+        color: var(--color-white);
+        font-family: var(--font-serif);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+
+    .timeline-day__item {
+        margin: 0 0 8px;
+        padding: 0;
+        font-size: 15px;
+        line-height: 1.55;
+        color: var(--color-black);
+    }
+
+    .timeline-day__item:last-child {
+        margin-bottom: 0;
+    }
+
+    .timeline-day__item strong {
+        display: inline-block;
+        min-width: 78px;
+        color: var(--color-gold);
+        font-weight: 700;
+    }
+
+    .agenda__footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 1px solid var(--color-border);
+        text-align: center;
+        font-size: 11px;
+        color: var(--color-gray);
+    }
+
+    .agenda__footer p {
+        margin: 0 0 4px;
+    }
+
+    @media print {
+        body { padding: 0; }
+        .timeline-day { break-inside: avoid; }
+    }
+</style>
+</head>
+<body>
+
+    <div class="agenda">
+        <header class="agenda__header">
+            <p class="agenda__pretitle">Tras las huellas de León XIV</p>
+            <h1 class="agenda__title">Agenda oficial en el Perú</h1>
+            <p class="agenda__dates">Del 11 al 16 de noviembre de 2026</p>
+        </header>
+
+        <div class="timeline-list">
+
+            <section class="timeline-day">
+                <div class="timeline-day__daycol">
+                    <span class="timeline-day__name">Miércoles</span>
+                    <span class="timeline-day__num">11</span>
+                </div>
+                <p class="timeline-day__place">Lima</p>
+                <p class="timeline-day__item"><strong>5:30 p. m.</strong> Llegada a la Base Aérea del Callao</p>
+                <p class="timeline-day__item"><strong>6:15 p. m.</strong> Ceremonia de bienvenida en Palacio de Gobierno</p>
+                <p class="timeline-day__item"><strong>6:45 p. m.</strong> Visita al presidente de la República</p>
+                <p class="timeline-day__item"><strong>7:45 p. m.</strong> Encuentro con autoridades, sociedad civil y cuerpo diplomático en el Gran Teatro Nacional</p>
+            </section>
+
+            <section class="timeline-day">
+                <div class="timeline-day__daycol">
+                    <span class="timeline-day__name">Jueves</span>
+                    <span class="timeline-day__num">12</span>
+                </div>
+                <p class="timeline-day__place">Lima</p>
+                <p class="timeline-day__item"><strong>9:30 a. m.</strong> Encuentro con los obispos del Perú</p>
+                <p class="timeline-day__item"><strong>10:20 a. m.</strong> Celebración en la Catedral de Lima</p>
+                <p class="timeline-day__item"><strong>11:30 a. m.</strong> Encuentro sobre los desafíos y las esperanzas para el futuro del pueblo peruano</p>
+                <p class="timeline-day__item"><strong>6:00 p. m.</strong> Vigilia con jóvenes y universitarios en el Estadio Monumental</p>
+            </section>
+
+            <section class="timeline-day">
+                <div class="timeline-day__daycol">
+                    <span class="timeline-day__name">Viernes</span>
+                    <span class="timeline-day__num">13</span>
+                </div>
+                <p class="timeline-day__place">Chiclayo y Pimentel</p>
+                <p class="timeline-day__item"><strong>9:10 a. m.</strong> Llegada a Chiclayo</p>
+                <p class="timeline-day__item"><strong>10:30 a. m.</strong> Misa en las Pampas de Pimentel</p>
+                <p class="timeline-day__item"><strong>12:40 p. m.</strong> Visita privada a la capilla San Óscar Romero</p>
+                <p class="timeline-day__item"><strong>4:30 p. m.</strong> Encuentro en el Santuario Nuestra Señora de la Paz</p>
+                <p class="timeline-day__item"><strong>5:45 p. m.</strong> Encuentro universitario en la USAT</p>
+            </section>
+
+            <section class="timeline-day">
+                <div class="timeline-day__daycol">
+                    <span class="timeline-day__name">Sábado</span>
+                    <span class="timeline-day__num">14</span>
+                </div>
+                <p class="timeline-day__place">Chiclayo, Santa Cruz y Zaña</p>
+                <p class="timeline-day__item"><strong>8:00 a. m.</strong> Coronación de la Virgen Inmaculada</p>
+                <p class="timeline-day__item"><strong>11:00 a. m.</strong> Misa en Santa Cruz de Succhabamba</p>
+                <p class="timeline-day__item"><strong>5:30 p. m.</strong> Encuentro por la clausura del Año Jubilar de Santo Toribio de Mogrovejo en Zaña</p>
+            </section>
+
+            <section class="timeline-day">
+                <div class="timeline-day__daycol">
+                    <span class="timeline-day__name">Domingo</span>
+                    <span class="timeline-day__num">15</span>
+                </div>
+                <p class="timeline-day__place">Cusco y Pucallpa</p>
+                <p class="timeline-day__item"><strong>10:30 a. m.</strong> Encuentro en Saqsaywaman</p>
+                <p class="timeline-day__item"><strong>11:45 a. m.</strong> Ángelus frente a la Catedral del Cusco</p>
+                <p class="timeline-day__item"><strong>3:00 p. m.</strong> Encuentro con misioneros y representantes de pueblos amazónicos en Pucallpa</p>
+                <p class="timeline-day__item"><strong>4:45 p. m.</strong> Misa en la Villa Deportiva Regional Ucayali</p>
+            </section>
+
+            <section class="timeline-day">
+                <div class="timeline-day__daycol">
+                    <span class="timeline-day__name">Lunes</span>
+                    <span class="timeline-day__num">16</span>
+                </div>
+                <p class="timeline-day__place">Lima</p>
+                <p class="timeline-day__item"><strong>8:30 a. m.</strong> Visita a la casa de acogida de las Hermanitas de los Ancianos Desamparados</p>
+                <p class="timeline-day__item"><strong>10:30 a. m.</strong> Misa en la Base Aérea Las Palmas</p>
+                <p class="timeline-day__item"><strong>1:15 p. m.</strong> Ceremonia de despedida</p>
+                <p class="timeline-day__item"><strong>1:45 p. m.</strong> Partida hacia Roma</p>
+            </section>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
