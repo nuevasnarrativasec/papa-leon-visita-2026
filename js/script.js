@@ -38,26 +38,22 @@
         setInterval(updateCountdown, 1000 * 30);
     }
 
-    /* ===== Activar audio del video del hero ===== */
-    var video = document.getElementById('heroVideo');
+    /* ===== Activar himno del Papa (audio independiente del video del hero) ===== */
+    var himnoAudio = document.getElementById('himnoAudio');
     var audioToggle = document.getElementById('audioToggle');
     var audioLabel = audioToggle ? audioToggle.querySelector('.audio-toggle__label') : null;
 
-    if (video && audioToggle) {
+    if (himnoAudio && audioToggle) {
         audioToggle.addEventListener('click', function () {
-            var willUnmute = video.muted;
-            video.muted = !willUnmute;
-
-            if (!video.muted) {
-                video.play().catch(function () {
-                    video.muted = true;
-                });
-            }
-
-            var isUnmuted = !video.muted;
-            audioToggle.setAttribute('aria-pressed', String(isUnmuted));
-            if (audioLabel) {
-                audioLabel.textContent = isUnmuted ? 'Desactivar audio' : 'Activar audio';
+            if (himnoAudio.paused) {
+                himnoAudio.play().then(function () {
+                    audioToggle.setAttribute('aria-pressed', 'true');
+                    if (audioLabel) { audioLabel.textContent = 'Desactivar audio'; }
+                }).catch(function () {});
+            } else {
+                himnoAudio.pause();
+                audioToggle.setAttribute('aria-pressed', 'false');
+                if (audioLabel) { audioLabel.textContent = 'Activar audio'; }
             }
         });
     }
@@ -767,7 +763,7 @@
             year: '1985',
             image: './img/timeline-horizontal/bg-item-1.jpg',
             imageAlt: 'Robert Prevost como joven misionero agustino',
-            imageCredit: 'Foto: Archivo EC ',
+            imageCredit: 'Foto: Vatican News ',
             cover: './img/timeline-horizontal/bg-portada-item-1.jpg',
             coverAlt: 'Portada de El Comercio sobre la visita de Juan Pablo II al Perú',
             headline: 'Llegó al Perú como misionero agustino y se instaló en Chulucanas, Piura, donde fue vicepárroco y canciller de la prelatura.',
@@ -825,7 +821,7 @@
         {
             year: '1999',
             image: './img/timeline-horizontal/bg-item-8.jpg',
-            imageCredit: 'Foto: Orden de San Agustín ',
+            imageCredit: 'Foto: Facebook Hermanas de San Casimiro',
             headline: 'Dejó Trujillo después de 11 años al ser elegido prior provincial de los agustinos en Chicago.',
             peru: 'Fujimori buscó una nueva reelección entre crecientes denuncias de autoritarismo.',
             mundo: 'Entró en vigor el euro como moneda común de once países europeos, inicialmente para operaciones financieras.'
@@ -851,7 +847,7 @@
         {
             year: '2008 - 2012',
             image: './img/timeline-horizontal/bg-item-11.jpg',
-            imageCredit: 'Foto: Orden de San Agustín ',
+            imageCredit: 'Foto: Fray Génesis Pacaldo Labana',
             headline: 'Continuó liderando la Orden de San Agustín a escala internacional.',
             peru: 'El Perú vivió un período de crecimiento económico durante el segundo gobierno de Alan García y el inicio del de Ollanta Humala.',
             mundo: 'La crisis financiera de 2008 desencadenó una recesión mundial. En 2011 comenzaron las revueltas de la Primavera Árabe.'
@@ -885,10 +881,18 @@
         {
             year: '2020',
             image: './img/timeline-horizontal/bg-item-15.jpg',
-            imageCredit: 'Foto: Hermanos de la Cruz de Motupe',
+            imageCredit: 'Foto: Parroquia Santa María Catedral',
             headline: 'Fue nombrado administrador apostólico del Callao y participó en acciones de asistencia durante la pandemia.',
             peru: 'Comenzó la cuarentena por COVID-19 y el país enfrentó una grave emergencia sanitaria.',
             mundo: 'La OMS caracterizó la propagación del COVID-19 como una pandemia mundial.'
+        },
+        {
+            year: '2021',
+            image: './img/timeline-horizontal/bg-item-2021.jpg',
+            imageCredit: 'Foto: Caritas Chiclayo',
+            headline: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+            peru: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+            mundo: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'
         },
         {
             year: '2022',
@@ -901,7 +905,7 @@
         {
             year: '2024',
             image: './img/timeline-horizontal/bg-item-17.jpg',
-            imageCredit: 'Foto: Vatican News',
+            imageCredit: 'Foto: Paul Sunción',
             headline: 'Desde Roma mantuvo su vínculo con el Perú y visitó Chulucanas, donde había comenzado su misión en 1985.',
             peru: 'Persistió la crisis de confianza en las instituciones del país.',
             mundo: 'París acogió los Juegos Olímpicos, que reunieron a deportistas de todo el mundo.'

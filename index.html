@@ -44,26 +44,40 @@
         <video class="hero__video" id="heroVideo" autoplay muted loop playsinline>
             <source src="./video/video-desktop.mp4" type="video/mp4">
         </video>
+        <audio id="himnoAudio" src="./audio/himno-papa.mp3" loop preload="none"></audio>
         <div class="hero__overlay"></div>
-
-        <button class="audio-toggle" id="audioToggle" type="button" aria-pressed="false">
-            <span class="audio-toggle__label">Activar audio</span>
-            <span class="audio-toggle__icon" aria-hidden="true">
-                <img src="./img/btn-audio.png" alt="" width="100%">
-            </span>
-        </button>
 
         <!-- El título y subtítulo ya están incorporados visualmente en el video; se mantienen aquí solo para accesibilidad/SEO -->
         <h1 class="sr-only">Tras las huellas de León XIV</h1>
         <p class="sr-only">El regreso del Papa al país que también llama hogar.</p>
-        
+
     </section>
 
+    <div class="hero__scroll" aria-hidden="true">
+        <svg viewBox="0 0 24 14" width="24" height="14" fill="currentColor"><path d="M12 14 0 0h24z"></path></svg>
+    </div>
+
+    <div class="box-main-logo">
+        <img src="./img/logo-oficial-papa.jpg" alt="" width="100%" class="logo-papa">
+
+        <button class="audio-toggle" id="audioToggle" type="button" aria-pressed="false">
+            <span class="audio-toggle__label">Activar audio</span>
+            <span class="audio-toggle__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="4,9 8,9 12,5.5 12,18.5 8,15 4,15" fill="currentColor" stroke="none"></polygon>
+                    <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+                    <path d="M18 6a8.5 8.5 0 0 1 0 12"></path>
+                </svg>
+            </span>
+        </button>
+
+        <p>
+            Logotipo e himno oficial de la visita del Papa León XIV al Perú
+        </p>
+    </div>
+
     <!-- Introducción -->
-    <section class="intro">
-        <div class="hero__scroll" aria-hidden="true">
-            <svg viewBox="0 0 24 14" width="24" height="14" fill="currentColor"><path d="M12 14 0 0h24z"></path></svg>
-        </div>
+    <section class="intro">       
 
         <p>No es una visita oficial más. Es el regreso de un hombre que llegó al Perú como misionero, obtuvo la nacionalidad peruana y ahora vuelve como Papa.</p>
 
@@ -224,12 +238,17 @@
             <ul>
                 <li>
                     <p>
-                        <span>Edición y análisis:</span> Lorena Obregón, Gisella Salmón
+                        <span>Textos:</span> Lorena Obregón, Gisella Salmón
                     </p>
                 </li>
                 <li>
                     <p>
                         <span>Investigación Archivo EC:</span> Carlos Batalla
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span>Edición de fotos:</span> Miriam Sánchez
                     </p>
                 </li>
             </ul>
