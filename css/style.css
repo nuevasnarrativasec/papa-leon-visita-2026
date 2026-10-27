@@ -185,6 +185,17 @@ img, video {
     object-fit: cover;
 }
 
+    span.video-ia{
+        font-family: var(--font-sans);
+        font-size: 12px;
+        font-weight: 400;
+        color: #fff;
+        position: absolute;
+        right: 5px;
+        text-transform: uppercase;
+        z-index: 10;
+    }
+
 .hero__overlay {
     position: absolute;
     inset: 0;    
@@ -1747,5 +1758,10 @@ img, video {
     }
     .version-card__title{
         max-width: 133px;
+    }
+    span.video-ia{
+        bottom: 65px;
+        right: -55px;       
+        transform: rotate(-90deg);        
     }
 }
