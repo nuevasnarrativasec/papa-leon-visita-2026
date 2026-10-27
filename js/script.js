@@ -784,18 +784,22 @@
         },
         {
             year: '1989',
+            image: './img/timeline-horizontal/bg-item-3.jpg',
+            imageCredit: 'Foto: ANDINA ',
             headline: 'Se consolidó como formador y profesor de religiosos en Trujillo.',
             peru: 'El país enfrentó un mayor deterioro económico y la expansión de la violencia terrorista.',
             mundo: 'Cayó el Muro de Berlín, símbolo del inicio del fin de la Guerra Fría.'
         },
-        {
+        /*{
             year: '1991',
             headline: 'Continuó enseñando y formando religiosos en Trujillo.',
             peru: 'El gobierno de Fujimori aplicó el Fujishock y continuó la violencia política.',
             mundo: 'Se disolvió la Unión Soviética y terminó la Guerra Fría.'
-        },
+        },*/
         {
             year: '1993',
+            image: './img/timeline-horizontal/bg-item-5.jpg',
+            imageCredit: 'Foto: ANDINA ',
             cover: './img/timeline-horizontal/portada-1993.jpg',
             headline: 'Continuó como formador y profesor en Trujillo.',
             peru: 'Se aprobó la Constitución Política de 1993.',
@@ -812,18 +816,24 @@
         },
         {
             year: '1997',
+            image: './img/timeline-horizontal/bg-item-7.jpg',
+            imageCredit: 'Foto: ANDINA ',
             headline: 'Continuó su labor sacerdotal en Trujillo.',
             peru: 'La operación Chavín de Huántar puso fin a la crisis de los rehenes en la residencia japonesa.',
             mundo: 'Se presentó públicamente a Dolly, la primera oveja clonada a partir de una célula adulta.'
         },
         {
             year: '1999',
+            image: './img/timeline-horizontal/bg-item-8.jpg',
+            imageCredit: 'Foto: Orden de San Agustín ',
             headline: 'Dejó Trujillo después de 11 años al ser elegido prior provincial de los agustinos en Chicago.',
             peru: 'Fujimori buscó una nueva reelección entre crecientes denuncias de autoritarismo.',
             mundo: 'Entró en vigor el euro como moneda común de once países europeos, inicialmente para operaciones financieras.'
         },
         {
             year: '2000',
+            image: './img/timeline-horizontal/bg-item-9.jpg',
+            imageCredit: 'Foto: Noviciado Agustiniano Internacional Nuestra señora de la Gracia',
             markerBefore: 'Siglo XXI',
             cover: './img/timeline-horizontal/portada-2000.jpg',
             headline: 'Inició una nueva etapa de liderazgo internacional en la Orden de San Agustín.',
@@ -833,26 +843,30 @@
         {
             year: '2002 - 2006',
             image: './img/timeline-horizontal/bg-item-10.jpg',
-            imageCredit: 'Foto: Noviciado Agustiniano Internacional Nuestra señora de la Gracia',
+            imageCredit: 'Foto: Orden de San Agustín ',
             headline: 'Dirigió la Orden de San Agustín a escala internacional.',
             peru: 'Alejandro Toledo gobernó el Perú.',
             mundo: 'En 2005 murió Juan Pablo II y Benedicto XVI fue elegido papa.'
         },
         {
             year: '2008 - 2012',
+            image: './img/timeline-horizontal/bg-item-11.jpg',
+            imageCredit: 'Foto: Orden de San Agustín ',
             headline: 'Continuó liderando la Orden de San Agustín a escala internacional.',
             peru: 'El Perú vivió un período de crecimiento económico durante el segundo gobierno de Alan García y el inicio del de Ollanta Humala.',
             mundo: 'La crisis financiera de 2008 desencadenó una recesión mundial. En 2011 comenzaron las revueltas de la Primavera Árabe.'
         },
         {
             year: '2014',
+            image: './img/timeline-horizontal/bg-item-12.jpg',
+            imageCredit: 'Foto: Vatican News',
             headline: 'Francisco lo nombró administrador apostólico de Chiclayo. Fue ordenado obispo el 12 de diciembre.',
             peru: 'El gobierno de Ollanta Humala enfrentó conflictos sociales y cuestionamientos por corrupción y gobernabilidad.',
             mundo: 'La epidemia de ébola en África occidental fue declarada emergencia sanitaria internacional.'
         },
         {
             year: '2016',
-            image: './img/timeline-horizontal/bg-item-12.jpg',
+            image: './img/timeline-horizontal/bg-item-13.jpg',
             imageCredit: 'Foto: Archivo Diócesis de Chiclayo ',
             cover: './img/timeline-horizontal/portada-2016.jpg',
             headline: 'Desarrolló su labor episcopal en Chiclayo, atendiendo parroquias, comunidades rurales y poblaciones vulnerables.',
@@ -861,6 +875,8 @@
         },
         {
             year: '2018',
+            image: './img/timeline-horizontal/bg-item-14.jpg',
+            imageCredit: 'Foto: Conferencia Episcopal Peruana',
             cover: './img/timeline-horizontal/portada-2018.jpg',
             headline: 'Fue elegido segundo vicepresidente de la Conferencia Episcopal Peruana y asumió responsabilidades en sus comisiones.',
             peru: 'Pedro Pablo Kuczynski renunció a la presidencia y Martín Vizcarra asumió el poder.',
@@ -868,7 +884,7 @@
         },
         {
             year: '2020',
-            image: './img/timeline-horizontal/bg-item-14.jpg',
+            image: './img/timeline-horizontal/bg-item-15.jpg',
             imageCredit: 'Foto: Hermanos de la Cruz de Motupe',
             headline: 'Fue nombrado administrador apostólico del Callao y participó en acciones de asistencia durante la pandemia.',
             peru: 'Comenzó la cuarentena por COVID-19 y el país enfrentó una grave emergencia sanitaria.',
@@ -876,7 +892,7 @@
         },
         {
             year: '2022',
-            image: './img/timeline-horizontal/bg-item-15.jpg',
+            image: './img/timeline-horizontal/bg-item-16.jpg',
             imageCredit: 'Foto: Archivo Diócesis de Chiclayo ',
             headline: 'Continuó su labor pastoral en Chiclayo, visitando parroquias y comunidades como Tumán.',
             peru: 'Pedro Castillo intentó disolver el Congreso, fue detenido y Dina Boluarte asumió la presidencia.',
@@ -884,13 +900,15 @@
         },
         {
             year: '2024',
+            image: './img/timeline-horizontal/bg-item-17.jpg',
+            imageCredit: 'Foto: Vatican News',
             headline: 'Desde Roma mantuvo su vínculo con el Perú y visitó Chulucanas, donde había comenzado su misión en 1985.',
             peru: 'Persistió la crisis de confianza en las instituciones del país.',
             mundo: 'París acogió los Juegos Olímpicos, que reunieron a deportistas de todo el mundo.'
         },
         {
             year: '2026',
-            image: './img/timeline-horizontal/bg-item-17.jpg',
+            image: './img/timeline-horizontal/bg-item-18.jpg',
             imageCredit: 'Foto: AP',
             headline: 'La Santa Sede anunció una visita apostólica de León XIV al Perú del 11 al 17 de noviembre, con paradas previstas en Lima, Chiclayo, Cusco y Pucallpa.',
             peru: 'Keiko Fujimori ganó las elecciones presidenciales y juró como presidenta de la República el 28 de julio.',
