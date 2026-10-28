@@ -286,17 +286,33 @@
         }
     }
 
-    if (versionSelector && versionSelectorWrap && mapaTrack && 'IntersectionObserver' in window) {
-        var mapTrackObserver = new IntersectionObserver(
-            function (entries) {
-                entries.forEach(function (entry) {
-                    setSelectorPinned(entry.isIntersecting && mobileLayoutQuery.matches);
-                });
-            },
-            { threshold: 0 }
-        );
+    /* Se fija solo mientras quede mapa visible por debajo del selector;
+       cuando el final del mapa pasa bajo la barra + selector, se suelta */
+    var selectorTicking = false;
 
-        mapTrackObserver.observe(mapaTrack);
+    function updateSelectorPin() {
+        selectorTicking = false;
+        if (!mobileLayoutQuery.matches || mapaTrack.hidden) {
+            setSelectorPinned(false);
+            return;
+        }
+
+        var rect = mapaTrack.getBoundingClientRect();
+        var coveredTop = (stickyBar ? stickyBar.offsetHeight : 0) + versionSelector.offsetHeight;
+
+        setSelectorPinned(rect.top < window.innerHeight && rect.bottom > coveredTop);
+    }
+
+    function onSelectorScroll() {
+        if (!selectorTicking) {
+            selectorTicking = true;
+            window.requestAnimationFrame(updateSelectorPin);
+        }
+    }
+
+    if (versionSelector && versionSelectorWrap && mapaTrack) {
+        window.addEventListener('scroll', onSelectorScroll, { passive: true });
+        window.addEventListener('resize', onSelectorScroll);
     }
 
     var activeVersion = null;
