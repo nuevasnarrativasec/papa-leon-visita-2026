@@ -1115,7 +1115,7 @@ img, video {
 }
 
 .simbolo-panel__text {
-    flex: 1 1 380px;
+    flex: 1 1 305px;
     max-width: 420px;
 }
 
@@ -1149,39 +1149,30 @@ img, video {
         max-width: 100px;
     }
 
-/* ===== Mural: galería horizontal a pantalla completa ===== */
+/* ===== Mural: galería horizontal controlada por el scroll vertical =====
+   La sección se "pinea" a pantalla completa y, mientras el usuario sigue
+   haciendo scroll hacia abajo, el track se desplaza horizontalmente
+   (ver updateMuralProgress en script.js) hasta mostrar el mural completo. */
 
 .mural-h {
+    position: relative;
     width: 100%;
+}
+
+.mural-h__pin {
+    position: sticky;
+    top: 0;
     height: 100svh;
-    background: var(--color-white);
-}
-
-.mural-h__scroll {
     width: 100%;
-    height: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-x pan-y;
-    cursor: grab;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.mural-h__scroll::-webkit-scrollbar {
-    display: none;
-}
-
-.mural-h__scroll.is-grabbing {
-    cursor: grabbing;
-    scroll-behavior: auto;
+    overflow: hidden;
+    background: var(--color-white);
 }
 
 .mural-h__track {
     display: flex;
     height: 100%;
     width: max-content;
+    will-change: transform;
 }
 
 .mural-h__tile {
@@ -1593,7 +1584,7 @@ img, video {
     .simbolo-panel__inner {
         flex-direction: column-reverse;
         justify-content: center;
-        gap: 20px;
+        gap: 5px;
         max-width: 100%;
     }
 
@@ -1729,8 +1720,36 @@ img, video {
 }
 
 @media (max-width: 720px) {
-    .mapa-switch {
-        display: none;
+    /* El switcher compacto reemplaza al selector grande como franja fija:
+       pesa menos en altura y deja ver más mapa en pantallas chicas. */
+    .mapa-switch,
+    .mapa-switch.is-visible {
+        left: 0;
+        right: 0;
+        transform: none;
+        justify-content: center;
+        gap: 20px;
+        padding: 10px 16px;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(6px);
+    }
+
+    .mapa-switch__item {
+        gap: 8px;
+    }
+
+    .mapa-switch__photo {
+        width: 38px;
+        height: 38px;
+    }
+
+    .mapa-switch__title {
+        font-size: 9.5px;
+    }
+
+    .mapa-switch__years {
+        margin-top: 2px;
+        font-size: 13px;
     }
 
     .version-selector-wrap {
@@ -1742,25 +1761,7 @@ img, video {
         margin-top: 32px;
     }
 
-    .version-selector.is-pinned {
-        position: fixed;
-        left: 0;
-        right: 0;
-        z-index: 5;
-        margin: 0;
-        max-width: none;
-        justify-content: center;
-        gap: 20px;
-        padding: 14px 20px;
-        background: rgba(255, 255, 255, 0.96);
-        backdrop-filter: blur(6px);
-    }
-
     .version-card {
-        width: 40%;
-    }
-
-    .version-selector.is-pinned .version-card {
         width: 40%;
     }
 
@@ -1836,6 +1837,12 @@ img, video {
         box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.12);
         pointer-events: auto;
         max-width: 90%;
+    }
+
+    .mapa-pin__hint {
+        pointer-events: none;
+        transform: translate(0, 100%);
+        margin-top: 100px;
     }
 }
 
@@ -1938,7 +1945,10 @@ img, video {
     }
     span.video-ia{
         bottom: 215px;
-        right: -55px;       
-        transform: rotate(-90deg);        
+        right: -53px;
+        transform: rotate(-90deg);
+        font-weight: 300 !important;
+        font-family: arial;
+        font-size: 10px;    
     }
 }

@@ -262,60 +262,13 @@
     var versionCards = document.querySelectorAll('.version-card');
     var mapaTrack = document.getElementById('mapaTrack');
     var mapaPin = document.getElementById('mapaPin');
+    var mapaPinVisual = mapaPin ? mapaPin.querySelector('.mapa-pin__visual') : null;
     var mapaStack = document.getElementById('mapaStack');
     var mapaCards = document.getElementById('mapaCards');
-    var versionSelector = document.getElementById('versionSelector');
-    var versionSelectorWrap = document.getElementById('versionSelectorWrap');
     var mapaSwitch = document.getElementById('mapaSwitch');
     var mapaSwitchCards = document.querySelectorAll('.mapa-switch__item');
 
     var mobileLayoutQuery = window.matchMedia('(max-width: 720px)');
-
-    /* ----- Móvil: versionSelector fijo mientras el mapa está en pantalla ----- */
-
-    function setSelectorPinned(pin) {
-        if (!versionSelector || !versionSelectorWrap) { return; }
-        if (pin === versionSelector.classList.contains('is-pinned')) { return; }
-
-        if (pin) {
-            versionSelectorWrap.style.minHeight = versionSelectorWrap.offsetHeight + 'px';
-            versionSelector.style.top = (stickyBar ? stickyBar.offsetHeight : 0) + 'px';
-            versionSelector.classList.add('is-pinned');
-        } else {
-            versionSelector.classList.remove('is-pinned');
-            versionSelector.style.top = '';
-            versionSelectorWrap.style.minHeight = '';
-        }
-    }
-
-    /* Se fija solo mientras quede mapa visible por debajo del selector;
-       cuando el final del mapa pasa bajo la barra + selector, se suelta */
-    var selectorTicking = false;
-
-    function updateSelectorPin() {
-        selectorTicking = false;
-        if (!mobileLayoutQuery.matches || mapaTrack.hidden) {
-            setSelectorPinned(false);
-            return;
-        }
-
-        var rect = mapaTrack.getBoundingClientRect();
-        var coveredTop = (stickyBar ? stickyBar.offsetHeight : 0) + versionSelector.offsetHeight;
-
-        setSelectorPinned(rect.top < window.innerHeight && rect.bottom > coveredTop);
-    }
-
-    function onSelectorScroll() {
-        if (!selectorTicking) {
-            selectorTicking = true;
-            window.requestAnimationFrame(updateSelectorPin);
-        }
-    }
-
-    if (versionSelector && versionSelectorWrap && mapaTrack) {
-        window.addEventListener('scroll', onSelectorScroll, { passive: true });
-        window.addEventListener('resize', onSelectorScroll);
-    }
 
     var activeVersion = null;
     var currentStopIndex = -1;
@@ -476,12 +429,12 @@
         });
     }
 
-    /* ----- Escritorio: switcher de fotos fijo mientras el mapa está en pantalla ----- */
+    /* ----- Switcher de fotos fijo mientras el mapa está en pantalla ----- */
 
     function updateMapaSwitchVisibility() {
         if (!mapaSwitch) { return; }
 
-        if (mobileLayoutQuery.matches || !activeVersion || mapaTrack.hidden) {
+        if (!activeVersion || mapaTrack.hidden) {
             mapaSwitch.classList.remove('is-visible');
             return;
         }
@@ -489,12 +442,25 @@
         var stickyOffset = stickyBar ? stickyBar.offsetHeight : 0;
         mapaSwitch.style.top = stickyOffset + 'px';
 
-        /* .mapa-pin es sticky con top:0. Mientras está realmente "pegado"
-           su rect.top se mantiene en 0; al acercarse el final del track se
-           despega y empieza a desplazarse hacia arriba con la página (top
-           negativo), que es justo cuando no debe superponerse al mapa. */
-        var pinRect = mapaPin.getBoundingClientRect();
-        var isPinned = pinRect.top <= 0 && pinRect.top > -2;
+        var isPinned;
+
+        if (mobileLayoutQuery.matches) {
+            /* En móvil .mapa-pin no es sticky, pero .mapa-pin__visual sí
+               (top:0; ver CSS). Igual que en escritorio, se usa ese rect
+               para saber si de verdad sigue "pegado": antes de llegar
+               (rect.top > 0) o al despegarse al final (rect.top < 0) no
+               debe superponerse ni al selector grande ni al mapa saliente. */
+            var visualRect = (mapaPinVisual || mapaPin).getBoundingClientRect();
+            isPinned = visualRect.top <= 0 && visualRect.top > -2;
+        } else {
+            /* .mapa-pin es sticky con top:0. Mientras está realmente "pegado"
+               su rect.top se mantiene en 0; al acercarse el final del track se
+               despega y empieza a desplazarse hacia arriba con la página (top
+               negativo), que es justo cuando no debe superponerse al mapa. */
+            var pinRect = mapaPin.getBoundingClientRect();
+            isPinned = pinRect.top <= 0 && pinRect.top > -2;
+        }
+
         mapaSwitch.classList.toggle('is-visible', isPinned);
     }
 
@@ -520,10 +486,6 @@
     }
 
     function onResize() {
-        if (!mobileLayoutQuery.matches) {
-            setSelectorPinned(false);
-        }
-
         if (activeVersion && mobileLayoutQuery.matches !== isMobileLayout) {
             selectVersion(activeVersion);
             return;
@@ -1130,34 +1092,55 @@
         window.addEventListener('pointercancel', endTimelineHDrag);
     }
 
-    /* ----- Mural: arrastre con el cursor del mouse (grab / grabbing) ----- */
-    var muralHScroll = document.getElementById('muralHScroll');
+    /* ----- Mural: el scroll vertical empuja el mural horizontalmente -----
+       La sección se pinea a pantalla completa; mientras su contenedor
+       (más alto que un viewport) sigue pasando por debajo, el track se
+       traslada en X según el progreso de ese scroll, hasta agotarlo. */
+    var muralH = document.getElementById('muralH');
+    var muralHPin = document.getElementById('muralHPin');
+    var muralHTrack = document.getElementById('muralHTrack');
 
-    if (muralHScroll) {
-        var muralDragging = false;
-        var muralDragStartX = 0;
-        var muralDragStartScroll = 0;
+    if (muralH && muralHPin && muralHTrack) {
+        var muralMaxScroll = 0;
+        var muralTicking = false;
 
-        muralHScroll.addEventListener('pointerdown', function (e) {
-            if (e.pointerType !== 'mouse') { return; }
-            muralDragging = true;
-            muralDragStartX = e.clientX;
-            muralDragStartScroll = muralHScroll.scrollLeft;
-            muralHScroll.classList.add('is-grabbing');
-        });
-
-        window.addEventListener('pointermove', function (e) {
-            if (!muralDragging) { return; }
-            var delta = e.clientX - muralDragStartX;
-            muralHScroll.scrollLeft = muralDragStartScroll - delta;
-        });
-
-        function endMuralDrag() {
-            muralDragging = false;
-            muralHScroll.classList.remove('is-grabbing');
+        function setupMuralTrack() {
+            var viewportWidth = muralHPin.clientWidth;
+            muralMaxScroll = Math.max(muralHTrack.scrollWidth - viewportWidth, 0);
+            muralH.style.height = (window.innerHeight + muralMaxScroll) + 'px';
+            updateMuralProgress();
         }
 
-        window.addEventListener('pointerup', endMuralDrag);
-        window.addEventListener('pointercancel', endMuralDrag);
+        function updateMuralProgress() {
+            muralTicking = false;
+            if (muralMaxScroll <= 0) { return; }
+
+            var rect = muralH.getBoundingClientRect();
+            var progress = -rect.top / muralMaxScroll;
+            progress = Math.min(Math.max(progress, 0), 1);
+
+            muralHTrack.style.transform = 'translateX(' + (-progress * muralMaxScroll) + 'px)';
+        }
+
+        function onMuralScroll() {
+            if (!muralTicking) {
+                muralTicking = true;
+                window.requestAnimationFrame(updateMuralProgress);
+            }
+        }
+
+        setupMuralTrack();
+        window.addEventListener('load', setupMuralTrack);
+        window.addEventListener('resize', setupMuralTrack);
+        window.addEventListener('scroll', onMuralScroll, { passive: true });
+
+        /* Los tiles miden 100% de alto y ancho automático: su ancho real
+           se conoce recién al cargar cada imagen, así que recalculamos el
+           alto del contenedor a medida que van llegando. */
+        muralHTrack.querySelectorAll('img').forEach(function (img) {
+            if (!img.complete) {
+                img.addEventListener('load', setupMuralTrack);
+            }
+        });
     }
 })();
