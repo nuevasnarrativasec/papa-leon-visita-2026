@@ -520,7 +520,7 @@
             items: [
                 { time: '5:30 p. m.', text: 'Llegada a la Base Aérea del Callao' },
                 { time: '6:15 p. m.', text: 'Ceremonia de bienvenida en Palacio de Gobierno' },
-                { time: '6:45 p. m.', text: 'Visita al presidente de la República' },
+                { time: '6:45 p. m.', text: 'Visita a la presidenta de la República' },
                 { time: '7:45 p. m.', text: 'Encuentro con autoridades, sociedad civil y cuerpo diplomático en el Gran Teatro Nacional' }
             ]
         },
@@ -533,7 +533,7 @@
                 { time: '9:30 a. m.', text: 'Encuentro con los obispos del Perú' },
                 { time: '10:20 a. m.', text: 'Celebración en la Catedral de Lima' },
                 { time: '11:30 a. m.', text: 'Encuentro sobre los desafíos y las esperanzas para el futuro del pueblo peruano' },
-                { time: '6:00 p. m.', text: 'Vigilia con jóvenes y universitarios en el Estadio Monumental' }
+                { time: '6:00 p. m.', text: 'Vigilia con jóvenes y universitarios en el Estadio Nacional' }
             ]
         },
         {
@@ -863,7 +863,7 @@
             year: '2008 - 2012',
             image: './img/timeline-horizontal/bg-item-11.jpg',
             imageCredit: 'Foto: Fray Génesis Pacaldo Labana',
-            headline: 'Continuó liderando la Orden de San Agustín a escala internacional.',
+            headline: 'Continuó liderando la Orden de San Agustín en el mundo.',
             peru: 'El Perú vivió un período de crecimiento económico durante el segundo gobierno de Alan García y el inicio del de Ollanta Humala.',
             mundo: 'La crisis financiera de 2008 desencadenó una recesión mundial. En 2011 comenzaron las revueltas de la Primavera Árabe.'
         },
@@ -905,7 +905,7 @@
             year: '2021',
             image: './img/timeline-horizontal/bg-item-2021.jpg',
             imageCredit: 'Foto: Caritas Chiclayo',
-            headline: 'En la Diócesis de Chiclayo, el obispo Prevost trabajó en acciones concretas durante la emergencia por la pandemia del COVID-19, destacando su labor en la junta directiva de Cáritas del Perú. Impulsó obras sociales, visitas a los sectores más vulnerables, entrega de alimentos y refugio. Inauguró y bendijo una planta de oxígeno medicinal en el distrito de Mochumí, en la provincia de Lambayeque.  ',
+            headline: 'En la Diócesis de Chiclayo, lideró acciones concretas durante la emergencia por la pandemia del COVID-19: obras sociales, entrega de alimentos y refugio.',
             peru: 'El presidente Castillo termina el 2021 involucrado en chats que revelaban presiones desde el gobierno para imponer ascensos militares. ',
             mundo: 'El 2021 los talibanes retomaron el poder en Afganistán tras 20 años; en tanto, Angela Merkel dejó la cancillería alemana luego de 16 años. Fuente: Archivo El Comercio'
         },
@@ -924,6 +924,14 @@
             headline: 'Desde Roma mantuvo su vínculo con el Perú y visitó Chulucanas, donde había comenzado su misión en 1985.',
             peru: 'Persistió la crisis de confianza en las instituciones del país.',
             mundo: 'París acogió los Juegos Olímpicos, que reunieron a deportistas de todo el mundo.'
+        },
+        {
+            year: '2025',
+            image: './img/timeline-horizontal/bg-item-2025.jpg',
+            imageCredit: 'Foto: Paul Sunción',
+            headline: 'León XIV fue elegido Papa el 8 de mayo de 2025, en la cuarta votación del cónclave, convirtiéndose en el pontífice número 267 de la Iglesia católica.',
+            peru: 'xxxxx',
+            mundo: 'xxxxx'
         },
         {
             year: '2026',
