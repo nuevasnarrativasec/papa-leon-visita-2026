@@ -151,51 +151,51 @@
                         'El Callao forma parte de la trayectoria de Prevost: en 2020 asumió su administración apostólica, sin dejar de ser obispo de Chiclayo. Lima, en cambio, adquiere especial protagonismo en esta nueva etapa por su condición de capital y sede de los principales encuentros institucionales de la visita.'
                     ],
                     badges: [
-                        { type: 'antes', label: 'Relación con su pasado', text: 'Callao, responsabilidad pastoral en 2020.' }
+                        { type: 'regreso', label: 'Relación con su pasado', text: 'Callao, responsabilidad pastoral en 2020.' }
                     ]
                 },
                 {
                     date: '13–14 de noviembre · Chiclayo',
                     tagline: 'El regreso a su casa episcopal',
-                    photo: './img/mapa/sin-foto.jpg',
+                    photo: './img/mapa/foto-info-2-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'De todas las paradas, Chiclayo es la que más directamente se conecta con la vida de Robert Prevost. Allí asumió la conducción de la diócesis en 2014, fue nombrado obispo en 2015 y permaneció hasta 2023. También obtuvo la nacionalidad peruana durante esos años. Más que un destino de viaje, es una ciudad central en su biografía.'
                     ],
                     badges: [
-                        { type: 'antes', label: 'Relación con su pasado', text: 'Obispo de Chiclayo entre 2015 y 2023.' },
-                        { type: 'regreso', label: 'Su regreso', text: 'Es la escala donde su biografía personal y la agenda papal se encuentran con mayor claridad.' }
+                        { type: 'regreso', label: 'Relación con su pasado', text: 'Obispo de Chiclayo entre 2015 y 2023.' },
+                       
                     ]
                 },
                 {
                     date: '15 de noviembre · Cusco',
                     tagline: 'Una ciudad fuera de sus principales etapas pastorales',
-                    photo: './img/mapa/sin-foto.jpg',
+                    photo: './img/mapa/foto-info-3-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'A diferencia de Chulucanas, Trujillo o Chiclayo, Cusco no figura entre los centros principales de la trayectoria pastoral de Prevost en el Perú. Su incorporación al recorrido de León XIV permite mostrar que el vínculo del pontífice con el país también se extiende a lugares que no marcaron directamente sus años como misionero y obispo.'
                     ],
                     badges: [
-                        { type: 'antes', label: 'Relación con su pasado', text: 'No es una de sus principales sedes pastorales conocidas.'},
-                        { type: 'ahora', label: 'Ahora', text: 'Cusco se incorpora al recorrido de León XIV como un encuentro con la fe y la religiosidad popular.' }
+                        { type: 'ahora', label: 'Relación con su pasado', text: 'No es una de sus principales sedes pastorales conocidas.'},
+                        
                     ]
                 },
                 {
                     date: '15 de noviembre · Pucallpa',
                     tagline: 'El encuentro con otro territorio del Perú',
-                    photo: './img/mapa/sin-foto.jpg',
+                    photo: './img/mapa/foto-info-4-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'El recorrido peruano de Prevost estuvo concentrado principalmente en ciudades de la costa norte, además de su responsabilidad en el Callao. Pucallpa introduce en su regreso una dimensión territorial diferente: la Amazonía. No es una de las sedes principales de su trayectoria anterior, pero amplía el alcance geográfico de esta nueva visita.'
                     ],
                     badges: [
-                        { type: 'antes', label: 'Relación con su pasado', text: 'No es una de sus principales sedes pastorales conocidas.' }
+                        { type: 'ahora', label: 'Relación con su pasado', text: 'No es una de sus principales sedes pastorales conocidas.' }
                     ]
                 },
                 {
                     date: '16 de noviembre · Lima',
                     tagline: 'El final de una visita, la continuidad de un vínculo',
-                    photo: './img/mapa/sin-foto.jpg',
+                    photo: './img/mapa/foto-info-1-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'León XIV concluirá su primera visita al Perú como pontífice en la capital. Su paso por el país habrá unido ciudades fundamentales en su trayectoria pastoral con nuevos destinos, reflejando una relación con el Perú que trasciende su elección como Papa.'
