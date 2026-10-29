@@ -282,7 +282,8 @@ img, video {
 .main-recorrido p,
 .main-timeline-recorrido p,
 .main-economia p,
-.main-simbolos p{
+.main-simbolos p,
+.main-mural p{
     margin: 0 0 26px;
     font-size: 17px;
     line-height: 1.7;
@@ -391,7 +392,8 @@ img, video {
     .main-economia h3,
     .main-simbolos h3,
     .main-timeline-horizontal h3,
-    .main-ultimas-noticias h3{
+    .main-ultimas-noticias h3,
+    .main-mural h3{
         color: #A68939;
         font: 2rem/1.3 'Chronicle Display Black';
         text-align: center;
@@ -399,7 +401,8 @@ img, video {
     .main-recorrido p,
     .main-timeline-recorrido p,
     .main-economia p,
-    .main-simbolos p{
+    .main-simbolos p,
+    .main-mural p{
         margin: 0 auto;
         max-width: 650px;
         padding: 0 24px 0;
@@ -1065,11 +1068,56 @@ img, video {
 .main-timeline-horizontal{
 
 }
-    .main-timeline-horizontal img.hint-scroll-horizontal{
+    .main-timeline-horizontal img.hint-scroll-horizontal,
+    .main-mural img.hint-scroll-horizontal{
         display: block;
         margin: 30px auto;
         max-width: 100px;
     }
+
+/* ===== Mural: galería horizontal a pantalla completa ===== */
+
+.mural-h {
+    width: 100%;
+    height: 100svh;
+    background: var(--color-white);
+}
+
+.mural-h__scroll {
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+    cursor: grab;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.mural-h__scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.mural-h__scroll.is-grabbing {
+    cursor: grabbing;
+    scroll-behavior: auto;
+}
+
+.mural-h__track {
+    display: flex;
+    height: 100%;
+    width: max-content;
+}
+
+.mural-h__tile {
+    display: block;
+    height: 100%;
+    width: auto;
+    flex: 0 0 auto;
+    user-select: none;
+    -webkit-user-drag: none;
+}
 
 /* ===== Timeline horizontal interactivo ===== */
 

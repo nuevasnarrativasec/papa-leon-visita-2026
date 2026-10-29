@@ -1091,4 +1091,35 @@
         window.addEventListener('pointerup', endTimelineHDrag);
         window.addEventListener('pointercancel', endTimelineHDrag);
     }
+
+    /* ----- Mural: arrastre con el cursor del mouse (grab / grabbing) ----- */
+    var muralHScroll = document.getElementById('muralHScroll');
+
+    if (muralHScroll) {
+        var muralDragging = false;
+        var muralDragStartX = 0;
+        var muralDragStartScroll = 0;
+
+        muralHScroll.addEventListener('pointerdown', function (e) {
+            if (e.pointerType !== 'mouse') { return; }
+            muralDragging = true;
+            muralDragStartX = e.clientX;
+            muralDragStartScroll = muralHScroll.scrollLeft;
+            muralHScroll.classList.add('is-grabbing');
+        });
+
+        window.addEventListener('pointermove', function (e) {
+            if (!muralDragging) { return; }
+            var delta = e.clientX - muralDragStartX;
+            muralHScroll.scrollLeft = muralDragStartScroll - delta;
+        });
+
+        function endMuralDrag() {
+            muralDragging = false;
+            muralHScroll.classList.remove('is-grabbing');
+        }
+
+        window.addEventListener('pointerup', endMuralDrag);
+        window.addEventListener('pointercancel', endMuralDrag);
+    }
 })();
