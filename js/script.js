@@ -531,7 +531,7 @@
             versionSelectorObserver.observe(versionSelectorWrap);
         }
 
-        if ('IntersectionObserver' in window) {
+        if (mapaPinVisual && 'IntersectionObserver' in window) {
             var mapaPinRevealObserver = new IntersectionObserver(
                 function (entries) {
                     entries.forEach(function (entry) {
@@ -544,7 +544,7 @@
                 { threshold: 0.15 }
             );
 
-            mapaPinRevealObserver.observe(mapaPin);
+            mapaPinRevealObserver.observe(mapaPinVisual);
         }
     }
 
