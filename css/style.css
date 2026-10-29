@@ -1028,7 +1028,7 @@ img, video {
     .main-simbolos img.hint-scroll{
         display: block;
         margin: 30px auto;
-        max-width: 150px;
+        max-width: 180px;
     }
     /* Centrado sobre la tarjeta: hereda el ancho y el lado (izq./der.)
        de .mapa-pin__info, que ya se espeja con .mapa-pin.is-right */
@@ -1550,6 +1550,13 @@ img, video {
             margin: 30px auto;
             max-width: 180px;
         }
+
+.main-timeline-horizontal .hint-scroll-horizontal{
+    max-width: 120px !important;
+}
+.main-mural .hint-scroll-horizontal{
+    max-width: 180px !important;
+}
 
 @media (max-width: 720px) {
     .timeline-h {
