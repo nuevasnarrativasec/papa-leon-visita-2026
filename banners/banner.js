@@ -17,6 +17,10 @@
         return String(Math.max(n, 0)).padStart(2, '0');
     }
 
+    function hasArrived() {
+        return TARGET_DATE.getTime() - Date.now() <= 0;
+    }
+
     function updateCountdownValues() {
         var diff = TARGET_DATE.getTime() - Date.now();
 
@@ -34,21 +38,45 @@
     }
 
     var countdownInterval = null;
+    var countdownTimeout = null;
 
-    /* Al terminar el video: se muestra el contador 5 minutos y luego se
-       vuelve a reproducir el video desde el inicio, en un ciclo continuo. */
-    function showCountdown() {
-        updateCountdownValues();
-        countdownInterval = window.setInterval(updateCountdownValues, 1000 * 30);
-        countdown.classList.add('is-visible');
+    function replayVideo() {
+        countdown.classList.remove('is-visible');
 
-        window.setTimeout(function () {
-            countdown.classList.remove('is-visible');
+        if (countdownInterval) {
             window.clearInterval(countdownInterval);
-            video.currentTime = 0;
-            video.play().catch(function () {});
-        }, COUNTDOWN_DURATION);
+            countdownInterval = null;
+        }
+
+        if (countdownTimeout) {
+            window.clearTimeout(countdownTimeout);
+            countdownTimeout = null;
+        }
+
+        video.currentTime = 0;
+        video.play().catch(function () {});
     }
 
-    video.addEventListener('ended', showCountdown);
+    /* Al terminar el video: si ya se llegó a la fecha de llegada, el banner
+       solo repite el video en loop, sin mostrar el contador. Si todavía no,
+       se muestra el contador 5 minutos (revisando también ahí si la fecha
+       se cumple mientras está visible) y luego se retoma el video. */
+    function onVideoEnded() {
+        if (hasArrived()) {
+            replayVideo();
+            return;
+        }
+
+        updateCountdownValues();
+        countdown.classList.add('is-visible');
+
+        countdownInterval = window.setInterval(function () {
+            updateCountdownValues();
+            if (hasArrived()) { replayVideo(); }
+        }, 1000 * 30);
+
+        countdownTimeout = window.setTimeout(replayVideo, COUNTDOWN_DURATION);
+    }
+
+    video.addEventListener('ended', onVideoEnded);
 })();
