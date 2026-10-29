@@ -5,6 +5,7 @@
     // TODO: confirmar fecha/hora oficial de llegada de León XIV al Perú.
     var TARGET_DATE = new Date('2026-11-11T08:00:00-05:00');
 
+    var countdownEl = document.getElementById('countdown');
     var daysEl = document.getElementById('cd-days');
     var hoursEl = document.getElementById('cd-hours');
     var minsEl = document.getElementById('cd-mins');
@@ -17,9 +18,9 @@
         var diff = TARGET_DATE.getTime() - Date.now();
 
         if (diff <= 0) {
-            daysEl.textContent = '00';
-            hoursEl.textContent = '00';
-            minsEl.textContent = '00';
+            if (countdownEl) {
+                countdownEl.style.display = 'none';
+            }
             return;
         }
 
