@@ -1013,7 +1013,8 @@ img, video {
         margin-bottom: 10px;
     }
         .main-economia p span,
-        .intro p span{
+        .intro p span,
+        .main-mural p span{
             font-weight: 600;
         }
     .main-economia img{
@@ -1021,6 +1022,9 @@ img, video {
         margin: 40px auto;
         max-width: 450px;
     }
+.main-ultimas-noticias{
+    margin-top: 80px;
+}
 
 .main-simbolos{
 
