@@ -819,7 +819,7 @@
         {
             year: '1995',
             image: './img/timeline-horizontal/bg-item-6.jpg',
-            imageCredit: 'Foto: Archivo Diócesis de Chiclayo ',
+            imageCredit: 'Foto: Casa de Formación Agustiniana de Trujillo',
             cover: './img/timeline-horizontal/portada-1995.jpg',
             headline: 'Cumplió siete años de trabajo en Trujillo, dedicándose a la formación religiosa y la atención parroquial.',
             peru: 'Alberto Fujimori fue reelegido presidente.',
@@ -828,7 +828,7 @@
         {
             year: '1997',
             image: './img/timeline-horizontal/bg-item-7.jpg',
-            imageCredit: 'Foto: ANDINA ',
+            imageCredit: 'Foto: Redes sociales ',
             headline: 'Continuó su labor sacerdotal en Trujillo.',
             peru: 'La operación Chavín de Huántar puso fin a la crisis de los rehenes en la residencia japonesa.',
             mundo: 'Se presentó públicamente a Dolly, la primera oveja clonada a partir de una célula adulta.'
@@ -878,7 +878,7 @@
         {
             year: '2016',
             image: './img/timeline-horizontal/bg-item-13.jpg',
-            imageCredit: 'Foto: Archivo Diócesis de Chiclayo ',
+            imageCredit: 'Foto: Diócesis de Chiclayo ',
             cover: './img/timeline-horizontal/portada-2016.jpg',
             headline: 'Desarrolló su labor episcopal en Chiclayo, atendiendo parroquias, comunidades rurales y poblaciones vulnerables.',
             peru: 'Pedro Pablo Kuczynski ganó las elecciones presidenciales frente a Keiko Fujimori.',
