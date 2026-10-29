@@ -410,7 +410,7 @@ img, video {
     img.hint-elige{
         display: block;
         margin: 20px auto 0;
-        max-width: 140px;
+        max-width: 100px;
     }
 
 /* ===== Selector de versión (antes / después de ser Papa) ===== */
@@ -453,7 +453,6 @@ img, video {
 
 .version-card.is-selected {
     opacity: 1;
-    transform: scale(1);
 }
 
 .version-card__frame {

@@ -1,6 +1,15 @@
 (function () {
     'use strict';
 
+    /* ===== Footer (cargado desde footer.html) ===== */
+    var footerMount = document.getElementById('footerMount');
+    if (footerMount) {
+        fetch('https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/footer.html')
+            .then(function (response) { return response.text(); })
+            .then(function (html) { footerMount.innerHTML = html; })
+            .catch(function () {});
+    }
+
     /* ===== Contador regresivo ===== */
     // TODO: confirmar fecha/hora oficial de llegada de León XIV al Perú.
     var TARGET_DATE = new Date('2026-11-11T08:00:00-05:00');
@@ -79,8 +88,8 @@
     /* ===== Recorrido: selección de versión + mapa pineado por scroll ===== */
     // Para añadir la foto de cada parada, completa "photo" (ruta del archivo) y
     // "photoAlt" (texto alternativo). Convención de nombres sugerida:
-    // ./img/mapa/foto-info-{n}-mapa-izq.jpg  (versión "El Perú de Prevost")
-    // ./img/mapa/foto-info-{n}-mapa-der.jpg  (versión "El regreso de León XIV")
+    // https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-{n}-mapa-izq.jpg  (versión "El Perú de Prevost")
+    // https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-{n}-mapa-der.jpg  (versión "El regreso de León XIV")
     // Si "photo" queda vacío (''), la tarjeta muestra un placeholder.
     var RECORRIDO_DATA = {
         '1': {
@@ -91,7 +100,7 @@
                 {
                     date: '1985 · Chulucanas',
                     tagline: 'Donde comenzó la misión',
-                    photo: './img/mapa/foto-info-1-mapa-izq.jpg',
+                    photo: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-1-mapa-izq.jpg',
                     photoAlt: 'Robert Prevost en una celebración en Chulucanas, Piura.',
                     paragraphs: [
                         'Robert Prevost llegó al Perú en 1985, destinado a la misión agustiniana de Chulucanas, en Piura. Durante un año fue vicario parroquial de la Catedral de la Sagrada Familia y canciller de la entonces prelatura territorial. Era su primera experiencia pastoral en el país.'
@@ -103,7 +112,7 @@
                 {
                     date: '1988 · Trujillo',
                     tagline: 'Donde formó y se formó',
-                    photo: './img/mapa/foto-info-2-mapa-izq.jpg',
+                    photo: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-2-mapa-izq.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'Tres años después volvió al Perú. Esta vez a Trujillo. Allí dirigió la casa de formación de los agustinos y durante más de una década fue formador, maestro de profesores, docente, vicario judicial y párroco. Enseñó derecho canónico, teología moral y patrística en el Seminario Mayor San Carlos y San Marcelo. Trujillo fue una de sus etapas más largas en el país: permaneció vinculado a la misión agustiniana entre 1988 y 1999.'
@@ -115,7 +124,7 @@
                 {
                     date: '2014 · Chiclayo',
                     tagline: 'La diócesis que se convirtió en su casa',
-                    photo: './img/mapa/foto-info-3-mapa-izq.jpg',
+                    photo: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-3-mapa-izq.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'Después de varios años fuera del Perú, Prevost regresó en 2014. El papa Francisco lo nombró administrador apostólico de Chiclayo y obispo titular de Sufar. Un mes después fue ordenado obispo en la Catedral de Santa María. En 2015 fue nombrado oficialmente obispo de Chiclayo y ese mismo año obtuvo la nacionalidad peruana por naturalización. Permaneció al frente de la diócesis hasta que Francisco lo llamó a Roma en 2023.'
@@ -127,7 +136,7 @@
                 {
                     date: '2020 · Callao',
                     tagline: 'Una responsabilidad en medio de la pandemia',
-                    photo: './img/mapa/foto-info-4-mapa-izq.jpg',
+                    photo: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-4-mapa-izq.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'En abril de 2020, mientras seguía siendo obispo de Chiclayo, Prevost fue nombrado también administrador apostólico de la diócesis del Callao. Fue una responsabilidad adicional en uno de los periodos más difíciles de la pandemia.'
@@ -146,7 +155,7 @@
                 {
                     date: '11–12 de noviembre · Lima y Callao',
                     tagline: 'Un vínculo que también pasa por el Callao',
-                    photo: './img/mapa/foto-info-1-mapa-der.jpg',
+                    photo: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-1-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'El Callao forma parte de la trayectoria de Prevost: en 2020 asumió su administración apostólica, sin dejar de ser obispo de Chiclayo. Lima, en cambio, adquiere especial protagonismo en esta nueva etapa por su condición de capital y sede de los principales encuentros institucionales de la visita.'
@@ -158,7 +167,7 @@
                 {
                     date: '13–14 de noviembre · Chiclayo',
                     tagline: 'El regreso a su casa episcopal',
-                    photo: './img/mapa/foto-info-2-mapa-der.jpg',
+                    photo: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-2-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'De todas las paradas, Chiclayo es la que más directamente se conecta con la vida de Robert Prevost. Allí asumió la conducción de la diócesis en 2014, fue nombrado obispo en 2015 y permaneció hasta 2023. También obtuvo la nacionalidad peruana durante esos años. Más que un destino de viaje, es una ciudad central en su biografía.'
@@ -171,7 +180,7 @@
                 {
                     date: '15 de noviembre · Cusco',
                     tagline: 'Una ciudad fuera de sus principales etapas pastorales',
-                    photo: './img/mapa/foto-info-3-mapa-der.jpg',
+                    photo: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-3-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'A diferencia de Chulucanas, Trujillo o Chiclayo, Cusco no figura entre los centros principales de la trayectoria pastoral de Prevost en el Perú. Su incorporación al recorrido de León XIV permite mostrar que el vínculo del pontífice con el país también se extiende a lugares que no marcaron directamente sus años como misionero y obispo.'
@@ -184,7 +193,7 @@
                 {
                     date: '15 de noviembre · Pucallpa',
                     tagline: 'El encuentro con otro territorio del Perú',
-                    photo: './img/mapa/foto-info-4-mapa-der.jpg',
+                    photo: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-4-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'El recorrido peruano de Prevost estuvo concentrado principalmente en ciudades de la costa norte, además de su responsabilidad en el Callao. Pucallpa introduce en su regreso una dimensión territorial diferente: la Amazonía. No es una de las sedes principales de su trayectoria anterior, pero amplía el alcance geográfico de esta nueva visita.'
@@ -196,7 +205,7 @@
                 {
                     date: '16 de noviembre · Lima',
                     tagline: 'El final de una visita, la continuidad de un vínculo',
-                    photo: './img/mapa/foto-info-1-mapa-der.jpg',
+                    photo: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-1-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'León XIV concluirá su primera visita al Perú como pontífice en la capital. Su paso por el país habrá unido ciudades fundamentales en su trayectoria pastoral con nuevos destinos, reflejando una relación con el Perú que trasciende su elección como Papa.'
@@ -209,7 +218,7 @@
         }
     };
 
-    var FOOTPRINTS_ICON = '<img class="mapa-card__badge-footprints" src="./img/huella-icon.png" alt="" aria-hidden="true">';
+    var FOOTPRINTS_ICON = '<img class="mapa-card__badge-footprints" src="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/huella-icon.png" alt="" aria-hidden="true">';
 
     var MEDIA_PLACEHOLDER = '<div class="mapa-card__media-placeholder">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">' +
@@ -282,7 +291,7 @@
 
         for (var i = 1; i <= data.mapCount; i++) {
             var img = document.createElement('img');
-            img.src = './img/mapa/mapa-' + i + '-' + data.mapPrefix + '.png';
+            img.src = 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/mapa-' + i + '-' + data.mapPrefix + '.png';
             img.alt = '';
             img.setAttribute('aria-hidden', 'true');
             mapaStack.appendChild(img);
@@ -554,7 +563,7 @@
             dayName: 'Miércoles',
             dayNumber: '11',
             place: 'Lima',
-            stamp: './img/timeline-recorrido/estampilla-1.png',
+            stamp: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-recorrido/estampilla-1.png',
             items: [
                 { time: '5:30 p. m.', text: 'Llegada a la Base Aérea del Callao' },
                 { time: '6:15 p. m.', text: 'Ceremonia de bienvenida en Palacio de Gobierno' },
@@ -566,7 +575,7 @@
             dayName: 'Jueves',
             dayNumber: '12',
             place: 'Lima',
-            stamp: './img/timeline-recorrido/estampilla-2.png',
+            stamp: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-recorrido/estampilla-2.png',
             items: [
                 { time: '9:30 a. m.', text: 'Encuentro con los obispos del Perú' },
                 { time: '10:20 a. m.', text: 'Celebración en la Catedral de Lima' },
@@ -578,7 +587,7 @@
             dayName: 'Viernes',
             dayNumber: '13',
             place: 'Chiclayo y Pimentel',
-            stamp: './img/timeline-recorrido/estampilla-3.png',
+            stamp: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-recorrido/estampilla-3.png',
             items: [
                 { time: '9:10 a. m.', text: 'Llegada a Chiclayo' },
                 { time: '10:30 a. m.', text: 'Misa en las Pampas de Pimentel' },
@@ -591,7 +600,7 @@
             dayName: 'Sábado',
             dayNumber: '14',
             place: 'Chiclayo, Santa Cruz y Zaña',
-            stamp: './img/timeline-recorrido/estampilla-4.png',
+            stamp: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-recorrido/estampilla-4.png',
             items: [
                 { time: '8:00 a. m.', text: 'Coronación de la Virgen Inmaculada' },
                 { time: '11:00 a. m.', text: 'Misa en Santa Cruz de Succhabamba' },
@@ -602,7 +611,7 @@
             dayName: 'Domingo',
             dayNumber: '15',
             place: 'Cusco y Pucallpa',
-            stamp: './img/timeline-recorrido/estampilla-5.png',
+            stamp: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-recorrido/estampilla-5.png',
             items: [
                 { time: '10:30 a. m.', text: 'Encuentro en Saqsaywaman' },
                 { time: '11:45 a. m.', text: 'Ángelus frente a la Catedral del Cusco' },
@@ -614,7 +623,7 @@
             dayName: 'Lunes',
             dayNumber: '16',
             place: 'Lima',
-            stamp: './img/timeline-recorrido/estampilla-6.png',
+            stamp: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-recorrido/estampilla-6.png',
             items: [
                 { time: '8:30 a. m.', text: 'Visita a la casa de acogida de las Hermanitas de los Ancianos Desamparados' },
                 { time: '10:30 a. m.', text: 'Misa en la Base Aérea Las Palmas' },
@@ -624,7 +633,7 @@
         }
     ];
 
-    var FOOTPRINTS_SRC = './img/timeline-recorrido/pasos.png';
+    var FOOTPRINTS_SRC = 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-recorrido/pasos.png';
 
     function buildTimelineDayHTML(day, isLast) {
         var html = '<div class="timeline-day">';
@@ -692,43 +701,43 @@
     var SIMBOLOS_DATA = [
         {
             title: 'La Cruz',
-            image: './img/simbolos/simbolo-1.png',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/simbolos/simbolo-1.png',
             imageAlt: 'Cruz pectoral de León XIV',
             text: 'La cruz pectoral que León XIV llevó el día de su elección guarda reliquias ligadas a su identidad agustiniana: San Agustín, Santa Mónica, Santo Tomás de Villanueva, el beato Anselmo Polanco y el venerable Giuseppe Bartolomeo Menochio. Fue un regalo de la Curia General Agustiniana cuando Robert Prevost fue creado cardenal en 2023.'
         },
         {
             title: 'El Anillo del Pescador',
-            image: './img/simbolos/simbolo-2.png',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/simbolos/simbolo-2.png',
             imageAlt: 'Anillo del Pescador de León XIV',
             text: 'León XIV recibió el Anillo del Pescador el 18 de mayo de 2025, al iniciar formalmente su ministerio petrino. En el exterior aparece San Pedro con las llaves y la red; en el interior está grabado el nombre León XIV. El anillo simboliza la misión del Papa como sucesor de Pedro y custodio de la fe.'
         },
         {
             title: 'El Escudo',
-            image: './img/simbolos/simbolo-3.png',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/simbolos/simbolo-3.png',
             imageAlt: 'Escudo pontificio de León XIV',
             text: 'Su escudo une dos elementos centrales de su identidad. Sobre fondo azul aparece un lirio, símbolo mariano. En el otro campo, un corazón ardiente atravesado por una flecha descansa sobre un libro: es el emblema agustiniano. Su lema, "In Illo uno unum", significa: "En el único Cristo somos uno".'
         },
         {
             title: 'La Mitra',
-            image: './img/simbolos/simbolo-4.png',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/simbolos/simbolo-4.png',
             imageAlt: 'Mitra episcopal de León XIV',
             text: 'La mitra es una de las insignias propias del obispo y León XIV la utiliza en las celebraciones litúrgicas como obispo de Roma. También aparece sobre su escudo pontificio: una mitra de plata con tres bandas doradas, acompañada por las llaves cruzadas de San Pedro, símbolos tradicionales del papado.'
         },
         {
             title: 'El pasaporte peruano',
-            image: './img/simbolos/simbolo-5.png',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/simbolos/simbolo-5.png',
             imageAlt: 'Pasaporte peruano de Robert Prevost',
             text: 'Robert Prevost no solo posee nacionalidad peruana: también ha tramitado tres pasaportes peruanos. Migraciones confirmó que obtuvo el título de nacionalidad peruana el 24 de agosto de 2015 y que su último pasaporte peruano se encuentra vigente.'
         },
         {
             title: 'El DNI peruano',
-            image: './img/simbolos/simbolo-6.png',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/simbolos/simbolo-6.png',
             imageAlt: 'DNI peruano de Robert Prevost',
             text: 'Prevost obtuvo su primer DNI después de nacionalizarse peruano en 2015 y gestionó un DNI electrónico en 2016. En mayo de 2025, ya como Papa, recibió en el Vaticano a una delegación del Reniec para actualizarlo al DNI electrónico 3.0, con condición de no caduca.'
         },
         {
             title: 'El libro',
-            image: './img/simbolos/simbolo-7.png',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/simbolos/simbolo-7.png',
             imageAlt: 'Detalle del libro en el escudo de León XIV',
             text: 'En su escudo, un libro sostiene el corazón atravesado por una flecha. Representa la Palabra de Dios y recuerda también los escritos de San Agustín, el pensador y santo que marcó la espiritualidad de la orden a la que pertenece León XIV.'
         }
@@ -814,10 +823,10 @@
     var TIMELINE_H_DATA = [
         {
             year: '1985',
-            image: './img/timeline-horizontal/bg-item-1.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-1.jpg',
             imageAlt: 'Robert Prevost como joven misionero agustino',
             imageCredit: 'Foto: Vatican News ',
-            cover: './img/timeline-horizontal/bg-portada-item-1.jpg',
+            cover: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-portada-item-1.jpg',
             coverAlt: 'Portada de El Comercio sobre la visita de Juan Pablo II al Perú',
             headline: 'Llegó al Perú como misionero agustino y se instaló en Chulucanas, Piura, donde fue vicepárroco y canciller de la prelatura.',
             peru: 'Alan García inició su primer gobierno, en medio de una crisis económica y creciente violencia terrorista.',
@@ -825,7 +834,7 @@
         },
         {
             year: '1987',
-            image: './img/timeline-horizontal/bg-item-2.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-2.jpg',
             imageCredit: 'Foto: EFE ',
             headline: 'Defendió su tesis doctoral y asumió la dirección de Vocaciones y Misiones de su provincia agustiniana en Estados Unidos.',
             peru: 'Alan García anunció la estatización de la banca en medio de una profunda crisis económica y política.',
@@ -833,7 +842,7 @@
         },
         {
             year: '1989',
-            image: './img/timeline-horizontal/bg-item-3.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-3.jpg',
             imageCredit: 'Foto: Redes sociales ',
             headline: 'Se consolidó como formador y profesor de religiosos en Trujillo.',
             peru: 'El país enfrentó un mayor deterioro económico y la expansión de la violencia terrorista.',
@@ -847,25 +856,25 @@
         },*/
         {
             year: '1993',
-            image: './img/timeline-horizontal/bg-item-5.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-5.jpg',
             imageCredit: 'Foto: Redes sociales ',
-            cover: './img/timeline-horizontal/portada-1993.jpg',
+            cover: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/portada-1993.jpg',
             headline: 'Continuó como formador y profesor en Trujillo.',
             peru: 'Se aprobó la Constitución Política de 1993.',
             mundo: 'Israel y la Organización para la Liberación de Palestina firmaron los Acuerdos de Oslo.'
         },
         {
             year: '1995',
-            image: './img/timeline-horizontal/bg-item-6.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-6.jpg',
             imageCredit: 'Foto: Casa de Formación Agustiniana de Trujillo',
-            cover: './img/timeline-horizontal/portada-1995.jpg',
+            cover: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/portada-1995.jpg',
             headline: 'Cumplió siete años de trabajo en Trujillo, dedicándose a la formación religiosa y la atención parroquial.',
             peru: 'Alberto Fujimori fue reelegido presidente.',
             mundo: 'Los Acuerdos de Dayton sentaron las bases para poner fin a la guerra de Bosnia.'
         },
         {
             year: '1997',
-            image: './img/timeline-horizontal/bg-item-7.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-7.jpg',
             imageCredit: 'Foto: Redes sociales ',
             headline: 'Continuó su labor sacerdotal en Trujillo.',
             peru: 'La operación Chavín de Huántar puso fin a la crisis de los rehenes en la residencia japonesa.',
@@ -873,7 +882,7 @@
         },
         {
             year: '1999',
-            image: './img/timeline-horizontal/bg-item-8.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-8.jpg',
             imageCredit: 'Foto: Facebook Hermanas de San Casimiro',
             headline: 'Dejó Trujillo después de 11 años al ser elegido prior provincial de los agustinos en Chicago.',
             peru: 'Fujimori buscó una nueva reelección entre crecientes denuncias de autoritarismo.',
@@ -881,17 +890,17 @@
         },
         {
             year: '2000',
-            image: './img/timeline-horizontal/bg-item-9.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-9.jpg',
             imageCredit: 'Foto: Noviciado Agustiniano Internacional Nuestra señora de la Gracia',
             markerBefore: 'Siglo XXI',
-            cover: './img/timeline-horizontal/portada-2000.jpg',
+            cover: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/portada-2000.jpg',
             headline: 'Inició una nueva etapa de liderazgo internacional en la Orden de San Agustín.',
             peru: 'Cayó el régimen de Alberto Fujimori tras una crisis política marcada por la Marcha de los Cuatro Suyos.',
             mundo: 'Científicos del Proyecto Genoma Humano anunciaron el primer borrador de la secuencia del genoma humano.'
         },
         {
             year: '2002 - 2006',
-            image: './img/timeline-horizontal/bg-item-10.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-10.jpg',
             imageCredit: 'Foto: Orden de San Agustín ',
             headline: 'Dirigió la Orden de San Agustín a escala internacional.',
             peru: 'Alejandro Toledo gobernó el Perú.',
@@ -899,7 +908,7 @@
         },
         {
             year: '2008 - 2012',
-            image: './img/timeline-horizontal/bg-item-11.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-11.jpg',
             imageCredit: 'Foto: Fray Génesis Pacaldo Labana',
             headline: 'Continuó liderando la Orden de San Agustín en el mundo.',
             peru: 'El Perú vivió un período de crecimiento económico durante el segundo gobierno de Alan García y el inicio del de Ollanta Humala.',
@@ -907,7 +916,7 @@
         },
         {
             year: '2014',
-            image: './img/timeline-horizontal/bg-item-12.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-12.jpg',
             imageCredit: 'Foto: Vatican News',
             headline: 'Francisco lo nombró administrador apostólico de Chiclayo. Fue ordenado obispo el 12 de diciembre.',
             peru: 'El gobierno de Ollanta Humala enfrentó conflictos sociales y cuestionamientos por corrupción y gobernabilidad.',
@@ -915,25 +924,25 @@
         },
         {
             year: '2016',
-            image: './img/timeline-horizontal/bg-item-13.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-13.jpg',
             imageCredit: 'Foto: Diócesis de Chiclayo ',
-            cover: './img/timeline-horizontal/portada-2016.jpg',
+            cover: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/portada-2016.jpg',
             headline: 'Desarrolló su labor episcopal en Chiclayo, atendiendo parroquias, comunidades rurales y poblaciones vulnerables.',
             peru: 'Pedro Pablo Kuczynski ganó las elecciones presidenciales frente a Keiko Fujimori.',
             mundo: 'El Reino Unido votó a favor del Brexit y Donald Trump ganó las elecciones presidenciales de Estados Unidos.'
         },
         {
             year: '2018',
-            image: './img/timeline-horizontal/bg-item-14.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-14.jpg',
             imageCredit: 'Foto: Conferencia Episcopal Peruana',
-            cover: './img/timeline-horizontal/portada-2018.jpg',
+            cover: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/portada-2018.jpg',
             headline: 'Fue elegido segundo vicepresidente de la Conferencia Episcopal Peruana y asumió responsabilidades en sus comisiones.',
             peru: 'Pedro Pablo Kuczynski renunció a la presidencia y Martín Vizcarra asumió el poder.',
             mundo: 'Estados Unidos y China iniciaron una guerra comercial con la imposición de aranceles a sus productos.'
         },
         {
             year: '2020',
-            image: './img/timeline-horizontal/bg-item-15.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-15.jpg',
             imageCredit: 'Foto: Parroquia Santa María Catedral',
             headline: 'Fue nombrado administrador apostólico del Callao y participó en acciones de asistencia durante la pandemia.',
             peru: 'Comenzó la cuarentena por COVID-19 y el país enfrentó una grave emergencia sanitaria.',
@@ -941,7 +950,7 @@
         },
         {
             year: '2021',
-            image: './img/timeline-horizontal/bg-item-2021.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-2021.jpg',
             imageCredit: 'Foto: Caritas Chiclayo',
             headline: 'En la Diócesis de Chiclayo, lideró acciones concretas durante la emergencia por la pandemia del COVID-19: obras sociales, entrega de alimentos y refugio.',
             peru: 'El presidente Castillo termina el 2021 involucrado en chats que revelaban presiones desde el gobierno para imponer ascensos militares. ',
@@ -949,7 +958,7 @@
         },
         {
             year: '2022',
-            image: './img/timeline-horizontal/bg-item-16.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-16.jpg',
             imageCredit: 'Foto: Archivo Diócesis de Chiclayo ',
             headline: 'Continuó su labor pastoral en Chiclayo, visitando parroquias y comunidades como Tumán.',
             peru: 'Pedro Castillo intentó disolver el Congreso, fue detenido y Dina Boluarte asumió la presidencia.',
@@ -957,7 +966,7 @@
         },
         {
             year: '2024',
-            image: './img/timeline-horizontal/bg-item-17.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-17.jpg',
             imageCredit: 'Foto: Paul Sunción',
             headline: 'Desde Roma mantuvo su vínculo con el Perú y visitó Chulucanas, donde había comenzado su misión en 1985.',
             peru: 'Persistió la crisis de confianza en las instituciones del país.',
@@ -965,7 +974,7 @@
         },
         {
             year: '2025',
-            image: './img/timeline-horizontal/bg-item-2025.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-2025.jpg',
             imageCredit: 'Foto: Paul Sunción',
             headline: 'León XIV fue elegido Papa el 8 de mayo de 2025, en la cuarta votación del cónclave, convirtiéndose en el pontífice número 267 de la Iglesia católica.',
             peru: 'Dina Boluarte anunció el despliegue de 900 policías y 150 militares para enfrentar la violencia criminal en Pataz.',
@@ -973,7 +982,7 @@
         },
         {
             year: '2026',
-            image: './img/timeline-horizontal/bg-item-18.jpg',
+            image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-18.jpg',
             imageCredit: 'Foto: AP',
             headline: 'La Santa Sede anunció una visita apostólica de León XIV al Perú del 11 al 17 de noviembre, con paradas previstas en Lima, Chiclayo, Cusco y Pucallpa.',
             peru: 'Keiko Fujimori ganó las elecciones presidenciales y juró como presidenta de la República el 28 de julio.',
@@ -1036,10 +1045,10 @@
                     '<span class="timeline-h__select-label">Selecciona un ítem</span>' +
                     '<div class="timeline-h__tabs">' +
                         '<button type="button" class="timeline-h__tab-btn is-active" data-tab="peru" aria-pressed="true">' +
-                            '<img src="./img/timeline-horizontal/btn-mapa-activo.png" data-active="./img/timeline-horizontal/btn-mapa-activo.png" data-inactive="./img/timeline-horizontal/btn-mapa-inactivo.png" alt="Perú">' +
+                            '<img src="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/btn-mapa-activo.png" data-active="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/btn-mapa-activo.png" data-inactive="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/btn-mapa-inactivo.png" alt="Perú">' +
                         '</button>' +
                         '<button type="button" class="timeline-h__tab-btn" data-tab="mundo" aria-pressed="false">' +
-                            '<img src="./img/timeline-horizontal/btn-mundo-inactivo.png" data-active="./img/timeline-horizontal/btn-mundo-activo.png" data-inactive="./img/timeline-horizontal/btn-mundo-inactivo.png" alt="Mundo">' +
+                            '<img src="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/btn-mundo-inactivo.png" data-active="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/btn-mundo-activo.png" data-inactive="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/btn-mundo-inactivo.png" alt="Mundo">' +
                         '</button>' +
                     '</div>' +
                     '<div class="timeline-h__panel is-active" data-panel="peru">' +
