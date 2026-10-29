@@ -395,9 +395,11 @@
 
     /* ----- Selección de versión ----- */
 
-    function selectVersion(version) {
+    function selectVersion(version, autoScroll) {
         var data = RECORRIDO_DATA[version];
         if (!data) { return; }
+
+        if (autoScroll === undefined) { autoScroll = true; }
 
         activeVersion = version;
         isMobileLayout = mobileLayoutQuery.matches;
@@ -425,9 +427,11 @@
             setupDesktopTrack(version);
         }
 
-        window.requestAnimationFrame(function () {
-            mapaTrack.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+        if (autoScroll) {
+            window.requestAnimationFrame(function () {
+                mapaTrack.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
     }
 
     /* ----- Switcher de fotos fijo mientras el mapa está en pantalla ----- */
@@ -509,6 +513,39 @@
 
         window.addEventListener('scroll', onScroll, { passive: true });
         window.addEventListener('resize', onResize);
+
+        var versionSelectorWrap = document.getElementById('versionSelectorWrap');
+        if (versionSelectorWrap && 'IntersectionObserver' in window) {
+            var versionSelectorObserver = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting && !activeVersion) {
+                            selectVersion('1', false);
+                            versionSelectorObserver.disconnect();
+                        }
+                    });
+                },
+                { threshold: 0.4 }
+            );
+
+            versionSelectorObserver.observe(versionSelectorWrap);
+        }
+
+        if ('IntersectionObserver' in window) {
+            var mapaPinRevealObserver = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            mapaPin.classList.add('is-revealed');
+                            mapaPinRevealObserver.disconnect();
+                        }
+                    });
+                },
+                { threshold: 0.15 }
+            );
+
+            mapaPinRevealObserver.observe(mapaPin);
+        }
     }
 
     /* ===== Timeline: agenda día por día ===== */

@@ -618,6 +618,17 @@ img, video {
     justify-self: start;
 }
 
+.mapa-pin__info,
+.mapa-pin__visual {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.mapa-pin.is-revealed .mapa-pin__info,
+.mapa-pin.is-revealed .mapa-pin__visual {
+    opacity: 1;
+}
+
 .mapa-pin__mapstack {
     position: relative;
     width: 100%;
