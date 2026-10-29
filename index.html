@@ -85,9 +85,9 @@
 
         <p>No es una visita oficial más. Es el regreso de un hombre que llegó al Perú como misionero, obtuvo la nacionalidad peruana y ahora vuelve como Papa.</p>
 
-        <p>Cuando Robert Prevost aterrizó en el norte del Perú en 1985, traía el hábito sencillo de la orden agustina y una misión pastoral sin fecha de retorno. Con los años, aquel sacerdote que recorría las calles de Chiclayo se convirtió en formador, luego en obispo y, finalmente, en un ciudadano más con DNI peruano tras décadas compartiendo la vida diaria de sus comunidades. Su elección como pontífice en 2025 transformó esa biografía local en un acontecimiento global.</p>
+        <p><span>Cuando Robert Prevost aterrizó en el norte del Perú en 1985</span>, traía el hábito sencillo de la orden agustina y una misión pastoral sin fecha de retorno. Con los años, aquel sacerdote que recorría las calles de Chiclayo <span>se convirtió en formador, luego en obispo y, finalmente, en un ciudadano más con DNI peruano</span> tras décadas compartiendo la vida diaria de sus comunidades. Su elección como pontífice en 2025 transformó esa biografía local en un acontecimiento global.</p>
 
-        <p>Cuatro décadas después de su llegada, vuelve al país con el nombre de León XIV. Su agenda, programada del 11 al 16 de noviembre, trazará un puente entre la memoria y su nuevo rol: recorrerá Lima, Chiclayo, Cusco y Pucallpa. Para el Papa, algunas paradas representarán un regreso a los barrios y templos donde forjó su vocación; para otras regiones, marcarán el primer contacto con un pontífice que conoce de primera mano la realidad del territorio.</p>
+        <p>Cuatro décadas después de su llegada, vuelve al país con el nombre de León XIV. Su agenda, programada del <span>11 al 16 de noviembre, trazará un puente entre la memoria y su nuevo rol: recorrerá Lima, Chiclayo, Cusco y Pucallpa.</span> Para el Papa, algunas paradas representarán un regreso a los barrios y templos donde forjó su vocación; para otras regiones, marcarán el primer contacto con un pontífice que conoce de primera mano la realidad del territorio.</p>
     </section>
 
     <!-- Cintillo fijo: aparece cuando el hero sale del viewport -->
@@ -103,6 +103,26 @@
             <a href="#mural" class="sticky-bar__link">Ver mural</a>
         </nav>
     </header>
+
+    <!-- Cambio rápido de versión visible mientras el mapa está activo (escritorio) -->
+    <div class="mapa-switch" id="mapaSwitch" role="group" aria-label="Cambiar versión del recorrido">
+        <button type="button" class="mapa-switch__item" id="mapaSwitchCard1" data-version="1" aria-pressed="false">
+            <span class="mapa-switch__text" style="align-items: flex-end;">
+                <span class="mapa-switch__title">El Perú de Prevost</span>
+                <span class="mapa-switch__years">1985 - 2020</span>
+            </span>
+            <img src="./img/papa-izq-pin-1.png" alt="" class="mapa-switch__photo">
+            
+        </button>
+
+        <button type="button" class="mapa-switch__item" id="mapaSwitchCard2" data-version="2" aria-pressed="false">
+            <img src="./img/papa-der-pin-2.png" alt="" class="mapa-switch__photo">
+            <span class="mapa-switch__text">
+                <span class="mapa-switch__title">El regreso de León XIV</span>
+                <span class="mapa-switch__years">2026</span>
+            </span>
+        </button>
+    </div>
 
     <!-- Recorrido del Papa -->
     <div class="main-recorrido">

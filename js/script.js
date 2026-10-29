@@ -266,6 +266,8 @@
     var mapaCards = document.getElementById('mapaCards');
     var versionSelector = document.getElementById('versionSelector');
     var versionSelectorWrap = document.getElementById('versionSelectorWrap');
+    var mapaSwitch = document.getElementById('mapaSwitch');
+    var mapaSwitchCards = document.querySelectorAll('.mapa-switch__item');
 
     var mobileLayoutQuery = window.matchMedia('(max-width: 720px)');
 
@@ -452,6 +454,12 @@
             card.setAttribute('aria-pressed', String(isSelected));
         });
 
+        mapaSwitchCards.forEach(function (card) {
+            var isSelected = card.getAttribute('data-version') === version;
+            card.classList.toggle('is-selected', isSelected);
+            card.setAttribute('aria-pressed', String(isSelected));
+        });
+
         mapaPin.classList.toggle('is-right', data.side === 'right');
 
         buildMapStack(version);
@@ -468,8 +476,27 @@
         });
     }
 
+    /* ----- Escritorio: switcher de fotos fijo mientras el mapa está en pantalla ----- */
+
+    function updateMapaSwitchVisibility() {
+        if (!mapaSwitch) { return; }
+
+        if (mobileLayoutQuery.matches || !activeVersion || mapaTrack.hidden) {
+            mapaSwitch.classList.remove('is-visible');
+            return;
+        }
+
+        var stickyOffset = stickyBar ? stickyBar.offsetHeight : 0;
+        mapaSwitch.style.top = stickyOffset + 'px';
+
+        var rect = mapaTrack.getBoundingClientRect();
+        mapaSwitch.classList.toggle('is-visible', rect.top <= stickyOffset && rect.bottom > 0);
+    }
+
     function updateScrollProgress() {
         ticking = false;
+
+        updateMapaSwitchVisibility();
 
         if (!activeVersion || mapaTrack.hidden) { return; }
 
@@ -501,6 +528,12 @@
 
     if (versionCards.length && mapaTrack && mapaPin && mapaStack) {
         versionCards.forEach(function (card) {
+            card.addEventListener('click', function () {
+                selectVersion(card.getAttribute('data-version'));
+            });
+        });
+
+        mapaSwitchCards.forEach(function (card) {
             card.addEventListener('click', function () {
                 selectVersion(card.getAttribute('data-version'));
             });
