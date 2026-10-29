@@ -796,7 +796,7 @@
         {
             year: '1989',
             image: './img/timeline-horizontal/bg-item-3.jpg',
-            imageCredit: 'Foto: ANDINA ',
+            imageCredit: 'Foto: Redes sociales ',
             headline: 'Se consolidó como formador y profesor de religiosos en Trujillo.',
             peru: 'El país enfrentó un mayor deterioro económico y la expansión de la violencia terrorista.',
             mundo: 'Cayó el Muro de Berlín, símbolo del inicio del fin de la Guerra Fría.'
@@ -810,7 +810,7 @@
         {
             year: '1993',
             image: './img/timeline-horizontal/bg-item-5.jpg',
-            imageCredit: 'Foto: ANDINA ',
+            imageCredit: 'Foto: Redes sociales ',
             cover: './img/timeline-horizontal/portada-1993.jpg',
             headline: 'Continuó como formador y profesor en Trujillo.',
             peru: 'Se aprobó la Constitución Política de 1993.',

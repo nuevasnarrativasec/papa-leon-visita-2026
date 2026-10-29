@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Banner — Tras las huellas de León XIV</title>
+
+    <link rel="stylesheet" href="./banner.css">
+</head>
+<body>
+
+    <!-- TODO: reemplazar "#" por la URL final del especial antes de publicar el banner -->
+    <a class="banner" id="banner" href="#" target="_blank" rel="noopener" aria-label="Tras las huellas de León XIV. Ver especial">
+
+        <video class="banner__video" id="bannerVideo" autoplay muted playsinline>
+            <source src="../video/video-banner-movil.mp4" type="video/mp4" media="(max-width: 720px)">
+            <source src="../video/video-banner-desktop.mp4" type="video/mp4">
+        </video>
+
+        <div class="banner__countdown" id="bannerCountdown">
+            <div class="banner__countdown-info">
+                <p class="banner__countdown-title">Llegada de <strong>León XIV</strong></p>
+                <span class="banner__countdown-cta">Ver especial</span>
+            </div>
+
+            <div class="banner__countdown-box" role="timer" aria-label="Cuenta regresiva para la llegada de León XIV">
+                <div class="banner__countdown-item">
+                    <span class="banner__countdown-label">Días</span>
+                    <span class="banner__countdown-value" id="bannerDays">00</span>
+                </div>
+                <div class="banner__countdown-item">
+                    <span class="banner__countdown-label">Horas</span>
+                    <span class="banner__countdown-value" id="bannerHours">00</span>
+                </div>
+                <div class="banner__countdown-item">
+                    <span class="banner__countdown-label">Min</span>
+                    <span class="banner__countdown-value" id="bannerMins">00</span>
+                </div>
+            </div>
+        </div>
+    </a>
+
+    <script src="./banner.js"></script>
+</body>
+</html>
