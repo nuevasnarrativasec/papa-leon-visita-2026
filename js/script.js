@@ -930,8 +930,8 @@
             image: './img/timeline-horizontal/bg-item-2025.jpg',
             imageCredit: 'Foto: Paul Sunción',
             headline: 'León XIV fue elegido Papa el 8 de mayo de 2025, en la cuarta votación del cónclave, convirtiéndose en el pontífice número 267 de la Iglesia católica.',
-            peru: 'xxxxx',
-            mundo: 'xxxxx'
+            peru: 'Dina Boluarte anunció el despliegue de 900 policías y 150 militares para enfrentar la violencia criminal en Pataz.',
+            mundo: 'En mayo de 2025, Donald Trump y el primer ministro británico Keir Starmer anunciaron un acuerdo comercial.'
         },
         {
             year: '2026',
