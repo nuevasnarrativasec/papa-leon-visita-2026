@@ -263,7 +263,7 @@
     var mapaTrack = document.getElementById('mapaTrack');
     var mapaPin = document.getElementById('mapaPin');
     var mapaStack = document.getElementById('mapaStack');
-    var mapaInfo = document.getElementById('mapaInfo');
+    var mapaCards = document.getElementById('mapaCards');
     var versionSelector = document.getElementById('versionSelector');
     var versionSelectorWrap = document.getElementById('versionSelectorWrap');
 
@@ -346,12 +346,12 @@
         var data = RECORRIDO_DATA[version];
         setActiveMapImage(Math.max(index, 0));
 
-        var previousCard = mapaInfo.querySelector('.mapa-card');
+        var previousCard = mapaCards.querySelector('.mapa-card');
         if (previousCard) { previousCard.classList.remove('is-visible'); }
 
         if (index < 0) {
             window.setTimeout(function () {
-                if (currentStopIndex < 0) { mapaInfo.innerHTML = ''; }
+                if (currentStopIndex < 0) { mapaCards.innerHTML = ''; }
             }, previousCard ? 400 : 0);
             return;
         }
@@ -360,9 +360,9 @@
         if (!stop) { return; }
 
         window.setTimeout(function () {
-            mapaInfo.innerHTML = buildCardHTML(stop);
+            mapaCards.innerHTML = buildCardHTML(stop);
             window.requestAnimationFrame(function () {
-                var newCard = mapaInfo.querySelector('.mapa-card');
+                var newCard = mapaCards.querySelector('.mapa-card');
                 if (newCard) { newCard.classList.add('is-visible'); }
             });
         }, previousCard ? 180 : 0);
@@ -370,9 +370,9 @@
 
     function setupDesktopTrack(version) {
         var data = RECORRIDO_DATA[version];
-        mapaTrack.style.height = ((data.stops.length + 1) * 100) + 'vh';
-        currentStopIndex = -1;
-        renderStopDesktop(version, -1);
+        mapaTrack.style.height = (data.stops.length * 100) + 'vh';
+        currentStopIndex = 0;
+        renderStopDesktop(version, 0);
     }
 
     function updateDesktopProgress() {
@@ -385,10 +385,9 @@
         var progress = (-rect.top) / totalScrollable;
         progress = Math.min(Math.max(progress, 0), 1);
 
-        var segments = data.stops.length + 1;
-        var index = Math.floor(progress * segments) - 1;
-        index = Math.min(index, data.stops.length - 1);
-        index = Math.max(index, -1);
+        var segments = data.stops.length - 1;
+        var index = segments > 0 ? Math.floor(progress * segments) : 0;
+        index = Math.min(Math.max(index, 0), data.stops.length - 1);
 
         if (index !== currentStopIndex) {
             currentStopIndex = index;
@@ -413,14 +412,14 @@
             html += '<div class="mapa-stack-spacer" data-stop-index="' + i + '" aria-hidden="true"></div>';
             html += buildCardHTML(stop);
         });
-        mapaInfo.innerHTML = html;
+        mapaCards.innerHTML = html;
 
         currentStopIndex = -1;
         setActiveMapImage(0);
     }
 
     function updateMobileProgress() {
-        var spacers = mapaInfo.querySelectorAll('.mapa-stack-spacer');
+        var spacers = mapaCards.querySelectorAll('.mapa-stack-spacer');
         if (!spacers.length) { return; }
 
         var threshold = window.innerHeight * 0.5;
@@ -906,9 +905,9 @@
             year: '2021',
             image: './img/timeline-horizontal/bg-item-2021.jpg',
             imageCredit: 'Foto: Caritas Chiclayo',
-            headline: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
-            peru: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
-            mundo: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'
+            headline: 'En la Diócesis de Chiclayo, el obispo Prevost trabajó en acciones concretas durante la emergencia por la pandemia del COVID-19, destacando su labor en la junta directiva de Cáritas del Perú. Impulsó obras sociales, visitas a los sectores más vulnerables, entrega de alimentos y refugio. Inauguró y bendijo una planta de oxígeno medicinal en el distrito de Mochumí, en la provincia de Lambayeque.  ',
+            peru: 'El presidente Castillo termina el 2021 involucrado en chats que revelaban presiones desde el gobierno para imponer ascensos militares. ',
+            mundo: 'El 2021 los talibanes retomaron el poder en Afganistán tras 20 años; en tanto, Angela Merkel dejó la cancillería alemana luego de 16 años. Fuente: Archivo El Comercio'
         },
         {
             year: '2022',

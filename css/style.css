@@ -566,11 +566,17 @@ img, video {
 .mapa-pin__info {
     max-height: calc(100svh - 96px);
     overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.mapa-pin__info::-webkit-scrollbar {
+    display: none;
 }
 
 .mapa-card {
     position: relative;
-    margin-top: 56px;
+    margin-top: 10px;
     border: 1px solid var(--color-border);
     border-radius: 18px;
     background: var(--color-white);
@@ -936,10 +942,16 @@ img, video {
         margin: 30px auto;
         max-width: 150px;
     }
-    #mapaTrack img.hint-scroll-mapa{
+    /* Centrado sobre la tarjeta: hereda el ancho y el lado (izq./der.)
+       de .mapa-pin__info, que ya se espeja con .mapa-pin.is-right */
+    .mapa-pin__hint {
+        pointer-events: none;
+    }
+
+    #mapaTrack img.hint-scroll-mapa {
+        display: block;
+        margin: 0 auto;
         max-width: 150px;
-        position: absolute;        
-        top: 50px;
     }
 
 /* ===== Símbolos pineados por scroll ===== */
@@ -1619,11 +1631,11 @@ img, video {
     }
 
     .version-card {
-        width: 31%;
+        width: 40%;
     }
 
     .version-selector.is-pinned .version-card {
-        width: 37%;
+        width: 40%;
     }
 
     #versionSelector:has(.is-selected) .version-card:not(.is-selected) {
@@ -1734,11 +1746,11 @@ img, video {
 
     .hero {
         min-height: auto;
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 5 / 9;
     }
 
     .hero__scroll {
-        display: none;
+        /*display: none;*/
     }
 
     .audio-toggle {
@@ -1799,7 +1811,7 @@ img, video {
         max-width: 133px;
     }
     span.video-ia{
-        bottom: 65px;
+        bottom: 215px;
         right: -55px;       
         transform: rotate(-90deg);        
     }

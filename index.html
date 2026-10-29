@@ -35,6 +35,7 @@
         <nav class="top-bar__right" aria-label="Enlaces externos">
             <a href="#ultimas-noticias" class="top-bar__link btn-1-top-bar">Últimas noticias</a>
             <a href="#agenda" class="top-bar__link">Agenda</a>
+            <a href="#mural" class="top-bar__link">Ver mural</a>
         </nav>
     </header>
 
@@ -42,6 +43,7 @@
     <section class="hero" id="hero">
         <span class="video-ia">video generado con IA</span>
         <video class="hero__video" id="heroVideo" autoplay muted loop playsinline>
+            <source src="./video/video-movil.mp4" type="video/mp4" media="(max-width: 720px)">
             <source src="./video/video-desktop.mp4" type="video/mp4">
         </video>
         <audio id="himnoAudio" src="./audio/himno-papa.mp3" loop preload="none"></audio>
@@ -140,10 +142,14 @@
        
         <div class="mapa-pin" id="mapaPin">
             
-            <div class="mapa-pin__info" id="mapaInfo"></div>
+            <div class="mapa-pin__info" id="mapaInfo">
+                <div class="mapa-pin__hint">
+                    <img src="./img/hint-scroll.png" alt="" width="100%" class="hint-scroll hint-scroll-mapa">
+                </div>
+                <div class="mapa-pin__cards" id="mapaCards"></div>
+            </div>
 
             <div class="mapa-pin__visual">
-                <img src="./img/hint-scroll.png" alt="" width="100%" class="hint-scroll hint-scroll-mapa">
                 <div class="mapa-pin__mapstack" id="mapaStack"></div>
             </div>
         </div>
