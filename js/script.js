@@ -489,8 +489,13 @@
         var stickyOffset = stickyBar ? stickyBar.offsetHeight : 0;
         mapaSwitch.style.top = stickyOffset + 'px';
 
-        var rect = mapaTrack.getBoundingClientRect();
-        mapaSwitch.classList.toggle('is-visible', rect.top <= stickyOffset && rect.bottom > 0);
+        /* .mapa-pin es sticky con top:0. Mientras está realmente "pegado"
+           su rect.top se mantiene en 0; al acercarse el final del track se
+           despega y empieza a desplazarse hacia arriba con la página (top
+           negativo), que es justo cuando no debe superponerse al mapa. */
+        var pinRect = mapaPin.getBoundingClientRect();
+        var isPinned = pinRect.top <= 0 && pinRect.top > -2;
+        mapaSwitch.classList.toggle('is-visible', isPinned);
     }
 
     function updateScrollProgress() {
