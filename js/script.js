@@ -959,7 +959,7 @@
         {
             year: '2022',
             image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-16.jpg',
-            imageCredit: 'Foto: Archivo Diócesis de Chiclayo ',
+            imageCredit: 'Foto: Diócesis de Chiclayo ',
             headline: 'Continuó su labor pastoral en Chiclayo, visitando parroquias y comunidades como Tumán.',
             peru: 'Pedro Castillo intentó disolver el Congreso, fue detenido y Dina Boluarte asumió la presidencia.',
             mundo: 'Rusia inició una invasión a gran escala de Ucrania, desencadenando una guerra de repercusión mundial.'
@@ -975,7 +975,7 @@
         {
             year: '2025',
             image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-2025.jpg',
-            imageCredit: 'Foto: Paul Sunción',
+            imageCredit: 'Foto: Gettyimage',
             headline: 'León XIV fue elegido Papa el 8 de mayo de 2025, en la cuarta votación del cónclave, convirtiéndose en el pontífice número 267 de la Iglesia católica.',
             peru: 'Dina Boluarte anunció el despliegue de 900 policías y 150 militares para enfrentar la violencia criminal en Pataz.',
             mundo: 'En mayo de 2025, Donald Trump y el primer ministro británico Keir Starmer anunciaron un acuerdo comercial.'
@@ -983,7 +983,7 @@
         {
             year: '2026',
             image: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/timeline-horizontal/bg-item-18.jpg',
-            imageCredit: 'Foto: AP',
+            imageCredit: 'Foto: Gettyimage',
             headline: 'La Santa Sede anunció una visita apostólica de León XIV al Perú del 11 al 17 de noviembre, con paradas previstas en Lima, Chiclayo, Cusco y Pucallpa.',
             peru: 'Keiko Fujimori ganó las elecciones presidenciales y juró como presidenta de la República el 28 de julio.',
             mundo: 'Trump intensificó las redadas del ICE y las deportaciones de inmigrantes en Estados Unidos, desatando protestas.'
