@@ -212,7 +212,7 @@ span.separador{
 @media (max-width: 720px) {
     .banner {
         max-width: 440px;
-        aspect-ratio: 440 / 300;
+        aspect-ratio: 440 / 400;
         background-image: url('../img/bg-banner-movil.jpg');
     }
 
