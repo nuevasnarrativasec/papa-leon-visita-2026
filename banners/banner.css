@@ -176,9 +176,10 @@ html, body {
 span.separador{
     background-color: #c2c2c2;
     display: inline-block;
-    height: 80px;
+    height: 50px;
     vertical-align: top;
     width: 1px;
+    margin-top: 10px;
 }
 
 .banner__countdown-item + .banner__countdown-item {
@@ -241,7 +242,7 @@ span.separador{
         width: 100%;
         max-width: 320px;
         gap: 0;
-        padding: 0;
+        padding: 5px 0;
         border-radius: 55px;
     }
 
@@ -252,6 +253,7 @@ span.separador{
 
     .banner__countdown-value {
         font-size: 52px;
+        margin-top: 2px;
     }
 
     .banner__text {
@@ -265,6 +267,7 @@ span.separador{
     .banner__title-group {
         flex: 1 1 0;
         min-width: 0;
+        gap: 4px;
     }
 
     .banner__pretitle {
