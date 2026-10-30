@@ -205,7 +205,7 @@
                 {
                     date: '16 de noviembre · Lima',
                     tagline: 'El final de una visita, la continuidad de un vínculo',
-                    photo: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-1-mapa-der.jpg',
+                    photo: 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/foto-info-5-mapa-der.jpg',
                     photoAlt: '',
                     paragraphs: [
                         'León XIV concluirá su primera visita al Perú como pontífice en la capital. Su paso por el país habrá unido ciudades fundamentales en su trayectoria pastoral con nuevos destinos, reflejando una relación con el Perú que trasciende su elección como Papa.'
