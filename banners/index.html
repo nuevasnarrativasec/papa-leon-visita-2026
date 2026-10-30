@@ -11,33 +11,43 @@
 <body>
 
     <!-- Reemplazar "#" por la URL final del especial antes de publicar el banner -->
-    <a class="banner" id="banner" href="#" target="_blank" rel="noopener" aria-label="Tras las huellas de León XIV. Ver especial">
+    <a class="banner" id="banner" href="https://elcomercio.pe/papa-leon-xiv-visita-peru-2026-robert-prevost/" target="_blank" rel="noopener" aria-label="Tras las huellas de León XIV. Ver especial">
 
-        <video class="banner__video" id="bannerVideo" autoplay muted playsinline>
-            <source src="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/video/video-banner-movil.mp4" type="video/mp4" media="(max-width: 720px)">
-            <source src="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/video/video-banner-desktop.mp4" type="video/mp4">
-        </video>
+        <div class="banner__content">
 
-        <div class="banner__countdown" id="bannerCountdown">
-            <div class="banner__countdown-info">
-                <p class="banner__countdown-title">Llegada de <strong>León XIV</strong></p>
-                <span class="banner__countdown-cta">Ver especial</span>
+            <div class="banner__text">
+                <div class="banner__title-group">
+                    <p class="banner__pretitle">Tras las huellas de</p>
+                    <h2 class="banner__title">LEÓN XIV</h2>
+                </div>
+                <span class="banner__cta">Ver especial</span>
             </div>
 
-            <div class="banner__countdown-box" role="timer" aria-label="Cuenta regresiva para la llegada de León XIV">
-                <div class="banner__countdown-item">
-                    <span class="banner__countdown-label">Días</span>
-                    <span class="banner__countdown-value" id="bannerDays">00</span>
-                </div>
-                <div class="banner__countdown-item">
-                    <span class="banner__countdown-label">Horas</span>
-                    <span class="banner__countdown-value" id="bannerHours">00</span>
-                </div>
-                <div class="banner__countdown-item">
-                    <span class="banner__countdown-label">Min</span>
-                    <span class="banner__countdown-value" id="bannerMins">00</span>
+            <div class="banner__pope-wrap">
+                <img class="banner__pope" src="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/papa-calado-banner.png" alt="">
+            </div>
+
+            <div class="banner__countdown">
+                <p class="banner__countdown-title">Llegada del Papa</p>
+
+                <div class="banner__countdown-box" role="timer" aria-label="Cuenta regresiva para la llegada de León XIV">
+                    <div class="banner__countdown-item">
+                        <span class="banner__countdown-label">Días</span>
+                        <span class="banner__countdown-value" id="bannerDays">00</span>
+                    </div>
+                    <span class="separador"></span>
+                    <div class="banner__countdown-item">
+                        <span class="banner__countdown-label">Horas</span>
+                        <span class="banner__countdown-value" id="bannerHours">00</span>
+                    </div>
+                    <span class="separador"></span>
+                    <div class="banner__countdown-item">
+                        <span class="banner__countdown-label">Min</span>
+                        <span class="banner__countdown-value" id="bannerMins">00</span>
+                    </div>
                 </div>
             </div>
+
         </div>
     </a>
 

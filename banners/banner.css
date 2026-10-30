@@ -33,6 +33,7 @@
 
     --font-sans: 'Prelo Bold', Arial, Helvetica, sans-serif;
     --font-serif-bold: 'Chronicle Display Bold', Georgia, 'Times New Roman', serif;
+    --font-serif-black: 'Chronicle Display Black', Georgia, 'Times New Roman', serif;
 }
 
 html, body {
@@ -41,92 +42,124 @@ html, body {
     background: transparent;
 }
 
-/* ===== Banner: contenedor con el aspecto del video desktop ===== */
+/* ===== Banner: contenedor estático con fondo e imagen del Papa ===== */
 
 .banner {
     position: relative;
     display: block;
     width: 100%;
     max-width: 1290px;
-    aspect-ratio: 1290 / 394;
+    aspect-ratio: 1290 / 173;
     margin: 0 auto;
     overflow: hidden;
-    background: var(--color-gold);
+    background: url('../img/bg-banner-desktop.jpg') center / cover no-repeat, var(--color-gold);
     text-decoration: none;
 }
 
-.banner__video {
-    position: absolute;
-    inset: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* ===== Countdown: aparece cuando el video termina ===== */
-
-.banner__countdown {
-    position: absolute;
-    inset: 0;
+.banner__content {
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 24px;
-    padding: 0 56px;
-    background: url('../img/bg-banner-desktop.jpg') center / cover no-repeat;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.6s ease;
+    width: 100%;
+    height: 100%;
+    padding: 0 48px;
 }
 
-.banner__countdown.is-visible {
-    opacity: 1;
-    pointer-events: auto;
-}
+/* ===== Bloque de texto: pretítulo + título + botón ===== */
 
-.banner__countdown-info {
+.banner__text {
     display: flex;
     flex: 0 0 auto;
     flex-direction: column;
     align-items: flex-start;
-    gap: 18px;
+    gap: 5px;
+    z-index: 2;
+}
+
+.banner__title-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.banner__pretitle {
+    margin: 0;
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.banner__title {
+    margin: 4px 0 0;
+    color: var(--color-white);
+    font-family: var(--font-serif-black);
+    font-weight: normal;
+    font-size: 64px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.banner__cta {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #0c0c0c;
+    color: var(--color-white);
+    font-family: var(--font-serif-bold);
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+/* ===== Imagen del Papa: ocupa el espacio entre el texto y el contador ===== */
+
+.banner__pope-wrap {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    align-self: stretch;
+    z-index: 1;
+}
+
+.banner__pope {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    height: 100%;
+    width: auto;
+    max-width: none;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+/* ===== Contador ===== */
+
+.banner__countdown {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    z-index: 2;
 }
 
 .banner__countdown-title {
     margin: 0;
     color: var(--color-white);
     font-family: var(--font-sans);
-    font-size: 53px;
+    font-size: 18px;
     font-weight: 400;
-    line-height: 1.2;
-}
-
-.banner__countdown-title strong {
-    margin-top: 4px;
-    font-family: 'Chronicle Display Black';
-    font-weight: normal;
-}
-
-.banner__countdown-cta {
-    display: inline-block;
-    padding: 14px 32px;
-    background: #0c0c0c;
-    color: var(--color-white);
-    font-family: arial;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
     white-space: nowrap;
 }
 
 .banner__countdown-box {
     display: flex;
     align-items: stretch;
-    gap: 32px;
-    padding: 22px 36px;
-    border-radius: 28px;
+    gap: 14px;
+    padding: 10px 24px;
+    border-radius: 64px;
     background: var(--color-white);
     box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
 }
@@ -136,8 +169,16 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 14px;
+    padding: 0 15px;
     line-height: 1;
+}
+
+span.separador{
+    background-color: #c2c2c2;
+    display: inline-block;
+    height: 80px;
+    vertical-align: top;
+    width: 1px;
 }
 
 .banner__countdown-item + .banner__countdown-item {
@@ -146,73 +187,106 @@ html, body {
 
 .banner__countdown-label {
     font-family: arial;
-    font-size: 15px;
+    font-size: 13px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--color-black);
+    white-space: nowrap;
 }
 
 .banner__countdown-value {
-    margin-top: 8px;
+    margin-top: 6px;
     font-family: var(--font-serif-bold);
-    font-size: 64px;
+    font-size: 54px;
     color: var(--color-gold);
 }
 
-/* ===== Versión móvil: usa el video y el aspecto del video móvil ===== */
+/* ===== Cuando el contador llega a cero: se oculta y el Papa ocupa el espacio libre ===== */
+
+.banner--arrived .banner__countdown {
+    display: none;
+}
+
+/* ===== Versión móvil: sin imagen del Papa, contador arriba y texto abajo ===== */
 
 @media (max-width: 720px) {
     .banner {
         max-width: 440px;
-        aspect-ratio: 440 / 852;
-    }
-
-    .banner__countdown {
-        flex-direction: column;
-        justify-content: center;
-        padding: 48px 28px;
-        gap: 36px;
+        aspect-ratio: 440 / 300;
         background-image: url('../img/bg-banner-movil.jpg');
     }
 
-    .banner__countdown-info {
-        align-items: center;
+    .banner__content {
+        flex-direction: column;
+        justify-content: center;
+        padding: 48px 28px;
+        gap: 30px;
+    }
+
+    .banner__pope-wrap {
+        display: none;
+    }
+
+    .banner__countdown {
+        order: -1;
+        width: 100%;
     }
 
     .banner__countdown-title {
-        text-align: center;
-        font-size: 48px;
-    }
-
-    .banner__countdown-title strong {
-        font-size: 60px;
-        display: block;
-    }
-
-    .banner__countdown-cta {
-        padding: 12px 26px;
-        font-size: 17px;
+        font-size: 22px;
     }
 
     .banner__countdown-box {
-        flex-direction: column;
         width: 100%;
-        max-width: 230px;
+        max-width: 320px;
         gap: 0;
-        padding: 24px 0;
+        padding: 20px 0;
         border-radius: 32px;
     }
 
     .banner__countdown-item {
-        padding: 20px 0;
-    }
-
-    .banner__countdown-item + .banner__countdown-item {
-        border-left: none;
-        border-top: 1px solid var(--color-border);
+        flex: 1 1 0;
+        padding: 0 8px;
     }
 
     .banner__countdown-value {
-        font-size: 64px;
+        font-size: 52px;
+    }
+
+    .banner__text {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .banner__title-group {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .banner__pretitle {
+        font-size: 19px;
+        white-space: normal;
+    }
+
+    .banner__title {
+        font-size: 48px;
+        white-space: normal;
+    }
+
+    .banner__cta {
+        flex: 0 0 auto;
+        padding: 11px 18px;
+        font-size: 14px;
+    }
+
+    .banner--arrived {
+        aspect-ratio: 440 / 180;
+    }
+
+    .banner--arrived .banner__content {
+        padding: 24px 28px;
     }
 }
