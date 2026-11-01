@@ -11,8 +11,7 @@
     }
 
     /* ===== Contador regresivo ===== */
-    // TODO: confirmar fecha/hora oficial de llegada de León XIV al Perú.
-    var TARGET_DATE = new Date('2026-11-11T08:00:00-05:00');
+    var TARGET_DATE = new Date('2026-11-11T17:30:00-05:00');
 
     var countdownEl = document.getElementById('countdown');
     var daysEl = document.getElementById('cd-days');

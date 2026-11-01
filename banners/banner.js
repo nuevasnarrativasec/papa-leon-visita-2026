@@ -2,7 +2,7 @@
     'use strict';
 
     /* Debe coincidir con TARGET_DATE en js/script.js del sitio principal */
-    var TARGET_DATE = new Date('2026-11-11T08:00:00-05:00');
+    var TARGET_DATE = new Date('2026-11-11T17:30:00-05:00');
 
     var banner = document.getElementById('banner');
     var daysEl = document.getElementById('bannerDays');
