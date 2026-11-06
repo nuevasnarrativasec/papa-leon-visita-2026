@@ -592,7 +592,8 @@
                 { time: '10:30 a. m.', text: 'Misa en las Pampas de Pimentel' },
                 { time: '12:40 p. m.', text: 'Visita privada a la capilla San Óscar Romero' },
                 { time: '4:30 p. m.', text: 'Encuentro en el Santuario Nuestra Señora de la Paz' },
-                { time: '5:45 p. m.', text: 'Encuentro universitario en la USAT' }
+                { time: '5:45 p. m.', text: 'Encuentro universitario en la USAT' },
+                { time: '7:00 p. m.', text: 'Cena con los sacerdotes de la Diócesis de Chiclayo en el Colegio “Santo Toribio de Mogrovejo”' }
             ]
         },
         {
