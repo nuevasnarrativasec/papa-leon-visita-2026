@@ -315,6 +315,7 @@ img, video {
         display: block;
         margin: 40px auto 0;
         max-width: 450px;
+        height: auto;
     }
     .box-main-logo p{
         color: #A68939;
@@ -435,6 +436,7 @@ img, video {
         display: block;
         margin: 20px auto 0;
         max-width: 100px;
+        height: auto;
     }
 
 /* ===== Selector de versión (antes / después de ser Papa) ===== */
@@ -1045,6 +1047,7 @@ img, video {
         display: block;
         margin: 40px auto;
         max-width: 450px;
+        height: auto;
     }
 .main-ultimas-noticias{
     margin-top: 80px;
@@ -1057,6 +1060,7 @@ img, video {
         display: block;
         margin: 30px auto;
         max-width: 180px;
+        height: auto;
     }
     /* Centrado sobre la tarjeta: hereda el ancho y el lado (izq./der.)
        de .mapa-pin__info, que ya se espeja con .mapa-pin.is-right */
@@ -1068,6 +1072,7 @@ img, video {
         display: block;
         margin: 0 auto;
         max-width: 150px;
+        height: auto;
     }
 
 /* ===== Símbolos pineados por scroll ===== */
@@ -1186,6 +1191,7 @@ img, video {
         display: block;
         margin: 30px auto;
         max-width: 100px;
+        height: auto;
     }
 
 /* ===== Mural: galería horizontal con scroll clásico ===== */
@@ -1614,11 +1620,14 @@ img, video {
     }
         .main-infodraws ul li{
             margin: 15px;
+            width: 300px;
             max-width: 300px;
             display: inline-block;
             vertical-align: top;
         }
             .main-infodraws ul li img{
+                width: 100%;
+                height: auto;
                 cursor: pointer;
             }
 
@@ -1694,6 +1703,7 @@ img, video {
         }
             .main-infodraws ul li img{
                 width: 100%;
+                height: auto;
                 cursor: default;
             }
 
@@ -2114,4 +2124,13 @@ img, video {
         font-family: arial;
         font-size: 10px;    
     }
+}
+
+
+@media (max-width: 640px) {
+
+    img.logo-papa{
+        width: 100%;
+    }
+
 }

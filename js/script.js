@@ -217,7 +217,7 @@
         }
     };
 
-    var FOOTPRINTS_ICON = '<img class="mapa-card__badge-footprints" src="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/huella-icon.png" alt="" aria-hidden="true">';
+    var FOOTPRINTS_ICON = '<img class="mapa-card__badge-footprints" src="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/huella-icon.png" width="95" height="119" alt="" aria-hidden="true">';
 
     var MEDIA_PLACEHOLDER = '<div class="mapa-card__media-placeholder">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">' +
@@ -236,7 +236,7 @@
 
     function buildCardHTML(stop) {
         var media = stop.photo
-            ? '<img src="' + stop.photo + '" alt="' + escapeHTML(stop.photoAlt || '') + '">'
+            ? '<img src="' + stop.photo + '" width="912" height="552" alt="' + escapeHTML(stop.photoAlt || '') + '">'
             : MEDIA_PLACEHOLDER;
 
         var html = '<article class="mapa-card">';
@@ -291,6 +291,8 @@
         for (var i = 1; i <= data.mapCount; i++) {
             var img = document.createElement('img');
             img.src = 'https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/img/mapa/mapa-' + i + '-' + data.mapPrefix + '.png';
+            img.width = 1395;
+            img.height = 2062;
             img.alt = '';
             img.setAttribute('aria-hidden', 'true');
             mapaStack.appendChild(img);
@@ -539,6 +541,29 @@
             versionSelectorObserver.observe(versionSelectorWrap);
         }
 
+        /* ----- Enlaces internos (top-bar / sticky-bar): el mapa pineado
+           está oculto hasta que se elige una versión, y al revelarse suma
+           varias pantallas de alto (mapaTrack.style.height). Si eso ocurre
+           a mitad del scroll automático hacia un ancla posterior (p. ej.
+           "Ten en cuenta"), el destino se desplaza y el salto queda corto.
+           Por eso se resuelve la versión por defecto antes de desplazar. ----- */
+        document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                var targetId = link.getAttribute('href').slice(1);
+                var target = targetId && document.getElementById(targetId);
+                if (!target) { return; }
+
+                e.preventDefault();
+
+                if (!activeVersion) {
+                    selectVersion('1', false);
+                }
+
+                history.pushState(null, '', '#' + targetId);
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
         if (mapaPinVisual && 'IntersectionObserver' in window) {
             var mapaPinRevealObserver = new IntersectionObserver(
                 function (entries) {
@@ -637,7 +662,7 @@
 
     function buildTimelineDayHTML(day, isLast) {
         var html = '<div class="timeline-day">';
-        html += '<div class="timeline-day__stamp"><img src="' + day.stamp + '" alt="' + escapeHTML(day.place) + '"></div>';
+        html += '<div class="timeline-day__stamp"><img src="' + day.stamp + '" width="1502" height="914" alt="' + escapeHTML(day.place) + '"></div>';
         html += '<div class="timeline-day__daycol">';
         html += '<span class="timeline-day__name">' + escapeHTML(day.dayName) + '</span>';
         html += '<span class="timeline-day__num">' + escapeHTML(day.dayNumber) + '</span>';
@@ -659,7 +684,7 @@
     function buildTimelineConnectorHTML(index) {
         return '<div class="timeline-connector" id="timeline-connector-' + index + '">' +
             '<div class="timeline-connector__footprints">' +
-            '<img class="timeline-footprints" src="' + FOOTPRINTS_SRC + '" alt="" aria-hidden="true" width="100%">' +
+            '<img class="timeline-footprints" src="' + FOOTPRINTS_SRC + '" alt="" aria-hidden="true" width="508" height="571">' +
             '</div>' +
             '<div class="timeline-connector__line-cell"><span class="timeline-connector__line" aria-hidden="true"></span></div>' +
             '</div>';
