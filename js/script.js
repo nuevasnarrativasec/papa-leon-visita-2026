@@ -1147,55 +1147,70 @@
         window.addEventListener('pointercancel', endTimelineHDrag);
     }
 
-    /* ----- Mural: el scroll vertical empuja el mural horizontalmente -----
-       La sección se pinea a pantalla completa; mientras su contenedor
-       (más alto que un viewport) sigue pasando por debajo, el track se
-       traslada en X según el progreso de ese scroll, hasta agotarlo. */
+    /* ----- Mural: arrastre con el cursor del mouse (grab / grabbing) ----- */
     var muralH = document.getElementById('muralH');
-    var muralHPin = document.getElementById('muralHPin');
-    var muralHTrack = document.getElementById('muralHTrack');
 
-    if (muralH && muralHPin && muralHTrack) {
-        var muralMaxScroll = 0;
-        var muralTicking = false;
+    if (muralH) {
+        var muralDragging = false;
+        var muralDragStartX = 0;
+        var muralDragStartScroll = 0;
 
-        function setupMuralTrack() {
-            var viewportWidth = muralHPin.clientWidth;
-            muralMaxScroll = Math.max(muralHTrack.scrollWidth - viewportWidth, 0);
-            muralH.style.height = (window.innerHeight + muralMaxScroll) + 'px';
-            updateMuralProgress();
+        muralH.addEventListener('pointerdown', function (e) {
+            if (e.pointerType !== 'mouse') { return; }
+            muralDragging = true;
+            muralDragStartX = e.clientX;
+            muralDragStartScroll = muralH.scrollLeft;
+            muralH.classList.add('is-grabbing');
+        });
+
+        window.addEventListener('pointermove', function (e) {
+            if (!muralDragging) { return; }
+            var delta = e.clientX - muralDragStartX;
+            muralH.scrollLeft = muralDragStartScroll - delta;
+        });
+
+        function endMuralDrag() {
+            muralDragging = false;
+            muralH.classList.remove('is-grabbing');
         }
 
-        function updateMuralProgress() {
-            muralTicking = false;
-            if (muralMaxScroll <= 0) { return; }
+        window.addEventListener('pointerup', endMuralDrag);
+        window.addEventListener('pointercancel', endMuralDrag);
+    }
 
-            var rect = muralH.getBoundingClientRect();
-            var progress = -rect.top / muralMaxScroll;
-            progress = Math.min(Math.max(progress, 0), 1);
+    /* ----- Infodraws: en desktop, clic en la imagen abre un popup ----- */
+    var infodrawLightbox = document.getElementById('infodrawLightbox');
+    var infodrawLightboxImg = document.getElementById('infodrawLightboxImg');
+    var infodrawLightboxClose = document.getElementById('infodrawLightboxClose');
+    var infodrawImgs = document.querySelectorAll('.main-infodraws ul li img');
 
-            muralHTrack.style.transform = 'translateX(' + (-progress * muralMaxScroll) + 'px)';
+    if (infodrawLightbox && infodrawLightboxImg && infodrawImgs.length) {
+        var isInfodrawDesktop = function () {
+            return window.matchMedia('(min-width: 721px)').matches;
+        };
+
+        infodrawImgs.forEach(function (img) {
+            img.addEventListener('click', function () {
+                if (!isInfodrawDesktop()) { return; }
+                infodrawLightboxImg.src = img.src;
+                infodrawLightboxImg.alt = img.alt || '';
+                infodrawLightbox.hidden = false;
+            });
+        });
+
+        function closeInfodrawLightbox() {
+            infodrawLightbox.hidden = true;
+            infodrawLightboxImg.src = '';
         }
 
-        function onMuralScroll() {
-            if (!muralTicking) {
-                muralTicking = true;
-                window.requestAnimationFrame(updateMuralProgress);
-            }
+        if (infodrawLightboxClose) {
+            infodrawLightboxClose.addEventListener('click', closeInfodrawLightbox);
         }
-
-        setupMuralTrack();
-        window.addEventListener('load', setupMuralTrack);
-        window.addEventListener('resize', setupMuralTrack);
-        window.addEventListener('scroll', onMuralScroll, { passive: true });
-
-        /* Los tiles miden 100% de alto y ancho automático: su ancho real
-           se conoce recién al cargar cada imagen, así que recalculamos el
-           alto del contenedor a medida que van llegando. */
-        muralHTrack.querySelectorAll('img').forEach(function (img) {
-            if (!img.complete) {
-                img.addEventListener('load', setupMuralTrack);
-            }
+        infodrawLightbox.addEventListener('click', function (e) {
+            if (e.target === infodrawLightbox) { closeInfodrawLightbox(); }
+        });
+        window.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !infodrawLightbox.hidden) { closeInfodrawLightbox(); }
         });
     }
 })();

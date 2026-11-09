@@ -393,7 +393,8 @@ img, video {
     .main-simbolos h3,
     .main-timeline-horizontal h3,
     .main-ultimas-noticias h3,
-    .main-mural h3{
+    .main-mural h3,
+    .main-infodraws h3{
         color: #A68939;
         font: 2rem/1.3 'Chronicle Display Black';
         text-align: center;
@@ -1165,30 +1166,45 @@ img, video {
         max-width: 100px;
     }
 
-/* ===== Mural: galería horizontal controlada por el scroll vertical =====
-   La sección se "pinea" a pantalla completa y, mientras el usuario sigue
-   haciendo scroll hacia abajo, el track se desplaza horizontalmente
-   (ver updateMuralProgress en script.js) hasta mostrar el mural completo. */
+/* ===== Mural: galería horizontal con scroll clásico ===== */
 
 .mural-h {
     position: relative;
     width: 100%;
+    height: 100svh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+    cursor: grab;
+    background: var(--color-white);
+    scrollbar-color: #ffffff #ffffff;
+    scrollbar-width: thin;
 }
 
-.mural-h__pin {
-    position: sticky;
-    top: 0;
-    height: 100svh;
-    width: 100%;
-    overflow: hidden;
-    background: var(--color-white);
+.mural-h.is-grabbing {
+    cursor: grabbing;
+    scroll-behavior: auto;
+}
+
+.mural-h::-webkit-scrollbar {
+    height: 12px;
+    background: #ffffff;
+}
+
+.mural-h::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+.mural-h::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border: 2px solid #ffffff;
 }
 
 .mural-h__track {
     display: flex;
     height: 100%;
     width: max-content;
-    will-change: transform;
 }
 
 .mural-h__tile {
@@ -1560,8 +1576,49 @@ img, video {
     max-width: 120px !important;
 }
 .main-mural .hint-scroll-horizontal{
-    max-width: 180px !important;
+    max-width: 120px !important;
 }
+
+.main-infodraws{
+
+}
+    .main-infodraws ul{
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+        .main-infodraws ul li{
+            margin: 15px;
+            max-width: 300px;
+            display: inline-block;
+            vertical-align: top;
+        }
+            .main-infodraws ul li img{
+                cursor: pointer;
+            }
+
+@media (max-width: 720px) {
+    .main-infodraws ul{
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pan-y;
+        scroll-snap-type: x mandatory;
+    }
+        .main-infodraws ul li{
+            flex: 0 0 100%;
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            scroll-snap-align: center;
+        }
+            .main-infodraws ul li img{
+                width: 100%;
+                cursor: default;
+            }
+}
+
 
 @media (max-width: 720px) {
     .timeline-h {
