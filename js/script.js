@@ -1213,4 +1213,36 @@
             if (e.key === 'Escape' && !infodrawLightbox.hidden) { closeInfodrawLightbox(); }
         });
     }
+
+    /* ----- Infodraws: flechas de carrusel cuando las imágenes no caben en una línea ----- */
+    var infodrawsCarousel = document.querySelector('.main-infodraws__carousel');
+    var infodrawsList = infodrawsCarousel ? infodrawsCarousel.querySelector('ul') : null;
+    var infodrawsPrev = infodrawsCarousel ? infodrawsCarousel.querySelector('.main-infodraws__arrow--prev') : null;
+    var infodrawsNext = infodrawsCarousel ? infodrawsCarousel.querySelector('.main-infodraws__arrow--next') : null;
+
+    if (infodrawsCarousel && infodrawsList && infodrawsPrev && infodrawsNext) {
+        var updateInfodrawsCarousel = function () {
+            var hasOverflow = infodrawsList.scrollWidth > infodrawsList.clientWidth + 1;
+            infodrawsCarousel.classList.toggle('has-overflow', hasOverflow);
+            if (!hasOverflow) { return; }
+            var maxScroll = infodrawsList.scrollWidth - infodrawsList.clientWidth;
+            infodrawsPrev.disabled = infodrawsList.scrollLeft <= 0;
+            infodrawsNext.disabled = infodrawsList.scrollLeft >= maxScroll - 1;
+        };
+
+        var scrollInfodraws = function (dir) {
+            var item = infodrawsList.querySelector('li');
+            var style = item ? window.getComputedStyle(item) : null;
+            var step = item
+                ? item.getBoundingClientRect().width + (style ? parseFloat(style.marginLeft) + parseFloat(style.marginRight) : 0)
+                : infodrawsList.clientWidth;
+            infodrawsList.scrollBy({ left: dir * step, behavior: 'smooth' });
+        };
+
+        infodrawsPrev.addEventListener('click', function () { scrollInfodraws(-1); });
+        infodrawsNext.addEventListener('click', function () { scrollInfodraws(1); });
+        infodrawsList.addEventListener('scroll', updateInfodrawsCarousel);
+        window.addEventListener('resize', updateInfodrawsCarousel);
+        updateInfodrawsCarousel();
+    }
 })();

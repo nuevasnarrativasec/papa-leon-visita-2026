@@ -1602,8 +1602,11 @@ img, video {
 }
 
 .main-infodraws{
-
+    margin-top: 40px;
 }
+    .main-infodraws__carousel{
+        position: relative;
+    }
     .main-infodraws ul{
         list-style: none;
         padding: 0;
@@ -1618,6 +1621,60 @@ img, video {
             .main-infodraws ul li img{
                 cursor: pointer;
             }
+
+    .main-infodraws__arrow{
+        display: none;
+    }
+
+/* Tablet: cuando las 4 imágenes no caben en una sola línea, se vuelve
+   un carrusel horizontal con flechas de navegación. */
+@media (min-width: 721px) and (max-width: 1320px) {
+    .main-infodraws ul{
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        padding: 0;
+        max-width: 88%;
+        margin: 0 auto;
+    }
+        .main-infodraws ul li{
+            flex: 0 0 300px;
+            width: 300px;
+            margin: 15px;
+            scroll-snap-align: center;
+        }
+
+    .main-infodraws__carousel.has-overflow .main-infodraws__arrow{
+        display: flex;
+    }
+    .main-infodraws__arrow{
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: none;
+        background: var(--color-gold);
+        color: var(--color-white);
+        font-size: 1.1rem;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 2;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+    }
+    .main-infodraws__arrow--prev{ left: 5px; }
+    .main-infodraws__arrow--next{ right: 5px; }
+    .main-infodraws__arrow[disabled]{
+        opacity: .35;
+        cursor: default;
+    }
+}
 
 @media (max-width: 720px) {
     .main-infodraws ul{
@@ -1639,6 +1696,10 @@ img, video {
                 width: 100%;
                 cursor: default;
             }
+
+    .main-infodraws__arrow{
+        display: none !important;
+    }
 }
 
 
