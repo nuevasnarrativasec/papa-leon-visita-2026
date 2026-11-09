@@ -153,6 +153,18 @@ img, video {
     background: #faf7f0;
 }
 
+.top-bar__right a:nth-child(1) {
+    background-color: #A68939;
+    color: #fff;
+
+    animation: palpito 2s ease-in-out infinite;
+}
+@keyframes palpito {
+    0% { background-color: #A68939;}
+    50% { background-color: #fff; color: #000;}
+    100% { background-color: #A68939; }
+}
+
 /* ===== Hero ===== */
 
 .sr-only {
@@ -382,6 +394,16 @@ img, video {
 .sticky-bar__link:hover,
 .sticky-bar__link:focus-visible {
     color: var(--color-gold);
+}
+
+.sticky-bar__right a:nth-child(1) {
+    background-color: #A68939;
+    border-radius: 25px;
+    color: #fff;
+    margin-right: 10px;
+    padding: 10px;
+
+    animation: palpito 2s ease-in-out infinite;
 }
 
 .main-recorrido{
