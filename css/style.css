@@ -384,7 +384,7 @@ img, video {
     display: flex;
     align-items: center;
     padding: 0 20px;
-    border-left: 1px solid var(--color-border);
+    /*border-left: 1px solid var(--color-border);*/
     font-family: var(--font-sans);
     font-size: 13px;
     font-weight: 700;
@@ -2089,6 +2089,7 @@ img, video {
     .sticky-bar__link {
         padding: 0 8px;
         font-size: 12px;
+        text-align: center;
     }
     .top-bar__left{
         border-bottom: 1px solid #af954f;
