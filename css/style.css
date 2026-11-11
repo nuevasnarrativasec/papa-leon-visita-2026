@@ -153,7 +153,7 @@ img, video {
     background: #faf7f0;
 }
 
-.top-bar__right a:nth-child(1) {
+.top-bar__right a:nth-child(2) {
     background-color: #A68939;
     color: #fff;
 
@@ -397,7 +397,7 @@ img, video {
     color: var(--color-gold);
 }
 
-.sticky-bar__right a:nth-child(1) {
+.sticky-bar__right a:nth-child(2) {
     background-color: #A68939;
     border-radius: 25px;
     color: #fff;
@@ -879,6 +879,40 @@ img, video {
         aspect-ratio: 9 / 16;
         margin: 32px auto 0;
     }
+}
+
+/* En escritorio el mouse ya controla el embed con la rueda sin mover la página (el iframe
+   captura el wheel mientras el cursor está encima), así que este envoltorio queda inerte.
+   En móvil el deslizar no llega al iframe (no tiene nada que desplazar dentro), así que se
+   pinea con scroll-driven y su propio scroll se traduce en pasos del recorrido (ver script.js). */
+@media (max-width: 720px) {
+    .recorrido-track {
+        position: relative;
+        height: 800vh;
+    }
+
+    .recorrido-pin {
+        position: sticky;
+        top: 0;
+        height: 100svh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .recorrido-pin .recorrido-embed {
+        width: 100%;
+    }
+}
+
+.recorrido-embed-creditos {
+    max-width: 1240px;
+    margin: 10px auto 0;
+    padding: 0 16px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-gray);
+    text-align: center;
 }
 
 .timeline-list {

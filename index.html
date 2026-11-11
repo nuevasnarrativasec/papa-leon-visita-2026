@@ -34,7 +34,7 @@
 
         <nav class="top-bar__right" aria-label="Enlaces externos">
             <a href="#ultimas-noticias" class="top-bar__link btn-1-top-bar">Últimas noticias</a>
-            <a href="#agenda" class="top-bar__link">Agenda</a>
+            <a href="#agenda" class="top-bar__link">Agenda y recorrido</a>
             <a href="#ten-en-cuenta" class="top-bar__link">Ten en cuenta</a>
         </nav>
     </header>
@@ -102,7 +102,7 @@
 
         <nav class="sticky-bar__right" aria-label="Enlaces externos">
             <a href="#ultimas-noticias" class="sticky-bar__link" >Últimas noticias</a>
-            <a href="#agenda" class="sticky-bar__link">Agenda</a>
+            <a href="#agenda" class="sticky-bar__link">Agenda y recorrido</a>
             <a href="#ten-en-cuenta" class="sticky-bar__link">Ten en cuenta</a>
         </nav>
     </header>
@@ -188,19 +188,25 @@
             La agenda de León XIV, día por día. Programa oficial publicado por la Santa Sede el 21 de septiembre de 2026. Los horarios corresponden a la hora local del Perú.
         </p>
 
-        <a href="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/agenda-papa-leon-xiv.pdf" download="agenda-papa-leon-xiv-peru-2026.pdf" class="btn-descarga-agenda">Descarga la agenda</a>
+        <!--<a href="https://papa-leon-visita-2026.nuevasnarrativas-ec.workers.dev/agenda-papa-leon-xiv.pdf" download="agenda-papa-leon-xiv-peru-2026.pdf" class="btn-descarga-agenda">Descarga la agenda</a>-->
 
-        <div class="recorrido-embed">
-            <iframe
-                src="./recorrido-papa-main/web/lector/index.html"
-                title="Recorrido interactivo de la visita de León XIV por el Perú"
-                loading="lazy"
-                allow="fullscreen"
-                allowfullscreen
-            ></iframe>
+        <div class="recorrido-track" id="recorridoTrack">
+            <div class="recorrido-pin" id="recorridoPin">
+                <div class="recorrido-embed">
+                    <iframe
+                        src="./recorrido-papa-main/web/lector/index.html"
+                        title="Recorrido interactivo de la visita de León XIV por el Perú"
+                        allow="fullscreen"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+            </div>
         </div>
+        <p class="recorrido-embed-creditos" style="max-width: 1000px; margin: 10px auto; font-size: 13px;">
+            <b>Dirección, diseño y animación:</b> Carls Mayo · <b>Investigación:</b> Guisella Veramendi, Tito Martel, Mayyi Mirabal, Yanina Arana
+        </p>
 
-        <div class="timeline-list" id="timelineList"></div>
+        <!--<div class="timeline-list" id="timelineList"></div>-->
     </div>
 
     <!--Lo que puede movilizar su visita -->

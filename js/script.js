@@ -1270,4 +1270,60 @@
         window.addEventListener('resize', updateInfodrawsCarousel);
         updateInfodrawsCarousel();
     }
+
+    /* ===== Embed del recorrido: pineado en móvil para que el scroll avance los pasos =====
+       En escritorio el mouse ya lo controla bien: el iframe captura el wheel mientras el
+       cursor está encima y la página no se mueve. En móvil deslizar sobre el iframe no
+       avanza nada (adentro no hay qué desplazar), así que aquí se pinea el embed con
+       scroll-driven (igual que .mapa-track) y el progreso del scroll se traduce en pasos
+       del recorrido a través de window.__papaNav, que expone el propio embed (misma
+       procedencia: recorrido-papa-main/web/lector/index.html). */
+    var recorridoTrack = document.getElementById('recorridoTrack');
+    var recorridoIframe = recorridoTrack ? recorridoTrack.querySelector('iframe') : null;
+
+    if (recorridoTrack && recorridoIframe) {
+        var recorridoMobileQuery = window.matchMedia('(max-width: 720px)');
+        var recorridoTotal = null;
+        var recorridoStep = -1;
+        var recorridoTicking = false;
+
+        // la altura pineada (800vh) la pone el CSS directamente: así no depende de que el
+        // embed ya haya cargado para tener algo que "empujar" al resto de la página
+        var getRecorridoNav = function () {
+            try { return recorridoIframe.contentWindow && recorridoIframe.contentWindow.__papaNav; } catch (e) { return null; }
+        };
+
+        var updateRecorridoProgress = function () {
+            recorridoTicking = false;
+            if (!recorridoMobileQuery.matches) { return; }
+
+            var nav = getRecorridoNav();
+            if (!nav) { return; }   // el embed aún no cargó (p. ej. si el navegador lo demora por estar lejos); se reintenta en el próximo scroll
+            if (recorridoTotal === null) { recorridoTotal = nav.total(); }
+
+            var rect = recorridoTrack.getBoundingClientRect();
+            var totalScrollable = recorridoTrack.offsetHeight - window.innerHeight;
+            if (totalScrollable <= 0) { return; }
+
+            var progress = (-rect.top) / totalScrollable;
+            progress = Math.min(Math.max(progress, 0), 1);
+
+            var target = Math.round(progress * recorridoTotal);
+            if (target !== recorridoStep) {
+                recorridoStep = target;
+                nav.go(target);
+            }
+        };
+
+        var onRecorridoScroll = function () {
+            if (!recorridoTicking) {
+                recorridoTicking = true;
+                window.requestAnimationFrame(updateRecorridoProgress);
+            }
+        };
+
+        window.addEventListener('scroll', onRecorridoScroll, { passive: true });
+        window.addEventListener('resize', onRecorridoScroll);
+        onRecorridoScroll();
+    }
 })();
