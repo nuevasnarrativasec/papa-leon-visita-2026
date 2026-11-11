@@ -1324,6 +1324,8 @@
 
         window.addEventListener('scroll', onRecorridoScroll, { passive: true });
         window.addEventListener('resize', onRecorridoScroll);
-        onRecorridoScroll();
+        // nota: no se llama aquí al cargar; otras secciones de la página (mapaTrack, etc.) todavía
+        // no terminaron de fijar su alto en ese momento, así que una medición inmediata da un
+        // progreso falso y manda el embed a un paso cualquiera antes de que el usuario haga scroll
     }
 })();
