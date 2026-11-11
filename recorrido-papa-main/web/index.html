@@ -77,10 +77,13 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--paper)}
 .lx .cal{color:var(--ink);font-weight:600}
 .ovt{font:900 64px/1.05 var(--serif);color:var(--ink);margin-top:6px}
 .ovsub{font:400 24px/1.4 var(--sans);color:var(--mute);margin-top:18px}
-.ovl{margin-top:44px}
+.ovhint{font:600 15px/1 var(--sans);letter-spacing:.24em;color:var(--gold);text-transform:uppercase;margin-top:40px}
+.ovl{margin-top:18px}
 .ovr{display:flex;align-items:baseline;gap:26px;padding:15px 0;border-bottom:1px solid #EEEAE1;cursor:pointer;transition:padding-left .2s,background .2s}
 .ovr:hover{padding-left:10px;background:#FAF8F3}
 .ovr:hover .c{color:var(--gold)}
+.ovr .arr{margin-left:auto;font:400 30px/1 Georgia,serif;color:#C9C2B3;transition:color .2s}
+.ovr:hover .arr{color:var(--gold)}
 .ovr .n{font:900 48px/1 var(--serif);color:var(--gold);width:72px}
 .ovr .d{font:700 16px/1 var(--sans);letter-spacing:.2em;color:var(--mute);width:140px}
 .ovr .c{font:700 26px/1.2 var(--serif);color:var(--ink);letter-spacing:.03em;transition:color .2s}
@@ -152,11 +155,13 @@ body.vert .bar{height:9px}
 body.vert .lx{font-size:27px}
 body.vert .ovt{font-size:62px}
 body.vert .ovsub{font-size:28px;margin-top:10px}
-body.vert .ovl{margin-top:18px}
+body.vert .ovhint{font-size:20px;margin-top:30px}
+body.vert .ovl{margin-top:14px}
 body.vert .ovr{padding:9px 0}
 body.vert .ovr .n{font-size:50px;width:84px}
 body.vert .ovr .d{font-size:20px;width:180px}
 body.vert .ovr .c{font-size:34px}
+body.vert .ovr .arr{font-size:40px}
 body.vert #strip{left:32px;right:32px;bottom:26px;padding-top:18px}
 body.vert .sd .a{font-size:22px;letter-spacing:.1em}
 body.vert .sd .b{font-size:58px}
