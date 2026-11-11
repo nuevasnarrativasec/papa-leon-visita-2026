@@ -1,0 +1,15 @@
+node_modules/
+herramientas/node_modules
+herramientas/fuente/*.pbf
+herramientas/fuente/*.osm
+herramientas/fuente/vistas/
+.wrangler/
+dist/recorrido_papa_offline.html
+
+# Solo se publica web/ (embebido vía web/lector en el sitio principal).
+# Lo demás es herramienta de build o el despliegue aparte para OBS; no hace
+# falta en GitHub ni en el deploy de Cloudflare.
+herramientas/
+dist/
+worker/
+wrangler.jsonc
