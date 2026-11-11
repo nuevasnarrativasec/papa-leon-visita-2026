@@ -79,10 +79,12 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--paper)}
 .ovt{font:900 64px/1.05 var(--serif);color:var(--ink);margin-top:6px}
 .ovsub{font:400 24px/1.4 var(--sans);color:var(--mute);margin-top:18px}
 .ovl{margin-top:44px}
-.ovr{display:flex;align-items:baseline;gap:26px;padding:15px 0;border-bottom:1px solid #EEEAE1}
+.ovr{display:flex;align-items:baseline;gap:26px;padding:15px 0;border-bottom:1px solid #EEEAE1;cursor:pointer;transition:padding-left .2s,background .2s}
+.ovr:hover{padding-left:10px;background:#FAF8F3}
+.ovr:hover .c{color:var(--gold)}
 .ovr .n{font:900 48px/1 var(--serif);color:var(--gold);width:72px}
 .ovr .d{font:700 16px/1 var(--sans);letter-spacing:.2em;color:var(--mute);width:140px}
-.ovr .c{font:700 26px/1.2 var(--serif);color:var(--ink);letter-spacing:.03em}
+.ovr .c{font:700 26px/1.2 var(--serif);color:var(--ink);letter-spacing:.03em;transition:color .2s}
 #strip{position:absolute;left:64px;right:72px;bottom:58px;display:flex;justify-content:space-between;border-top:1px solid #E7E3DA;padding-top:20px}
 .sd{text-align:center;width:16%;cursor:pointer;user-select:none;color:#B9B4AA;transition:color .5s}
 .sd .a{font:700 13px/1 var(--sans);letter-spacing:.2em}
