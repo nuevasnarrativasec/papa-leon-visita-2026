@@ -41,7 +41,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--paper)}
 .dnum{font:900 156px/0.92 var(--serif);color:var(--gold);margin-top:6px}
 .dense .dnum{font-size:104px}
 .dense .dname{font-size:26px}
-.dense .city{font-size:20px;padding:16px 28px 14px}
+.dense .city{font-size:32px;padding:16px 28px 14px}
 .dense .ev.leg:not(.now) .lv{display:none}
 .dense .ev.leg{font-size:19px}
 .xdense .dnum{font-size:88px}
@@ -49,7 +49,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--paper)}
 .xdense .ev{font-size:20px;margin-bottom:10px}
 .xdense .ev.leg{font-size:17px}
 .xdense .ev.leg .lv{font-size:15px}
-.city{display:inline-block;background:var(--ink);color:#fff;font:700 16px/1 var(--serif);letter-spacing:.04em;padding:20px 34px 18px;margin-top:4px;max-width:420px}
+.city{display:inline-block;background:var(--ink);color:#fff;font:700 38px/1 var(--serif);letter-spacing:.04em;padding:20px 34px 18px;margin-top:4px;max-width:420px}
 .evs{position:relative;margin-top:46px;padding-left:46px}
 .dense .evs{margin-top:28px}
 .evs:before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:2px;background:var(--gold);opacity:.55}
@@ -126,9 +126,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--paper)}
 #nav button:hover{background:#fff;color:var(--gold)}
 #card .go{margin-top:40px;font:600 20px/1 var(--sans);letter-spacing:.06em;color:var(--gold)}
 #card{cursor:pointer}
-/* leyenda de créditos al pie (versión sindicada, sin pantalla de créditos aparte) */
-#credfoot{position:absolute;left:0;right:0;bottom:0;height:24px;background:#fff;border-top:1px solid #E7E3DA;color:var(--mute);font:400 12px/24px var(--sans);letter-spacing:.01em;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 20px;z-index:8;pointer-events:none}
-body.sindicado #nav{top:960px}
 /* formato vertical (1080×1920, celular): mapa arriba, panel abajo, todo más grande */
 body.vert #panel{left:0;top:960px;width:1080px;height:960px;padding:40px 56px 0;border-left:0;border-top:1px solid #E7E3DA}
 body.vert .kick,body.vert #clock{font-size:22px}
@@ -181,7 +178,6 @@ body.vert #card [data-c="cred"] .tx{top:140px}
 body.vert #card .cr h3{font-size:24px}
 body.vert #card .cr p{font-size:60px}
 body.vert #card .cr p.l{font-size:54px}
-body.vert #credfoot{height:34px;font-size:16px;line-height:34px;padding:0 28px}
 </style>
 </head>
 <body>
