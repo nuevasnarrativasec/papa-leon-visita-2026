@@ -1692,9 +1692,10 @@ img, video {
         display: none;
     }
 
-/* Tablet: cuando las 4 imágenes no caben en una sola línea, se vuelve
-   un carrusel horizontal con flechas de navegación. */
-@media (min-width: 721px) and (max-width: 1320px) {
+/* Tablet y escritorio: cuando las imágenes no caben en una sola línea, se vuelve
+   un carrusel horizontal con flechas de navegación (el JS decide si sobra contenido
+   y agrega .has-overflow; si todo cabe, las flechas quedan ocultas). */
+@media (min-width: 721px) {
     .main-infodraws ul{
         display: flex;
         flex-wrap: nowrap;
